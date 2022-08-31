@@ -5,20 +5,19 @@
 
 	li 	a7, 5
 	ecall			# get integer input value
-	
-	slli	s0, a0, 14	# Convert input to (32,14) format
 
+	mv	s0, a0
 
 loop:
 	ble 	s1, zero, done
 	
-	mul	s3, s2, s2
-	mulhu	s4, s2, s2
+	mul	s3, s2, s2	# get lo bits
+	mulhu	s4, s2, s2	# get hi bits
 	
-	srli	s3, s3, 14
-	slli	s4, s4, 18
+	srli	s3, s3, 14	# shift lo bits to align
+	slli	s4, s4, 18	# shift hi bits to align
 	
-	or 	s3, s3, s4
+	or 	s3, s3, s4	# combine values
 	
 	bne	s3, s0, continue
 	
@@ -38,8 +37,6 @@ lessthan:
 
 
 done:
-	srli	s5, s2, 14
-	
 	li	a7, 1
-	mv	a0, s5
+	mv	a0, s2
 	ecall
