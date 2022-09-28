@@ -23,7 +23,7 @@ module simtop;
 		.KEY(),
 
 		//////////// SW //////////
-		.SW(SW),
+		// .SW(SW),
 
 		//////////// SEG7 //////////
 		.HEX0(HEX0),
@@ -43,14 +43,14 @@ initial begin
 end
 
 //the counter is connected to the HEX displays
-hexdecoder hex0(.in(c[3:0]), .out(HEX0));
-hexdecoder hex1(.in(c[7:4]), .out(HEX1));
-hexdecoder hex2(.in(c[11:8]), .out(HEX2));
-hexdecoder hex3(.in(c[15:12]), .out(HEX3));
-hexdecoder hex4(.in(c[19:16]), .out(HEX4));
-hexdecoder hex5(.in(c[23:20]), .out(HEX5));
-hexdecoder hex6(.in(c[27:24]), .out(HEX6));
-hexdecoder hex7(.in(c[31:28]), .out(HEX7));
+hexdriver hex0(.in(c[3:0]), .out(HEX0));
+hexdriver hex1(.in(c[7:4]), .out(HEX1));
+hexdriver hex2(.in(c[11:8]), .out(HEX2));
+hexdriver hex3(.in(c[15:12]), .out(HEX3));
+hexdriver hex4(.in(c[19:16]), .out(HEX4));
+hexdriver hex5(.in(c[23:20]), .out(HEX5));
+hexdriver hex6(.in(c[27:24]), .out(HEX6));
+hexdriver hex7(.in(c[31:28]), .out(HEX7));
 
 endmodule
 

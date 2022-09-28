@@ -1,20 +1,18 @@
 module hexdriver (input [3:0] val, output logic [6:0] HEX);
 
-	assign w = val[0];
-	assign x = val[1];
-	assign y = val[2];
-	assign z = val[3];
+	// assign w = val[0];
+	// assign x = val[1];
+	// assign y = val[2];
+	// assign z = val[3];
 
-	assign HEX[0] = w | y | (x & z) | (~x | ~z);
-	assign HEX[1] = ~x | (y & z) | (~y & ~z);
-	assign HEX[2] = x | ~y | z;
-	assign HEX[3] = (~x & ~z) | (y & ~z) | (~x & y) | (~y & z);
-	assign HEX[4] = (~x & ~z) | (y & ~z);
-	assign HEX[5] = w | x | (~y & ~z);
-	assign HEX[6] = w | (~x & y) | (x & ~y) | (x & ~z);
+	// assign HEX[0] = w | y | (x & z) | (~x | ~z);
+	// assign HEX[1] = ~x | (y & z) | (~y & ~z);
+	// assign HEX[2] = x | ~y | z;
+	// assign HEX[3] = (~x & ~z) | (y & ~z) | (~x & y) | (~y & z);
+	// assign HEX[4] = (~x & ~z) | (y & ~z);
+	// assign HEX[5] = w | x | (~y & ~z);
+	// assign HEX[6] = w | (~x & y) | (x & ~y) | (x & ~z);
 
-	//In case the top code doesn't work this is the binary way I think it should work need to test
-	/*
 	always_comb begin
                 case (in)
                         4'h0: out = 7'b1000000;
@@ -35,5 +33,4 @@ module hexdriver (input [3:0] val, output logic [6:0] HEX);
                         4'hF: out = 7'b0001110;
                 endcase
         end
-	*/
 endmodule

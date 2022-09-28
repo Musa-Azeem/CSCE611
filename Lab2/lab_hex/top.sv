@@ -18,7 +18,7 @@ module top (
 	input 		     [3:0]		KEY,
 
 	//////////// SW //////////
-	input 		    [17:0]		SW,
+	// input 		    [17:0]		SW,
 
 	//////////// SEG7 //////////
 	output		     [6:0]		HEX0,
@@ -93,14 +93,15 @@ module top (
 		end
 	end
 	
+	//TODO change .value to switch input
 	//the counter is connected to the HEX displays
-	hexdecoder hex0(.value(c[3:0]), .out(HEX0));
-	hexdecoder hex1(.value(c[7:4]), .out(HEX1));
-	hexdecoder hex2(.value(c[11:8]), .out(HEX2));
-	hexdecoder hex3(.value(c[15:12]), .out(HEX3));
-	hexdecoder hex4(.value(c[19:16]), .out(HEX4));
-	hexdecoder hex5(.value(c[23:20]), .out(HEX5));
-	hexdecoder hex6(.value(c[27:24]), .out(HEX6));
-	hexdecoder hex7(.value(c[31:28]), .out(HEX7));
+	hexdriver hex0(.value(4'h0), .out(HEX0));
+	hexdriver hex1(.value(4'h0), .out(HEX1));
+	hexdriver hex2(.value(4'h0), .out(HEX2));
+	hexdriver hex3(.value(4'h0), .out(HEX3));
+	hexdriver hex4(.value(4'h0), .out(HEX4));
+	hexdriver hex5(.value(4'h0), .out(HEX5));
+	hexdriver hex6(.value(4'h0), .out(HEX6));
+	hexdriver hex7(.value(4'h0), .out(HEX7));
 	
 endmodule
