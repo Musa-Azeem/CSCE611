@@ -92,5 +92,15 @@ module top (
 			leds <= leds >> 1;
 		end
 	end
-
+	
+	//the counter is connected to the HEX displays
+	hexdecoder hex0(.value(c[3:0]), .out(HEX0));
+	hexdecoder hex1(.value(c[7:4]), .out(HEX1));
+	hexdecoder hex2(.value(c[11:8]), .out(HEX2));
+	hexdecoder hex3(.value(c[15:12]), .out(HEX3));
+	hexdecoder hex4(.value(c[19:16]), .out(HEX4));
+	hexdecoder hex5(.value(c[23:20]), .out(HEX5));
+	hexdecoder hex6(.value(c[27:24]), .out(HEX6));
+	hexdecoder hex7(.value(c[31:28]), .out(HEX7));
+	
 endmodule
