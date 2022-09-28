@@ -9,78 +9,87 @@ z2
 !i10f 100
 cModel Technology
 Z0 d/acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex
+T_opt
+!s110 1664397410
+VLiIL=6A@L<Xe`EO]SGaH00
+04 6 4 work simtop fast 0
+=1-000ae431a4f1-6334b062-3f876-8d60
+o-quiet -auto_acc_if_foreign -work work
+Z1 tCvgOpt 0
+n@_opt
+OL;O;2020.1;71
 vhexdriver
-Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z2 !s110 1664396768
+Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z3 !s110 1664397409
 !i10b 1
-!s100 Bn;n5DIY`a28jlFn0mNF42
-Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
-I3I0ihmzTb[Co]]N`]gGTb3
-Z4 VDg1SIo80bB@j0V0VzS_@n1
+!s100 C;JnhYfoU85I0NSC2m1083
+Z4 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IVTZcB3EUcjJ;9C]N7ZSMl1
+Z5 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-w1664395927
+w1664397347
 8hexdriver.sv
 Fhexdriver.sv
-!i122 1
-L0 1 36
-Z5 OL;L;2020.1;71
+!i122 5
+L0 1 22
+Z6 OL;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1664396768.000000
-!s107 top.sv|simtop.sv|hexdriver.sv|
-Z7 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|hexdriver.sv|simtop.sv|top.sv|
+Z7 !s108 1664397409.000000
+Z8 !s107 top.sv|simtop.sv|hexdriver.sv|
+Z9 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|hexdriver.sv|simtop.sv|top.sv|
 !i113 0
-Z8 o-pedanticerrors -lint -hazards -source -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-Z9 tCvgOpt 0
-vsimtop
+Z10 o-pedanticerrors -lint -hazards -source -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R1
+vsimtop
 R2
-!i10b 1
-!s100 :W^:L:@O9a;Wi2@Nob@de1
 R3
-IXYnh=z^Y^@HM6ADh7YTTN0
+!i10b 1
+!s100 MAU=]NMEM8@TDg86Iz6h:2
 R4
+Iz<1kARbdBTaHiSz^FhOY;2
+R5
 S1
 R0
-w1664396421
+w1664397398
 8simtop.sv
 Fsimtop.sv
-!i122 1
+!i122 5
 L0 6 50
-R5
+R6
 r1
 !s85 0
 31
-R6
-Z10 !s107 top.sv|simtop.sv|hexdriver.sv|
 R7
-!i113 0
 R8
 R9
-vtop
+!i113 0
+R10
 R1
+vtop
 R2
-!i10b 1
-!s100 9S4H3d8R7b9f@2KPX_>`b1
 R3
-I=NmU5Ll:7J1fNJ5XmJZ0Y0
+!i10b 1
+!s100 og`__UKTQWPGA^YW3Y>cg2
 R4
+IfJjFAnI`NS:6eJlcAPV>50
+R5
 S1
 R0
-w1664396623
+w1664397197
 8top.sv
 Ftop.sv
-!i122 1
+!i122 5
 L0 6 102
-R5
+R6
 r1
 !s85 0
 31
-R6
-R10
 R7
-!i113 0
 R8
 R9
+!i113 0
+R10
+R1
