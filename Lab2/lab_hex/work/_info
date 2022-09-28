@@ -1,0 +1,86 @@
+m255
+K4
+z2
+!s11f MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex
+vhexdriver
+Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z2 !s110 1664396768
+!i10b 1
+!s100 Bn;n5DIY`a28jlFn0mNF42
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I3I0ihmzTb[Co]]N`]gGTb3
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1664395927
+8hexdriver.sv
+Fhexdriver.sv
+!i122 1
+L0 1 36
+Z5 OL;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1664396768.000000
+!s107 top.sv|simtop.sv|hexdriver.sv|
+Z7 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|hexdriver.sv|simtop.sv|top.sv|
+!i113 0
+Z8 o-pedanticerrors -lint -hazards -source -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z9 tCvgOpt 0
+vsimtop
+R1
+R2
+!i10b 1
+!s100 :W^:L:@O9a;Wi2@Nob@de1
+R3
+IXYnh=z^Y^@HM6ADh7YTTN0
+R4
+S1
+R0
+w1664396421
+8simtop.sv
+Fsimtop.sv
+!i122 1
+L0 6 50
+R5
+r1
+!s85 0
+31
+R6
+Z10 !s107 top.sv|simtop.sv|hexdriver.sv|
+R7
+!i113 0
+R8
+R9
+vtop
+R1
+R2
+!i10b 1
+!s100 9S4H3d8R7b9f@2KPX_>`b1
+R3
+I=NmU5Ll:7J1fNJ5XmJZ0Y0
+R4
+S1
+R0
+w1664396623
+8top.sv
+Ftop.sv
+!i122 1
+L0 6 102
+R5
+r1
+!s85 0
+31
+R6
+R10
+R7
+!i113 0
+R8
+R9

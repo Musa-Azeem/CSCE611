@@ -1,0 +1,40 @@
+# vsim -pedanticerrors -hazards -c -sva -immedassert work.simtop -do "/dev/stdin" 
+# Start time: 16:26:09 on Sep 28,2022
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): simtop.sv(53): (vopt-2912) Port 'in' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): simtop.sv(53): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): simtop.sv(52): (vopt-2912) Port 'in' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): simtop.sv(52): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): simtop.sv(51): (vopt-2912) Port 'in' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): simtop.sv(51): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): simtop.sv(50): (vopt-2912) Port 'in' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): simtop.sv(50): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): simtop.sv(49): (vopt-2912) Port 'in' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): simtop.sv(49): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): simtop.sv(48): (vopt-2912) Port 'in' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): simtop.sv(48): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): simtop.sv(47): (vopt-2912) Port 'in' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): simtop.sv(47): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): simtop.sv(46): (vopt-2912) Port 'in' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): simtop.sv(46): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): top.sv(105): (vopt-2912) Port 'value' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): top.sv(105): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): top.sv(104): (vopt-2912) Port 'value' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): top.sv(104): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): top.sv(103): (vopt-2912) Port 'value' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): top.sv(103): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): top.sv(102): (vopt-2912) Port 'value' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): top.sv(102): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): top.sv(101): (vopt-2912) Port 'value' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): top.sv(101): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): top.sv(100): (vopt-2912) Port 'value' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): top.sv(100): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): top.sv(99): (vopt-2912) Port 'value' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): top.sv(99): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# ** Error (suppressible): top.sv(98): (vopt-2912) Port 'value' not found in module 'hexdriver' (1st connection).
+# ** Error (suppressible): top.sv(98): (vopt-2912) Port 'out' not found in module 'hexdriver' (2nd connection).
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=32, Warnings=0.
+# Error loading design
+# End time: 16:26:10 on Sep 28,2022, Elapsed time: 0:00:01
+# Errors: 32, Warnings: 0
