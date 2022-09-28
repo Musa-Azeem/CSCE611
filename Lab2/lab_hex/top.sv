@@ -17,8 +17,8 @@ module top (
 	//////////// KEY //////////
 	input 		     [3:0]		KEY,
 
-	//////////// SW //////////
-	// input 		    [17:0]		SW,
+	////////// SW //////////
+	input 		    [17:0]		SW,
 
 	//////////// SEG7 //////////
 	output		     [6:0]		HEX0,
@@ -95,13 +95,13 @@ module top (
 	
 	//TODO change .value to switch input
 	//the counter is connected to the HEX displays
-	hexdriver hex0(.val(4'h0), .HEX(HEX0));
-	hexdriver hex1(.val(4'h1), .HEX(HEX1));
-	hexdriver hex2(.val(4'h2), .HEX(HEX2));
-	hexdriver hex3(.val(4'h3), .HEX(HEX3));
-	hexdriver hex4(.val(4'h4), .HEX(HEX4));
-	hexdriver hex5(.val(4'h5), .HEX(HEX5));
-	hexdriver hex6(.val(4'h6), .HEX(HEX6));
-	hexdriver hex7(.val(4'h7), .HEX(HEX7));
+	hexdriver hex0(.val(SW[3:0]), .HEX(HEX0));
+	hexdriver hex1(.val(SW[7:4]), .HEX(HEX1));
+	hexdriver hex2(.val(SW[11:8]), .HEX(HEX2));
+	hexdriver hex3(.val(SW[15:12]), .HEX(HEX3));
+	hexdriver hex4(.val(SW[17:16]), .HEX(HEX4));
+	hexdriver hex5(.val(4'h0), .HEX(HEX5));
+	hexdriver hex6(.val(4'h0), .HEX(HEX6));
+	hexdriver hex7(.val(4'h0), .HEX(HEX7));
 	
 endmodule
