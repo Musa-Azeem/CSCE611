@@ -1,95 +1,60 @@
 m255
 K4
 z2
-!s11f MIXED_VERSIONS
 13
 !s112 1.1
 !i10d 8192
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 d/acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex
-T_opt
-!s110 1664397410
-VLiIL=6A@L<Xe`EO]SGaH00
-04 6 4 work simtop fast 0
-=1-000ae431a4f1-6334b062-3f876-8d60
-o-quiet -auto_acc_if_foreign -work work
-Z1 tCvgOpt 0
-n@_opt
-OL;O;2020.1;71
+Z0 d/acct/mmazeem/611/CSCE611/Lab2/lab_hex
 vhexdriver
-Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z3 !s110 1664397409
+Z1 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z2 !s110 1664399834
 !i10b 1
-!s100 C;JnhYfoU85I0NSC2m1083
-Z4 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IVTZcB3EUcjJ;9C]N7ZSMl1
-Z5 VDg1SIo80bB@j0V0VzS_@n1
+!s100 9]g92U:1R]Fh_59Z8m4?W0
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IReBzKHPSSoR5JD7N9j31`0
+Z4 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-w1664397347
+w1664399000
 8hexdriver.sv
 Fhexdriver.sv
 !i122 5
 L0 1 22
-Z6 OL;L;2020.1;71
+Z5 OL;L;2020.1;71
 r1
 !s85 0
 31
-Z7 !s108 1664397409.000000
-Z8 !s107 top.sv|simtop.sv|hexdriver.sv|
-Z9 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|hexdriver.sv|simtop.sv|top.sv|
+Z6 !s108 1664399834.000000
+!s107 top.sv|simtop.sv|hexdriver.sv|
+Z7 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|hexdriver.sv|simtop.sv|top.sv|
 !i113 0
-Z10 o-pedanticerrors -lint -hazards -source -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R1
-vsimtop
-R2
-R3
-!i10b 1
-!s100 MAU=]NMEM8@TDg86Iz6h:2
-R4
-Iz<1kARbdBTaHiSz^FhOY;2
-R5
-S1
-R0
-w1664397398
-8simtop.sv
-Fsimtop.sv
-!i122 5
-L0 6 50
-R6
-r1
-!s85 0
-31
-R7
-R8
-R9
-!i113 0
-R10
-R1
+Z8 o-pedanticerrors -lint -hazards -source -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z9 tCvgOpt 0
 vtop
+R1
 R2
-R3
 !i10b 1
-!s100 og`__UKTQWPGA^YW3Y>cg2
+!s100 =>I0fNnPZzG[<Mze7=PU43
+R3
+I2X<HPQfdBFca14V;DNSch1
 R4
-IfJjFAnI`NS:6eJlcAPV>50
-R5
 S1
 R0
-w1664397197
+w1664399349
 8top.sv
 Ftop.sv
 !i122 5
-L0 6 102
-R6
+L0 6 101
+R5
 r1
 !s85 0
 31
+R6
+Z10 !s107 top.sv|simtop.sv|hexdriver.sv|
 R7
+!i113 0
 R8
 R9
-!i113 0
-R10
-R1

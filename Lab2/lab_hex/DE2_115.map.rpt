@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_115
-Wed Sep 28 16:52:54 2022
+Wed Sep 28 17:15:54 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -48,7 +48,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Sep 28 16:52:54 2022           ;
+; Analysis & Synthesis Status        ; Successful - Wed Sep 28 17:15:54 2022           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; DE2_115                                         ;
 ; Top-level Entity Name              ; top                                             ;
@@ -169,14 +169,14 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                 ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                             ; Library ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------+---------+
-; top.sv                           ; yes             ; User SystemVerilog HDL File  ; /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv       ;         ;
-; hexdriver.sv                     ; yes             ; User SystemVerilog HDL File  ; /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/hexdriver.sv ;         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                            ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                        ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------+---------+
+; top.sv                           ; yes             ; User SystemVerilog HDL File  ; /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv       ;         ;
+; hexdriver.sv                     ; yes             ; User SystemVerilog HDL File  ; /acct/mmazeem/611/CSCE611/Lab2/lab_hex/hexdriver.sv ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------+---------+
 
 
 +----------------------------------------------------------+
@@ -326,68 +326,68 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Wed Sep 28 16:52:41 2022
+    Info: Processing started: Wed Sep 28 17:15:41 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file top.sv
-    Info (12023): Found entity 1: top File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 6
+    Info (12023): Found entity 1: top File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 6
 Info (12021): Found 1 design units, including 1 entities, in source file hexdriver.sv
-    Info (12023): Found entity 1: hexdriver File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/hexdriver.sv Line: 1
+    Info (12023): Found entity 1: hexdriver File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/hexdriver.sv Line: 1
 Info (12127): Elaborating entity "top" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at top.sv(60): truncated value with size 26 to match size of target (24) File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 60
-Warning (10230): Verilog HDL assignment warning at top.sv(71): truncated value with size 32 to match size of target (24) File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 71
-Info (12128): Elaborating entity "hexdriver" for hierarchy "hexdriver:hex0" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 98
+Warning (10230): Verilog HDL assignment warning at top.sv(60): truncated value with size 26 to match size of target (24) File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 60
+Warning (10230): Verilog HDL assignment warning at top.sv(71): truncated value with size 32 to match size of target (24) File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 71
+Info (12128): Elaborating entity "hexdriver" for hierarchy "hexdriver:hex0" File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 97
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDG[8]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 14
-    Warning (13410): Pin "HEX4[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 28
-    Warning (13410): Pin "HEX5[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX6[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[6]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX7[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[6]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "LEDG[8]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 14
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 28
+    Warning (13410): Pin "HEX5[0]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[1]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[2]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[3]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[4]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[5]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX6[0]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[1]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[2]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[3]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[4]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[5]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[6]" is stuck at VCC File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX7[0]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[1]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[2]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[3]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[4]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[5]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[6]" is stuck at VCC File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 32
 Info (286030): Timing-Driven Synthesis is running
-Info (144001): Generated suppressed messages file /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/DE2_115.map.smsg
+Info (144001): Generated suppressed messages file /acct/mmazeem/611/CSCE611/Lab2/lab_hex/DE2_115.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 6 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "CLOCK2_50" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 10
-    Warning (15610): No output dependent on input pin "CLOCK3_50" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 11
-    Warning (15610): No output dependent on input pin "KEY[0]" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 18
-    Warning (15610): No output dependent on input pin "KEY[1]" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 18
-    Warning (15610): No output dependent on input pin "KEY[2]" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 18
-    Warning (15610): No output dependent on input pin "KEY[3]" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 18
+    Warning (15610): No output dependent on input pin "CLOCK2_50" File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 10
+    Warning (15610): No output dependent on input pin "CLOCK3_50" File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "KEY[0]" File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 18
+    Warning (15610): No output dependent on input pin "KEY[1]" File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 18
+    Warning (15610): No output dependent on input pin "KEY[2]" File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 18
+    Warning (15610): No output dependent on input pin "KEY[3]" File: /acct/mmazeem/611/CSCE611/Lab2/lab_hex/top.sv Line: 18
 Info (21057): Implemented 199 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 25 input pins
     Info (21059): Implemented 83 output pins
     Info (21061): Implemented 91 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 35 warnings
-    Info: Peak virtual memory: 1017 megabytes
-    Info: Processing ended: Wed Sep 28 16:52:54 2022
+    Info: Peak virtual memory: 1013 megabytes
+    Info: Processing ended: Wed Sep 28 17:15:54 2022
     Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:27
+    Info: Total CPU time (on all processors): 00:00:28
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/DE2_115.map.smsg.
+The suppressed messages can be found in /acct/mmazeem/611/CSCE611/Lab2/lab_hex/DE2_115.map.smsg.
 
 

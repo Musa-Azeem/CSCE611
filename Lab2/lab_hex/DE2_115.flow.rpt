@@ -1,5 +1,5 @@
 Flow report for DE2_115
-Wed Sep 28 16:53:12 2022
+Wed Sep 28 17:16:12 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Wed Sep 28 16:53:08 2022           ;
+; Flow Status                        ; Successful - Wed Sep 28 17:16:08 2022           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; DE2_115                                         ;
 ; Top-level Entity Name              ; top                                             ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/28/2022 16:52:42 ;
+; Start date & time ; 09/28/2022 17:15:42 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE2_115             ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-----------------------+---------------------------------+---------------+-------------+------------+
 ; Assignment Name       ; Value                           ; Default Value ; Entity Name ; Section Id ;
 +-----------------------+---------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID ; 128122668291421.166439836239172 ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID ; 128122668291421.166439974241931 ; --            ; --          ; --         ;
 ; TOP_LEVEL_ENTITY      ; top                             ; DE2_115       ; --          ; --         ;
 +-----------------------+---------------------------------+---------------+-------------+------------+
 
@@ -86,9 +86,9 @@ refer to the applicable agreement for further details.
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 1004 MB             ; 00:00:27                           ;
-; Fitter               ; 00:00:09     ; 1.0                     ; 2028 MB             ; 00:00:14                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 803 MB              ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.0                     ; 945 MB              ; 00:00:02                           ;
+; Fitter               ; 00:00:09     ; 1.0                     ; 2032 MB             ; 00:00:14                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 806 MB              ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.0                     ; 946 MB              ; 00:00:02                           ;
 ; Total                ; 00:00:27     ; --                      ; --                  ; 00:00:46                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 

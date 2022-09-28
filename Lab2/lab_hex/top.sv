@@ -93,7 +93,6 @@ module top (
 		end
 	end
 	
-	//TODO change .value to switch input
 	//the counter is connected to the HEX displays
 	hexdriver hex0(.val(SW[3:0]), .HEX(HEX0));
 	hexdriver hex1(.val(SW[7:4]), .HEX(HEX1));
