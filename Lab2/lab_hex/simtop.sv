@@ -37,20 +37,6 @@ module simtop;
 	);
 
 // your code here
-logic [31:0] c;  //initialize counter 
-initial begin
-	c = 0;
-end
-
-//the counter is connected to the HEX displays
-// hexdriver hex0(.val(c[3:0]), .HEX(HEX0));
-// hexdriver hex1(.val(c[7:4]), .HEX(HEX1));
-// hexdriver hex2(.val(c[11:8]), .HEX(HEX2));
-// hexdriver hex3(.val(c[15:12]), .HEX(HEX3));
-// hexdriver hex4(.val(c[19:16]), .HEX(HEX4));
-// hexdriver hex5(.val(c[23:20]), .HEX(HEX5));
-// hexdriver hex6(.val(c[27:24]), .HEX(HEX6));
-// hexdriver hex7(.val(c[31:28]), .HEX(HEX7));
 
 endmodule
 

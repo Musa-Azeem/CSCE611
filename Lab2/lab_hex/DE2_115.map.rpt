@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_115
-Wed Sep 14 16:27:51 2022
+Wed Sep 28 16:45:00 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -15,9 +15,18 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
   9. Inverted Register Statistics
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+ 10. Port Connectivity Checks: "hexdriver:hex7"
+ 11. Port Connectivity Checks: "hexdriver:hex6"
+ 12. Port Connectivity Checks: "hexdriver:hex5"
+ 13. Port Connectivity Checks: "hexdriver:hex4"
+ 14. Port Connectivity Checks: "hexdriver:hex3"
+ 15. Port Connectivity Checks: "hexdriver:hex2"
+ 16. Port Connectivity Checks: "hexdriver:hex1"
+ 17. Port Connectivity Checks: "hexdriver:hex0"
+ 18. Post-Synthesis Netlist Statistics for Top Partition
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
+ 21. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -43,7 +52,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Sep 14 16:27:51 2022           ;
+; Analysis & Synthesis Status        ; Successful - Wed Sep 28 16:45:00 2022           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; DE2_115                                         ;
 ; Top-level Entity Name              ; top                                             ;
@@ -52,7 +61,7 @@ refer to the applicable agreement for further details.
 ;     Total combinational functions  ; 59                                              ;
 ;     Dedicated logic registers      ; 51                                              ;
 ; Total registers                    ; 51                                              ;
-; Total pins                         ; 108                                             ;
+; Total pins                         ; 90                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -163,13 +172,14 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                              ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path          ; Library ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------+---------+
-; top.sv                           ; yes             ; User SystemVerilog HDL File  ; /acct/mmazeem/611/Lab2/lab_hex/top.sv ;         ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                 ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                             ; Library ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------+---------+
+; top.sv                           ; yes             ; User SystemVerilog HDL File  ; /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv       ;         ;
+; hexdriver.sv                     ; yes             ; User SystemVerilog HDL File  ; /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/hexdriver.sv ;         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------+---------+
 
 
 +----------------------------------------------------------+
@@ -193,14 +203,14 @@ refer to the applicable agreement for further details.
 ;     -- Dedicated logic registers            ; 51         ;
 ;     -- I/O registers                        ; 0          ;
 ;                                             ;            ;
-; I/O pins                                    ; 108        ;
+; I/O pins                                    ; 90         ;
 ;                                             ;            ;
 ; Embedded Multiplier 9-bit elements          ; 0          ;
 ;                                             ;            ;
 ; Maximum fan-out node                        ; clkdiv[23] ;
 ; Maximum fan-out                             ; 28         ;
-; Total fan-out                               ; 394        ;
-; Average fan-out                             ; 1.21       ;
+; Total fan-out                               ; 376        ;
+; Average fan-out                             ; 1.30       ;
 +---------------------------------------------+------------+
 
 
@@ -209,7 +219,7 @@ refer to the applicable agreement for further details.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
-; |top                       ; 59 (59)             ; 51 (51)                   ; 0           ; 0            ; 0       ; 0         ; 108  ; 0            ; |top                ; top         ; work         ;
+; |top                       ; 59 (59)             ; 51 (51)                   ; 0           ; 0            ; 0       ; 0         ; 90   ; 0            ; |top                ; top         ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -239,27 +249,111 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------+---------+
 
 
++---------------------------------------------+
+; Port Connectivity Checks: "hexdriver:hex7"  ;
++-----------+-------+----------+--------------+
+; Port      ; Type  ; Severity ; Details      ;
++-----------+-------+----------+--------------+
+; val[2..0] ; Input ; Info     ; Stuck at VCC ;
+; val[3]    ; Input ; Info     ; Stuck at GND ;
++-----------+-------+----------+--------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "hexdriver:hex6"  ;
++-----------+-------+----------+--------------+
+; Port      ; Type  ; Severity ; Details      ;
++-----------+-------+----------+--------------+
+; val[2..1] ; Input ; Info     ; Stuck at VCC ;
+; val[3]    ; Input ; Info     ; Stuck at GND ;
+; val[0]    ; Input ; Info     ; Stuck at GND ;
++-----------+-------+----------+--------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "hexdriver:hex5" ;
++--------+-------+----------+----------------+
+; Port   ; Type  ; Severity ; Details        ;
++--------+-------+----------+----------------+
+; val[3] ; Input ; Info     ; Stuck at GND   ;
+; val[2] ; Input ; Info     ; Stuck at VCC   ;
+; val[1] ; Input ; Info     ; Stuck at GND   ;
+; val[0] ; Input ; Info     ; Stuck at VCC   ;
++--------+-------+----------+----------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "hexdriver:hex4"  ;
++-----------+-------+----------+--------------+
+; Port      ; Type  ; Severity ; Details      ;
++-----------+-------+----------+--------------+
+; val[1..0] ; Input ; Info     ; Stuck at GND ;
+; val[3]    ; Input ; Info     ; Stuck at GND ;
+; val[2]    ; Input ; Info     ; Stuck at VCC ;
++-----------+-------+----------+--------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "hexdriver:hex3"  ;
++-----------+-------+----------+--------------+
+; Port      ; Type  ; Severity ; Details      ;
++-----------+-------+----------+--------------+
+; val[1..0] ; Input ; Info     ; Stuck at VCC ;
+; val[3..2] ; Input ; Info     ; Stuck at GND ;
++-----------+-------+----------+--------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "hexdriver:hex2"  ;
++-----------+-------+----------+--------------+
+; Port      ; Type  ; Severity ; Details      ;
++-----------+-------+----------+--------------+
+; val[3..2] ; Input ; Info     ; Stuck at GND ;
+; val[1]    ; Input ; Info     ; Stuck at VCC ;
+; val[0]    ; Input ; Info     ; Stuck at GND ;
++-----------+-------+----------+--------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "hexdriver:hex1"  ;
++-----------+-------+----------+--------------+
+; Port      ; Type  ; Severity ; Details      ;
++-----------+-------+----------+--------------+
+; val[3..1] ; Input ; Info     ; Stuck at GND ;
+; val[0]    ; Input ; Info     ; Stuck at VCC ;
++-----------+-------+----------+--------------+
+
+
++--------------------------------------------+
+; Port Connectivity Checks: "hexdriver:hex0" ;
++------+-------+----------+------------------+
+; Port ; Type  ; Severity ; Details          ;
++------+-------+----------+------------------+
+; val  ; Input ; Info     ; Stuck at GND     ;
++------+-------+----------+------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 108                         ;
+; boundary_port         ; 90                          ;
 ; cycloneiii_ff         ; 51                          ;
 ;     plain             ; 51                          ;
-; cycloneiii_lcell_comb ; 61                          ;
+; cycloneiii_lcell_comb ; 62                          ;
 ;     arith             ; 22                          ;
 ;         2 data inputs ; 21                          ;
 ;         3 data inputs ; 1                           ;
-;     normal            ; 39                          ;
-;         0 data inputs ; 1                           ;
+;     normal            ; 40                          ;
+;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 3                           ;
 ;         2 data inputs ; 2                           ;
 ;         3 data inputs ; 25                          ;
 ;         4 data inputs ; 8                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 3.37                        ;
+; Average LUT depth     ; 3.35                        ;
 +-----------------------+-----------------------------+
 
 
@@ -278,119 +372,101 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Wed Sep 14 16:27:39 2022
+    Info: Processing started: Wed Sep 28 16:44:49 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file top.sv
-    Info (12023): Found entity 1: top File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 6
+    Info (12023): Found entity 1: top File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 6
 Info (12021): Found 1 design units, including 1 entities, in source file hexdriver.sv
-    Info (12023): Found entity 1: hexdriver File: /acct/mmazeem/611/Lab2/lab_hex/hexdriver.sv Line: 1
+    Info (12023): Found entity 1: hexdriver File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/hexdriver.sv Line: 1
 Info (12127): Elaborating entity "top" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at top.sv(60): truncated value with size 26 to match size of target (24) File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 60
-Warning (10230): Verilog HDL assignment warning at top.sv(71): truncated value with size 32 to match size of target (24) File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 71
-Warning (10034): Output port "HEX0" at top.sv(24) has no driver File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 24
-Warning (10034): Output port "HEX1" at top.sv(25) has no driver File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 25
-Warning (10034): Output port "HEX2" at top.sv(26) has no driver File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 26
-Warning (10034): Output port "HEX3" at top.sv(27) has no driver File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 27
-Warning (10034): Output port "HEX4" at top.sv(28) has no driver File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 28
-Warning (10034): Output port "HEX5" at top.sv(29) has no driver File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 29
-Warning (10034): Output port "HEX6" at top.sv(30) has no driver File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 30
-Warning (10034): Output port "HEX7" at top.sv(32) has no driver File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 32
+Warning (10230): Verilog HDL assignment warning at top.sv(60): truncated value with size 26 to match size of target (24) File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 60
+Warning (10230): Verilog HDL assignment warning at top.sv(71): truncated value with size 32 to match size of target (24) File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 71
+Info (12128): Elaborating entity "hexdriver" for hierarchy "hexdriver:hex0" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 98
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDG[8]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 14
-    Warning (13410): Pin "HEX0[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 24
-    Warning (13410): Pin "HEX0[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 24
-    Warning (13410): Pin "HEX0[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 24
-    Warning (13410): Pin "HEX0[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 24
-    Warning (13410): Pin "HEX0[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 24
-    Warning (13410): Pin "HEX0[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 24
-    Warning (13410): Pin "HEX0[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 24
-    Warning (13410): Pin "HEX1[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 25
-    Warning (13410): Pin "HEX1[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 25
-    Warning (13410): Pin "HEX1[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 25
-    Warning (13410): Pin "HEX1[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 25
-    Warning (13410): Pin "HEX1[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 25
-    Warning (13410): Pin "HEX1[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 25
-    Warning (13410): Pin "HEX1[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 25
-    Warning (13410): Pin "HEX2[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 26
-    Warning (13410): Pin "HEX2[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 26
-    Warning (13410): Pin "HEX2[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 26
-    Warning (13410): Pin "HEX2[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 26
-    Warning (13410): Pin "HEX2[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 26
-    Warning (13410): Pin "HEX2[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 26
-    Warning (13410): Pin "HEX2[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 26
-    Warning (13410): Pin "HEX3[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 27
-    Warning (13410): Pin "HEX3[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 27
-    Warning (13410): Pin "HEX3[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 27
-    Warning (13410): Pin "HEX3[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 27
-    Warning (13410): Pin "HEX3[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 27
-    Warning (13410): Pin "HEX3[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 27
-    Warning (13410): Pin "HEX3[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 27
-    Warning (13410): Pin "HEX4[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 28
-    Warning (13410): Pin "HEX4[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 28
-    Warning (13410): Pin "HEX4[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 28
-    Warning (13410): Pin "HEX4[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 28
-    Warning (13410): Pin "HEX4[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 28
-    Warning (13410): Pin "HEX4[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 28
-    Warning (13410): Pin "HEX4[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 28
-    Warning (13410): Pin "HEX5[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX5[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 29
-    Warning (13410): Pin "HEX6[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX6[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 30
-    Warning (13410): Pin "HEX7[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 32
-    Warning (13410): Pin "HEX7[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "LEDG[8]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 14
+    Warning (13410): Pin "HEX0[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 24
+    Warning (13410): Pin "HEX0[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 24
+    Warning (13410): Pin "HEX0[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 24
+    Warning (13410): Pin "HEX0[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 24
+    Warning (13410): Pin "HEX0[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 24
+    Warning (13410): Pin "HEX0[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 24
+    Warning (13410): Pin "HEX0[6]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 24
+    Warning (13410): Pin "HEX1[0]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 25
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 25
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 25
+    Warning (13410): Pin "HEX1[3]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 25
+    Warning (13410): Pin "HEX1[4]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 25
+    Warning (13410): Pin "HEX1[5]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 25
+    Warning (13410): Pin "HEX1[6]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 25
+    Warning (13410): Pin "HEX2[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 26
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 26
+    Warning (13410): Pin "HEX2[2]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 26
+    Warning (13410): Pin "HEX2[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 26
+    Warning (13410): Pin "HEX2[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 26
+    Warning (13410): Pin "HEX2[5]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 26
+    Warning (13410): Pin "HEX2[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 26
+    Warning (13410): Pin "HEX3[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 27
+    Warning (13410): Pin "HEX3[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 27
+    Warning (13410): Pin "HEX3[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 27
+    Warning (13410): Pin "HEX3[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 27
+    Warning (13410): Pin "HEX3[4]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 27
+    Warning (13410): Pin "HEX3[5]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 27
+    Warning (13410): Pin "HEX3[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 27
+    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 28
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 28
+    Warning (13410): Pin "HEX4[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 28
+    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 28
+    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 28
+    Warning (13410): Pin "HEX4[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 28
+    Warning (13410): Pin "HEX4[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 28
+    Warning (13410): Pin "HEX5[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX5[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 29
+    Warning (13410): Pin "HEX6[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[1]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[3]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[4]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[5]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX6[6]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 30
+    Warning (13410): Pin "HEX7[0]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[1]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[2]" is stuck at GND File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[3]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[4]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[5]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
+    Warning (13410): Pin "HEX7[6]" is stuck at VCC File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 32
 Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/DE2_115.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 24 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "CLOCK2_50" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 10
-    Warning (15610): No output dependent on input pin "CLOCK3_50" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 11
-    Warning (15610): No output dependent on input pin "KEY[0]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 18
-    Warning (15610): No output dependent on input pin "KEY[1]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 18
-    Warning (15610): No output dependent on input pin "KEY[2]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 18
-    Warning (15610): No output dependent on input pin "KEY[3]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 18
-    Warning (15610): No output dependent on input pin "SW[0]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[1]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[2]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[3]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[4]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[5]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[6]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[7]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[8]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[9]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[10]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[11]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[12]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[13]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[14]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[15]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[16]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-    Warning (15610): No output dependent on input pin "SW[17]" File: /acct/mmazeem/611/Lab2/lab_hex/top.sv Line: 21
-Info (21057): Implemented 168 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 25 input pins
+Warning (21074): Design contains 6 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK2_50" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 10
+    Warning (15610): No output dependent on input pin "CLOCK3_50" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "KEY[0]" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 18
+    Warning (15610): No output dependent on input pin "KEY[1]" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 18
+    Warning (15610): No output dependent on input pin "KEY[2]" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 18
+    Warning (15610): No output dependent on input pin "KEY[3]" File: /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/top.sv Line: 18
+Info (21057): Implemented 150 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 7 input pins
     Info (21059): Implemented 83 output pins
     Info (21061): Implemented 60 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 94 warnings
-    Info: Peak virtual memory: 987 megabytes
-    Info: Processing ended: Wed Sep 14 16:27:51 2022
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 68 warnings
+    Info: Peak virtual memory: 983 megabytes
+    Info: Processing ended: Wed Sep 28 16:45:01 2022
     Info: Elapsed time: 00:00:12
     Info: Total CPU time (on all processors): 00:00:27
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /acct/mmazeem/611/Lab2/CSCE611/Lab2/lab_hex/DE2_115.map.smsg.
 
 

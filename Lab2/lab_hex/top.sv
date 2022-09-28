@@ -96,12 +96,12 @@ module top (
 	//TODO change .value to switch input
 	//the counter is connected to the HEX displays
 	hexdriver hex0(.val(4'h0), .HEX(HEX0));
-	hexdriver hex1(.val(4'h0), .HEX(HEX1));
-	hexdriver hex2(.val(4'h0), .HEX(HEX2));
-	hexdriver hex3(.val(4'h0), .HEX(HEX3));
-	hexdriver hex4(.val(4'h0), .HEX(HEX4));
-	hexdriver hex5(.val(4'h0), .HEX(HEX5));
-	hexdriver hex6(.val(4'h0), .HEX(HEX6));
-	hexdriver hex7(.val(4'h0), .HEX(HEX7));
+	hexdriver hex1(.val(4'h1), .HEX(HEX1));
+	hexdriver hex2(.val(4'h2), .HEX(HEX2));
+	hexdriver hex3(.val(4'h3), .HEX(HEX3));
+	hexdriver hex4(.val(4'h4), .HEX(HEX4));
+	hexdriver hex5(.val(4'h5), .HEX(HEX5));
+	hexdriver hex6(.val(4'h6), .HEX(HEX6));
+	hexdriver hex7(.val(4'h7), .HEX(HEX7));
 	
 endmodule
