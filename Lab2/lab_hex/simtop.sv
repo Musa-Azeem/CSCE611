@@ -6,17 +6,11 @@
 module simtop;
 
 	logic clk;
-	logic [6:0] HEX0,HEX1,HEX2,HEX3,HEX4,HEX5,HEX6,HEX7;
 
 	// test Switch values
-	logic SW1[17:0];
-	assign SW1[17:16] = 2'h3;
-	assign SW1[15:12] = 4'hF;
-	assign SW1[11:8] = 4'hE;
-	assign SW1[7:4] = 4'hD;
-	assign SW1[3:0] = 4'hC;
-
-	top dut
+	logic [6:0] HEX1_0,HEX1_1,HEX1_2,HEX1_3,HEX1_4,HEX1_5,HEX1_6,HEX1_7;
+	logic[17:0] SW1;
+	top dut1
 	(
 		//////////// CLOCK //////////
 		.CLOCK_50(clk),
@@ -34,37 +28,82 @@ module simtop;
 		.SW(SW1),
 
 		//////////// SEG7 //////////
-		.HEX0(HEX0),
-		.HEX1(HEX1),
-		.HEX2(HEX2),
-		.HEX3(HEX3),
-		.HEX4(HEX4),
-		.HEX5(HEX5),
-		.HEX6(HEX6),
-		.HEX7(HEX7)
+		.HEX0(HEX1_0),
+		.HEX1(HEX1_1),
+		.HEX2(HEX1_2),
+		.HEX3(HEX1_3),
+		.HEX4(HEX1_4),
+		.HEX5(HEX1_5),
+		.HEX6(HEX1_6),
+		.HEX7(HEX1_7)
+	);
+
+	logic [6:0] HEX2_0,HEX2_1,HEX2_2,HEX2_3,HEX2_4,HEX2_5,HEX2_6,HEX2_7;
+	logic[17:0] SW2;
+	top dut2
+	(
+		//////////// CLOCK //////////
+		.CLOCK_50(clk),
+		.CLOCK2_50(),
+	        .CLOCK3_50(),
+
+		//////////// LED //////////
+		.LEDG(),
+		.LEDR(),
+
+		//////////// KEY //////////
+		.KEY(),
+
+		//////////// SW //////////
+		.SW(SW2),
+
+		//////////// SEG7 //////////
+		.HEX0(HEX2_0),
+		.HEX1(HEX2_1),
+		.HEX2(HEX2_2),
+		.HEX3(HEX2_3),
+		.HEX4(HEX2_4),
+		.HEX5(HEX2_5),
+		.HEX6(HEX2_6),
+		.HEX7(HEX2_7)
 	);
 
 
 
-	// initial begin
+	initial begin
+		SW1 = {4'h0, 4'h1, 4'h2, 4'h3, 4'h4}; #10
+		$display(HEX1_4);
+		if (HEX1_4 !== 7'b1000000) $display("Hex Value 1-4 incorrect");
+		if (HEX1_3 !== 7'b1111001) $display("Hex Value 1-3 incorrect");
+		if (HEX1_2 !== 7'b0100100) $display("Hex Value 1-2 incorrect");
+		if (HEX1_1 !== 7'b0110000) $display("Hex Value 1-1 incorrect");
+		if (HEX1_0 !== 7'b0011001) $display("Hex Value 1-0 incorrect");
 
-	// 	a = 1'b0; b = 1'b0; c = 1'b0; #10;
-	// 	if (y !== 1'b1) $display("000 failed.");
-	// 	c = 1’b1; #10;
-	// 	if (y !== 1’b0) $display("001 failed.");
-	// 	b = 1’b1; c = 1’b0; #10;
-	// 	if (y !== 1’b0) $display("010 failed.");
-	// 	c = 1’b1; #10;
-	// 	if (y !== 0) $display("011 failed.");
-	// 	a = 1’b1; b = 1’b0; c = 1’b0; #10;
-	// 	if (y !== 1’b1) $display("100 failed.");
-	// 	c = 1’b1; #10;
-	// 	if (y !== 1) $display("101 failed.");
-	// 	b = 1’b1; c = 1’b0; #10;
-	// 	if (y !== 1’b0) $display("110 failed.");
-	// 	c = 1’b1; #10;
-	// 	if (y !== 1’b0) $display("111 failed.");
-	// 	end
+		SW2 = {4'h3, 4'h6, 4'h7, 4'h8, 4'h9}; #10
+		$display(HEX2_4);
+		if (HEX2_4 !== 7'b0110000) $display("Hex Value 2-4 incorrect");
+		if (HEX2_3 !== 7'b0000010) $display("Hex Value 2-3 incorrect");
+		if (HEX2_2 !== 7'b1111000) $display("Hex Value 2-2 incorrect");
+		if (HEX2_1 !== 7'b0000000) $display("Hex Value 2-1 incorrect");
+		if (HEX2_0 !== 7'b0010000) $display("Hex Value 2-0 incorrect");
+
+                        // 4'h0: HEX = 7'b1000000;
+                        // 4'h1: HEX = 7'b1111001;
+                        // 4'h2: HEX = 7'b0100100;
+                        // 4'h3: HEX = 7'b0110000;
+                        // 4'h4: HEX = 7'b0011001;
+                        // 4'h5: HEX = 7'b0010010;
+                        // 4'h6: HEX = 7'b0000010;
+                        // 4'h7: HEX = 7'b1111000;
+                        // 4'h8: HEX = 7'b0000000;
+                        // 4'h9: HEX = 7'b0010000;
+                        // 4'hA: HEX = 7'b0001000;
+                        // 4'hB: HEX = 7'b0000011;
+                        // 4'hC: HEX = 7'b1000110;
+                        // 4'hD: HEX = 7'b0100001;
+                        // 4'hE: HEX = 7'b0000110;
+                        // 4'hF: HEX = 7'b0001110;
+		end
 
 endmodule
 
