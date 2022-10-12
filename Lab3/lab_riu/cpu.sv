@@ -20,5 +20,12 @@ module cpu (
         end
     end
 
-    
+    // check opcode to get instruction decoding type
+    always_comb begin
+        case(instruction_EX[6:0])
+            7'b0110011: // TODO R-type
+            7'b0010011: // TODO I-type
+            7'b0110111: // TODO U-type (lui)
+        endcase
+    end
 endmodule
