@@ -4,7 +4,7 @@ module cpu (
     )
 
     logic [31:0] inst_ram [4191:0];
-    inistial $readmemh("program.rom", inst_ram);
+    initial $readmemh("program.rom", inst_ram);
 
     logic [11:0] PC_FETH = 12'd0;
     logic [31:0] instruction_EX;
@@ -19,4 +19,6 @@ module cpu (
             instruction_EX <= inst_ram[PC_FETCH];
         end
     end
+
+    
 endmodule
