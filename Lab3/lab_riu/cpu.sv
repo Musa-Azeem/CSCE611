@@ -117,8 +117,12 @@ module cpu (
                                     WRITEBACK
     */
 
-
-
+    // if csrrw instruction, read from SW or write to HEX
+    assign hex0 = 0;
+    assign hex1 = 1;
+    assign hex2 = 2;
+    assign hex3 = 3;
+    assign hex4 = 4;
 endmodule
 
 module inst_decoder(
