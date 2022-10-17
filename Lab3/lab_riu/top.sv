@@ -99,19 +99,24 @@ module top (
     initial $readmemh("program.rom", inst_ram);
 
 	// logic to get hex values (in binary) from cpu
-	logic [3:0] hex0, hex1, hex2, hex3, hex4;
+	logic [3:0] mhex0, mhex1, mhex2, mhex3, mhex4;
 	cpu mcpu(
-		.clk(CLOCK_50), .rst_n(KEY[0]), 
+		.clk(CLOCK_50),
+		.rst_n(KEY[0]), 
 		.inst_ram(inst_ram),
 		.SW(SW),
-		.hex0(hex0)
+		.hex0(mhex0),
+		.hex1(mhex1),
+		.hex2(mhex2),
+		.hex3(mhex3),
+		.hex4(mhex4)
 		);
 
-	hexdriver hex0(.val(hex0), .HEX(HEX0));
-	hexdriver hex1(.val(hex1), .HEX(HEX1));
-	hexdriver hex2(.val(hex2), .HEX(HEX2));
-	hexdriver hex3(.val(hex3), .HEX(HEX3));
-	hexdriver hex4(.val(hex4), .HEX(HEX4));
+	hexdriver hex0(.val(mhex0), .HEX(HEX0));
+	hexdriver hex1(.val(mhex1), .HEX(HEX1));
+	hexdriver hex2(.val(mhex2), .HEX(HEX2));
+	hexdriver hex3(.val(mhex3), .HEX(HEX3));
+	hexdriver hex4(.val(mhex4), .HEX(HEX4));
 	hexdriver hex5(.val(4'h0), .HEX(HEX5));
 	hexdriver hex6(.val(4'h0), .HEX(HEX6));
 	hexdriver hex7(.val(4'h0), .HEX(HEX7));
