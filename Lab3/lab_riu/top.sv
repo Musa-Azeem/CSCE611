@@ -93,4 +93,29 @@ module top (
 		end
 	end
 
+	// Lab 3
+	// Read instructions into RAM
+	logic [31:0] inst_ram [4191:0];
+    initial $readmemh("program.rom", inst_ram);
+
+	// logic to get hex values (in binary) from cpu
+	logic [3:0] hex0, hex1, hex2, hex3, hex4;
+	cpu mcpu(
+		.clk(CLOCK_50), .rst_n(KEY[0]), 
+		.inst_ram(inst_ram),
+		.SW(SW),
+		.hex0(hex0)
+		);
+
+	hexdriver hex0(.val(hex0), .HEX(HEX0));
+	hexdriver hex1(.val(hex1), .HEX(HEX1));
+	hexdriver hex2(.val(hex2), .HEX(HEX2));
+	hexdriver hex3(.val(hex3), .HEX(HEX3));
+	hexdriver hex4(.val(hex4), .HEX(HEX4));
+	hexdriver hex5(.val(4'h0), .HEX(HEX5));
+	hexdriver hex6(.val(4'h0), .HEX(HEX6));
+	hexdriver hex7(.val(4'h0), .HEX(HEX7));
+
+
+
 endmodule
