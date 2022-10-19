@@ -10,7 +10,7 @@ module cpu (
     input       [31:0]      inst_ram [4191:0],
 
     // Switches
-    input       [17:0]      SW
+    input       [17:0]      SW,
 
     // Output values to display
     output      [3:0]       hex0, hex1, hex2, hex3, hex4
@@ -27,7 +27,7 @@ module cpu (
                                      FETCH
     */
     // FETCH INSTRUCTION
-    logic [11:0] PC_FETH = 12'd0;
+    logic [11:0] PC_FETCH;
     logic [31:0] instruction_EX;
     logic [31:0] instruction_WB;
 
@@ -54,7 +54,7 @@ module cpu (
     // DECODE INSTRUCTION
 
     // Fields
-    logic [6:0] funct7_EX;
+    logic [6:0]  funct7_EX;
     logic [4:0]  rs1_EX, rs2_EX, rd_EX;
     logic [2:0]  funct3_EX;
     logic [6:0]  opcode_EX;
@@ -64,7 +64,7 @@ module cpu (
 
     // Decode instruction into fields
     inst_decoder ex_decoder(
-        .inst(instruction_EX), 
+        .instr(instruction_EX), 
         .funct7(funct7_EX),
         .funct3(funct3_EX),
         .rs1(rs1_EX),
@@ -126,7 +126,7 @@ module cpu (
 endmodule
 
 module inst_decoder(
-    input       [31:0]      inst,
+    input       [31:0]      instr,
     output      [6:0]       funct7,
     output      [2:0]       funct3,
     output      [4:0]       rs1, rs2, rd,
