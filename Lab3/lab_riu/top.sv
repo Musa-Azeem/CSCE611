@@ -96,7 +96,8 @@ module top (
 	// Lab 3
 	// Read instructions into RAM
 	logic [31:0] inst_ram [4191:0];
-    initial $readmemh("program.rom", inst_ram);
+    // initial $readmemh("program.rom", inst_ram);
+	assign inst_ram[0] = 32'd0;
 
 	// logic to get hex values (in binary) from cpu
 	logic [3:0] mhex0, mhex1, mhex2, mhex3, mhex4;

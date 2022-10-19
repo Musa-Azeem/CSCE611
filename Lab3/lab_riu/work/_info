@@ -18,9 +18,10 @@ o-quiet -auto_acc_if_foreign -work work
 Z1 tCvgOpt 0
 n@_opt
 OL;O;2020.1;71
+R0
 valu
 Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z3 !s110 1666210752
+Z3 !s110 1666211086
 !i10b 1
 !s100 Fz;21dl2PMZ6MFeGeLCUd1
 Z4 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -31,17 +32,17 @@ R0
 Z6 w1646062652
 8alu.sv
 Falu.sv
-!i122 8
+!i122 9
 L0 7 48
 Z7 OL;L;2020.1;71
 r1
 !s85 0
 31
-Z8 !s108 1666210752.000000
-Z9 !s107 top.sv|simtop.sv|regfile.sv|hexdriver.sv|cpu.sv|alu.sv|
-Z10 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|alu.sv|cpu.sv|hexdriver.sv|regfile.sv|simtop.sv|top.sv|
+Z8 !s108 1666211086.000000
+!s107 top.sv|simtop.sv|regfile.sv|hexdriver.sv|cpu.sv|alu.sv|
+Z9 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|alu.sv|cpu.sv|hexdriver.sv|regfile.sv|simtop.sv|top.sv|
 !i113 0
-Z11 o-pedanticerrors -lint -hazards -source -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z10 o-pedanticerrors -lint -hazards -source -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R1
 vcpu
 R2
@@ -53,20 +54,20 @@ I0]FX;AgkCV5BTZCmWYR2F2
 R5
 S1
 R0
-Z12 w1666210751
-Z13 8cpu.sv
-Z14 Fcpu.sv
-!i122 8
+Z11 w1666210751
+Z12 8cpu.sv
+Z13 Fcpu.sv
+!i122 9
 L0 5 122
 R7
 r1
 !s85 0
 31
 R8
+Z14 !s107 top.sv|simtop.sv|regfile.sv|hexdriver.sv|cpu.sv|alu.sv|
 R9
-R10
 !i113 0
-R11
+R10
 R1
 vhexdriver
 R2
@@ -81,17 +82,17 @@ R0
 w1665605688
 8hexdriver.sv
 Fhexdriver.sv
-!i122 8
+!i122 9
 L0 1 22
 R7
 r1
 !s85 0
 31
 R8
+R14
 R9
-R10
 !i113 0
-R11
+R10
 R1
 vinst_decoder
 R2
@@ -103,20 +104,20 @@ IImV?@:WSMcPLURhW6A;>Q3
 R5
 S1
 R0
+R11
 R12
 R13
-R14
-!i122 8
+!i122 9
 L0 128 21
 R7
 r1
 !s85 0
 31
 R8
+R14
 R9
-R10
 !i113 0
-R11
+R10
 R1
 vregfile
 R2
@@ -131,17 +132,17 @@ R0
 R6
 8regfile.sv
 Fregfile.sv
-!i122 8
+!i122 9
 L0 3 74
 R7
 r1
 !s85 0
 31
 R8
+R14
 R9
-R10
 !i113 0
-R11
+R10
 R1
 vsimtop
 R2
@@ -156,17 +157,17 @@ R0
 w1666210488
 8simtop.sv
 Fsimtop.sv
-!i122 8
+!i122 9
 L0 6 52
 R7
 r1
 !s85 0
 31
 R8
+R14
 R9
-R10
 !i113 0
-R11
+R10
 R1
 vtop
 R2
@@ -181,15 +182,15 @@ R0
 w1666209829
 8top.sv
 Ftop.sv
-!i122 8
+!i122 9
 L0 6 121
 R7
 r1
 !s85 0
 31
 R8
+R14
 R9
-R10
 !i113 0
-R11
+R10
 R1
