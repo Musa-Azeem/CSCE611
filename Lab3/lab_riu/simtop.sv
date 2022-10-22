@@ -52,7 +52,7 @@ module simtop;
 		if (HEX2 !== 7'b1111000) $display("Hex Value 2-2 incorrect");
 		if (HEX1 !== 7'b0000000) $display("Hex Value 2-1 incorrect");
 		if (HEX0 !== 7'b0010000) $display("Hex Value 2-0 incorrect");
-		end
+	end
 
 endmodule
 

@@ -35,7 +35,7 @@ module cpu (
         if (~rst_n) begin
             PC_FETCH <= 12'd0;
             instruction_EX <= 32'd0;
-            end 
+        end 
         else begin
             // Update PC_FETCH and instruction_EX for execution in next cycle
             PC_FETCH <= PC_FETCH + 1'b1;
@@ -73,6 +73,10 @@ module cpu (
         .opcode(opcode_EX),
         .imm12(imm12_EX),
         .imm20(imm20_EX));
+    
+    initial begin 
+        $display(instruction_EX);
+    end
 
     // Set control signals based on opcode and function values
 
