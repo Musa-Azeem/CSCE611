@@ -20,7 +20,7 @@ module control_fields(
                 regwrite = 0;           // disable write to register
                 gpio_we = 1;            // enable to write to IO port
             end
-            else if (imm12 == 7'hf00) begin
+            else if (imm12 == 12'hf00) begin
                 // If the immediate is the first IO port, we are reading from switches
                 regsel = 2'b00;         // Set to 0 to read IO port to EX/WB pipeline register
                 regwrite = 1;           // Enable write to register
