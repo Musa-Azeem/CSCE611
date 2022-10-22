@@ -95,19 +95,7 @@ module cpu (
     logic [31:0] readdata1_EX;
     logic [31:0] readdata2_EX;
 
-    registers regfile(  .clk(clk),
-                        .rst(rst),
-                        .we(regwrite_WB),           // Pass we control signal for WB stage
-                        // Read data - EX stage
-                        .readaddr1(rs1_EX),         // Connect rs1 field from EX instr
-                        .readaddr2(rs2_EX),         // Connect rs2 field from EX instr
-                        // Write data - WB stage
-                        .writeaddr(rd_WB),          // Connect rd from WB instr
-                        .writedata(data_WB),       // Connect output of regsel mux
-                        // Output from read
-                        .readdata1(readdata1_EX),   // Data from rs1 of EX instr
-                        .readdata2(readdata2_EX)    // Data from rs2 of EX instr
-                        );
+    // Register file instanced at end of module
 
     // EXTEND IMMEDIATES
     // Sign extend imm12
@@ -115,7 +103,7 @@ module cpu (
     logic [31:0] imm20_extended_EX;
 
     // Replicate most significant bit of imm12 for high 20 bits  
-    assign imm12_extented_EX = { {20{imm_EX[11]}}, imm12_EX};
+    assign imm12_extented_EX = { {20{imm12_EX[11]}}, imm12_EX};
     // Set lower 12 bits of imm20 to 0
     assign imm20_extended_EX = { imm20_EX, 12'b0 };
 
@@ -171,6 +159,19 @@ module cpu (
     // if csrrw instruction, read from SW or write to HEX
 
 
+    registers regfile(  .clk(clk),
+                        .rst(rst_n),
+                        .we(regwrite_WB),           // Pass we control signal for WB stage
+                        // Read data - EX stage
+                        .readaddr1(rs1_EX),         // Connect rs1 field from EX instr
+                        .readaddr2(rs2_EX),         // Connect rs2 field from EX instr
+                        // Write data - WB stage
+                        .writeaddr(rd_WB),          // Connect rd from WB instr
+                        .writedata(data_WB),       // Connect output of regsel mux
+                        // Output from read
+                        .readdata1(readdata1_EX),   // Data from rs1 of EX instr
+                        .readdata2(readdata2_EX)    // Data from rs2 of EX instr
+                        );
     
     assign hex_display = 0;
 endmodule
