@@ -1,5 +1,5 @@
 # vsim -pedanticerrors -hazards -c -sva -immedassert work.simtop -do "/dev/stdin" 
-# Start time: 16:24:47 on Oct 19,2022
+# Start time: 23:05:35 on Oct 21,2022
 # ** Note: (vsim-8009) Loading existing optimized design _opt
 # //  Questa Sim-64
 # //  Version 2020.1 linux_x86_64 Jan 28 2020
@@ -18,18 +18,7 @@
 # Loading sv_std.std
 # Loading work.simtop(fast)
 # do /dev/stdin
-# ** Warning: (vsim-PLI-3410) Illegal character '' in data on line 1 of file "program.rom".    : top.sv(99)
-#    Time: 0 ns  Iteration: 0  Instance: /simtop/dut
-# Hex Value 1-4 incorrect
-# Hex Value 1-3 incorrect
-# Hex Value 1-1 incorrect
-# Hex Value 1-0 incorrect
-# Hex Value 2-4 incorrect
-# Hex Value 2-3 incorrect
-# Hex Value 2-2 incorrect
-# Hex Value 2-1 incorrect
-# Hex Value 2-0 incorrect
 # 
 # <EOF>
-# End time: 16:24:47 on Oct 19,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
+# End time: 23:05:35 on Oct 21,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

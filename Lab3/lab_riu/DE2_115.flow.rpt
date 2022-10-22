@@ -1,5 +1,5 @@
 Flow report for DE2_115
-Wed Oct 19 16:03:29 2022
+Fri Oct 21 22:43:01 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Flow Failed - Wed Oct 19 16:03:29 2022          ;
+; Flow Status                        ; Flow Failed - Fri Oct 21 22:43:01 2022          ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; DE2_115                                         ;
 ; Top-level Entity Name              ; top                                             ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/19/2022 16:03:18 ;
+; Start date & time ; 10/21/2022 22:42:53 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE2_115             ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-----------------------+---------------------------------+---------------+-------------+------------+
 ; Assignment Name       ; Value                           ; Default Value ; Entity Name ; Section Id ;
 +-----------------------+---------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID ; 128122668291612.166620979829459 ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID ; 181124907351271.166640657329100 ; --            ; --          ; --         ;
 ; TOP_LEVEL_ENTITY      ; top                             ; DE2_115       ; --          ; --         ;
 +-----------------------+---------------------------------+---------------+-------------+------------+
 
@@ -85,8 +85,8 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 863 MB              ; 00:00:28                           ;
-; Total                ; 00:00:11     ; --                      ; --                  ; 00:00:28                           ;
+; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 861 MB              ; 00:00:15                           ;
+; Total                ; 00:00:08     ; --                      ; --                  ; 00:00:15                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -95,7 +95,7 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+----------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
 +----------------------+------------------+----------------+------------+----------------+
-; Analysis & Synthesis ; cocsce-l3d22-03  ; Ubuntu 20.04.4 ; 20         ; x86_64         ;
+; Analysis & Synthesis ; cocsce-l1d43-01  ; Ubuntu 20.04.4 ; 20         ; x86_64         ;
 +----------------------+------------------+----------------+------------+----------------+
 
 

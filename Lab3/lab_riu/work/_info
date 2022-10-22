@@ -10,10 +10,10 @@ z2
 cModel Technology
 Z0 d/acct/mmazeem/611/CSCE611/Lab3/lab_riu
 T_opt
-!s110 1666210753
-VB67VPWPVST2IAc3^DBiE02
+!s110 1666407925
+VeF:_BQ6clKNffOTXdSj[<0
 04 6 4 work simtop fast 0
-=1-000ae431a4f1-63505bc1-bdea6-7945
+=1-000ae431a4f1-63535df5-ae091-28b4ec
 o-quiet -auto_acc_if_foreign -work work
 Z1 tCvgOpt 0
 n@_opt
@@ -21,7 +21,7 @@ OL;O;2020.1;71
 R0
 valu
 Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z3 !s110 1666211086
+Z3 !s110 1666407934
 !i10b 1
 !s100 Fz;21dl2PMZ6MFeGeLCUd1
 Z4 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -32,13 +32,13 @@ R0
 Z6 w1646062652
 8alu.sv
 Falu.sv
-!i122 9
+!i122 25
 L0 7 48
 Z7 OL;L;2020.1;71
 r1
 !s85 0
 31
-Z8 !s108 1666211086.000000
+Z8 !s108 1666407934.000000
 !s107 top.sv|simtop.sv|regfile.sv|hexdriver.sv|cpu.sv|alu.sv|
 Z9 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|alu.sv|cpu.sv|hexdriver.sv|regfile.sv|simtop.sv|top.sv|
 !i113 0
@@ -48,17 +48,17 @@ vcpu
 R2
 R3
 !i10b 1
-!s100 gjS`hk1L5?QlVB8Sn=;V51
+!s100 DBG>9bQ2A:RIFWWOD2@lD0
 R4
-I0]FX;AgkCV5BTZCmWYR2F2
+IMQPWmJTjS;GSYH[WEfT8m0
 R5
 S1
 R0
-Z11 w1666210751
+Z11 w1666407923
 Z12 8cpu.sv
 Z13 Fcpu.sv
-!i122 9
-L0 5 122
+!i122 25
+L0 5 126
 R7
 r1
 !s85 0
@@ -82,7 +82,7 @@ R0
 w1665605688
 8hexdriver.sv
 Fhexdriver.sv
-!i122 9
+!i122 25
 L0 1 22
 R7
 r1
@@ -98,17 +98,17 @@ vinst_decoder
 R2
 R3
 !i10b 1
-!s100 DzDXK@VEB;SNQO^KXJaY03
+!s100 ea8J=T<BV74VYH[4=51V=2
 R4
-IImV?@:WSMcPLURhW6A;>Q3
+Ih:I2gGdClRY53<^b_C7M@3
 R5
 S1
 R0
 R11
 R12
 R13
-!i122 9
-L0 128 21
+!i122 25
+L0 132 21
 R7
 r1
 !s85 0
@@ -132,7 +132,7 @@ R0
 R6
 8regfile.sv
 Fregfile.sv
-!i122 9
+!i122 25
 L0 3 74
 R7
 r1
@@ -148,17 +148,17 @@ vsimtop
 R2
 R3
 !i10b 1
-!s100 KDnK_;z[?JGDXzGQHf=5A2
+!s100 4V2ZQ=i5Sc`0@6:njP[Lj2
 R4
-ICSU>YeJZZh^Y>3dY]jHel3
+I3n3PA;4TOChnom;dBC5A81
 R5
 S1
 R0
-w1666210488
+w1666407625
 8simtop.sv
 Fsimtop.sv
-!i122 9
-L0 6 52
+!i122 25
+L0 6 56
 R7
 r1
 !s85 0
@@ -173,17 +173,17 @@ vtop
 R2
 R3
 !i10b 1
-!s100 >dXhGLQQ1DmlnL=[?[J3f3
+!s100 HD=f;ehRLKT?:L4KiE8V91
 R4
-I=76J1Ene78EoHH7k@XH_Y1
+IYARA<[^[1@QjceM[A?ANc2
 R5
 S1
 R0
-w1666209829
+w1666211190
 8top.sv
 Ftop.sv
-!i122 9
-L0 6 121
+!i122 25
+L0 6 122
 R7
 r1
 !s85 0

@@ -31,6 +31,8 @@ module cpu (
     logic [31:0] instruction_EX;
     logic [31:0] instruction_WB;
 
+	assign PC_Fetch = 12'd0;
+
     always_ff @(posedge clk) begin
         if (~rst_n) begin
             PC_FETCH <= 12'd0;
@@ -74,10 +76,6 @@ module cpu (
         .imm12(imm12_EX),
         .imm20(imm20_EX));
     
-    initial begin 
-        $display(instruction_EX);
-    end
-
     // Set control signals based on opcode and function values
 
     logic [3:0] aluop_EX;
