@@ -111,7 +111,7 @@ module top (
 		.inst_ram(inst_ram),
 		.SW(SW32),
 		.hex_display(hex_display)
-		);
+	);
 
 	hexdriver hex0(.val(hex_display[3:0]), .HEX(HEX0));
 	hexdriver hex1(.val(hex_display[7:4]), .HEX(HEX1));

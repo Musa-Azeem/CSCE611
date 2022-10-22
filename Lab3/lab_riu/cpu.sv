@@ -67,7 +67,8 @@ module cpu (
         .rd(rd_EX),
         .opcode(opcode_EX),
         .imm12(imm12_EX),
-        .imm20(imm20_EX));
+        .imm20(imm20_EX)
+    );
 
     
     // SET CONTROL SIGNALS
@@ -79,17 +80,18 @@ module cpu (
     logic gpio_we_EX;
 
     // Set control signals based on opcode and function values (and imm12 for shamt)
-    control_fields cf_ex( .funct7(funct7_EX),
-                          .funct3(funct3_EX),
-                          .opcode(opcode_EX),
-                          .imm12(imm12_EX),
-                          // Output control signals
-                          .aluop(aluop_EX),
-                          .alusrc(alusrc_EX),
-                          .regsel(regsel_EX),
-                          .regwrite(regwrite_EX),
-                          .gpio_we(gpio_we_EX) 
-                        );
+    control_fields cf_ex( 
+        .funct7(funct7_EX),
+        .funct3(funct3_EX),
+        .opcode(opcode_EX),
+        .imm12(imm12_EX),
+        // Output control signals
+        .aluop(aluop_EX),
+        .alusrc(alusrc_EX),
+        .regsel(regsel_EX),
+        .regwrite(regwrite_EX),
+        .gpio_we(gpio_we_EX) 
+    );
 
     // READ AND WRITE REGISTER FILE
     logic [31:0] readdata1_EX;
@@ -107,16 +109,24 @@ module cpu (
     // Set lower 12 bits of imm20 to 0
     assign imm20_extended_EX = { imm20_EX, 12'b0 };
 
-    
-    // EXECUTE INSTRUCTION
+    // CHOOSE SECOND ALU INPUT
+    logic [31:0] B_EX;
 
-    // Get the two 
-    // read regsiter file (write wb)
-    // sign extend imm12
+    // set second ALU input with alusrc control mux
+    assign B_EX =
+        (alusrc_EX == 1'b0) ? readdata1_EX :        // If alusrc is 0, use data read from rs2
+        (alusrc_EX == 1'b1) ? imm12_extented_EX;    // if alusrc is 1, use sign extended immediate
 
-    // wire ALU with aluop and alusrc and reg or imm12
-    // Save output of ALU, imm20, or IO to EX/WB pipeline register (32 bit variable)
-    
+    // EXECUTE INSTRUCTION IN ALU
+    logic [31:0] R_EX;
+    logic alu_zero_EX;
+    alu malu(   
+        .A(readdata1),           // First input to ALU is always data read from rs1
+        .B(B_EX),                // Second input to ALU chosen by alusrc signal
+        .op(aluop_EX),           // Tell ALU what operation to perform
+        .R(R_EX),                // Output of ALU
+        .zero()                  // Zero signal from ALU
+    );
 
     /*
     ---------------------------- PIPELINE STAGE 3 ----------------------------
@@ -152,26 +162,30 @@ module cpu (
     // Select value to writeback with regsel mux
     logic   [31:0]  data_WB;
     assign data_WB = 
-        (regsel == 2'b00) ? SW :                    // Write back switch values
-        (regsel == 2'b01) ? imm20_extended_WB :     // Write back U-type immediate
-        (regsel == 2'b11) ? R_WB;                   // Write back the ALU output
+        (regsel_WB == 2'b00) ? SW :                    // Write back switch values
+        (regsel_WB == 2'b01) ? imm20_extended_WB :     // Write back U-type immediate
+        (regsel_WB == 2'b11) ? R_WB;                   // Write back the ALU output
 
-    // if csrrw instruction, read from SW or write to HEX
+    // IO OUTPUT
+    // if csrrw instruction is writing to HEX, assign readdata1 to CPU output (otherwise, do nothing)
+    assign hex_display = 
+        (gpio_we_WB == 1'b1) ? readdata1 : ;
 
 
-    registers regfile(  .clk(clk),
-                        .rst(rst_n),
-                        .we(regwrite_WB),           // Pass we control signal for WB stage
-                        // Read data - EX stage
-                        .readaddr1(rs1_EX),         // Connect rs1 field from EX instr
-                        .readaddr2(rs2_EX),         // Connect rs2 field from EX instr
-                        // Write data - WB stage
-                        .writeaddr(rd_WB),          // Connect rd from WB instr
-                        .writedata(data_WB),       // Connect output of regsel mux
-                        // Output from read
-                        .readdata1(readdata1_EX),   // Data from rs1 of EX instr
-                        .readdata2(readdata2_EX)    // Data from rs2 of EX instr
-                        );
+    regfile mregfile(   
+        .clk(clk),
+        .rst(rst_n),
+        .we(regwrite_WB),           // Pass we control signal for WB stage
+        // Read data - EX stage
+        .readaddr1(rs1_EX),         // Connect rs1 field from EX instr
+        .readaddr2(rs2_EX),         // Connect rs2 field from EX instr
+        // Write data - WB stage
+        .writeaddr(rd_WB),          // Connect rd from WB instr
+        .writedata(data_WB),       // Connect output of regsel mux
+        // Output from read
+        .readdata1(readdata1_EX),   // Data from rs1 of EX instr
+        .readdata2(readdata2_EX)    // Data from rs2 of EX instr
+    );
     
     assign hex_display = 0;
 endmodule
