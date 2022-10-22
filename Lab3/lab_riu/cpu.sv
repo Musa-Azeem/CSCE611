@@ -36,8 +36,6 @@ module cpu (
             // Update PC_FETCH and instruction_EX for execution in next cycle
             PC_FETCH <= PC_FETCH + 1'b1;
             instruction_EX <= inst_ram[PC_FETCH];
-            // Update instruction_WB with the current instruction_EX
-            instruction_WB <= instruction_EX;
         end
     end
 
@@ -61,6 +59,7 @@ module cpu (
     // Decode instruction into fields
     inst_decoder ex_decoder(
         .instr(instruction_EX), 
+        // output intruction fields
         .funct7(funct7_EX),
         .funct3(funct3_EX),
         .rs1(rs1_EX),
@@ -69,8 +68,9 @@ module cpu (
         .opcode(opcode_EX),
         .imm12(imm12_EX),
         .imm20(imm20_EX));
+
     
-    // Set control signals based on opcode and function values
+    // SET CONTROL SIGNALS
 
     logic [3:0] aluop_EX;
     logic [1:0] regsel_EX;
@@ -78,10 +78,12 @@ module cpu (
     logic regwrite_EX;
     logic gpio_we_EX;
 
+    // Set control signals based on opcode and function values (and imm12 for shamt)
     control_fields cf_ex( .funct7(funct7_EX),
                           .funct3(funct3_EX),
                           .opcode(opcode_EX),
                           .imm12(imm12_EX),
+                          // Output control signals
                           .aluop(aluop_EX),
                           .alusrc(alusrc_EX),
                           .regsel(regsel_EX),
@@ -89,9 +91,40 @@ module cpu (
                           .gpio_we(gpio_we_EX) 
                         );
 
+    // READ AND WRITE REGISTER FILE
+    logic [31:0] readdata1_EX;
+    logic [31:0] readdata2_EX;
+
+    registers regfile(  .clk(clk),
+                        .rst(rst),
+                        .we(regwrite_WB),           // Pass we control signal for WB stage
+                        // Read data - EX stage
+                        .readaddr1(rs1_EX),         // Connect rs1 field from EX instr
+                        .readaddr2(rs2_EX),         // Connect rs2 field from EX instr
+                        // Write data - WB stage
+                        .writeaddr(rd_WB),          // Connect rd from WB instr
+                        .writedata(/*TODO*/),       // Connect output of regsel mux
+                        // Output from read
+                        .readdata1(readdata1_EX),   // Data from rs1 of EX instr
+                        .readdata2(readdata2_EX)    // Data from rs2 of EX instr
+                        );
+
+    // EXTEND IMMEDIATES
+    // Sign extend imm12
+    logic [31:0] imm12_extented_EX;
+    logic [31:0] imm20_extended_EX;
+
+    // Replicate most significant bit of imm12 for high 20 bits  
+    assign imm12_extented_EX = { {20{imm_EX[11]}}, imm12_EX};
+    // Set lower 12 bits of imm20 to 0
+    assign imm20_extended_EX = { imm20_EX, 12'b0 };
+    
     // EXECUTE INSTRUCTION
+
+    // Get the two 
     // read regsiter file (write wb)
     // sign extend imm12
+
     // wire ALU with aluop and alusrc and reg or imm12
     // Save output of ALU, imm20, or IO to EX/WB pipeline register (32 bit variable)
     
@@ -101,7 +134,30 @@ module cpu (
                                     WRITEBACK
     */
 
+    // PIPELINE REGISTERS
+
+    // Instruction fields needed for WB stage
+    logic [4:0]     rd_wb;          // register to writeback to
+    logic [31:0]    imm12_extended_WB;       // imm12 for IO-type
+    logic [31:0]    imm20_extended_WB;       // imm20 for U-type
+
+    // Control fields
+
+    // Intermeditate steps
+
+
+    // ALU output
+
+    always_ff @posedge(clk) begin
+        // Update the fields / control signals needed for the WB stage
+        regsel_WB <= regsel_EX;
+
+    end
+
     // if csrrw instruction, read from SW or write to HEX
+
+
+    
     assign hex0 = 0;
     assign hex1 = 1;
     assign hex2 = 2;
