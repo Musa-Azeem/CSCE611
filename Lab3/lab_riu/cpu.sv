@@ -115,13 +115,13 @@ module cpu (
     // set second ALU input with alusrc control mux
     assign B_EX =
         (alusrc_EX == 1'b0) ? readdata1_EX :        // If alusrc is 0, use data read from rs2
-        (alusrc_EX == 1'b1) ? imm12_extented_EX;    // if alusrc is 1, use sign extended immediate
+        imm12_extented_EX;                          // if alusrc is 1, use sign extended imm12
 
     // EXECUTE INSTRUCTION IN ALU
     logic [31:0] R_EX;
     logic alu_zero_EX;
     alu malu(   
-        .A(readdata1),           // First input to ALU is always data read from rs1
+        .A(readdata1_EX),           // First input to ALU is always data read from rs1
         .B(B_EX),                // Second input to ALU chosen by alusrc signal
         .op(aluop_EX),           // Tell ALU what operation to perform
         .R(R_EX),                // Output of ALU
@@ -162,9 +162,9 @@ module cpu (
     // Select value to writeback with regsel mux
     logic   [31:0]  data_WB;
     assign data_WB = 
-        (regsel_WB == 2'b00) ? SW :                    // Write back switch values
-        (regsel_WB == 2'b01) ? imm20_extended_WB :     // Write back U-type immediate
-        (regsel_WB == 2'b11) ? R_WB;                   // Write back the ALU output
+        (regsel_WB == 2'b00) ? SW :                     // Write back switch values
+        (regsel_WB == 2'b01) ? imm20_extended_WB :      // Write back U-type immediate
+        R_WB;                                           // Write back the ALU output
 
     // IO OUTPUT
     // if csrrw instruction is writing to HEX, assign readdata1 to CPU output (otherwise, do nothing)
