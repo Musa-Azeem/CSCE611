@@ -9,11 +9,11 @@ module cpu (
     // RAM
     input       [31:0]      inst_ram [4191:0],
 
-    // Switches
-    input       [17:0]      SW,
+    // Switches (lower 17 bits are input from switches)
+    input       [31:0]      SW,
 
-    // Output values to display
-    output      [3:0]       hex0, hex1, hex2, hex3, hex4
+    // Output values to display (lower 20 bits are the 5 4-bit decimal values to display)
+    output      [31:0]       hex_display
     );
 
     // opcode values for each type of instruction
@@ -103,7 +103,7 @@ module cpu (
                         .readaddr2(rs2_EX),         // Connect rs2 field from EX instr
                         // Write data - WB stage
                         .writeaddr(rd_WB),          // Connect rd from WB instr
-                        .writedata(/*TODO*/),       // Connect output of regsel mux
+                        .writedata(data_WB),       // Connect output of regsel mux
                         // Output from read
                         .readdata1(readdata1_EX),   // Data from rs1 of EX instr
                         .readdata2(readdata2_EX)    // Data from rs2 of EX instr
@@ -118,6 +118,7 @@ module cpu (
     assign imm12_extented_EX = { {20{imm_EX[11]}}, imm12_EX};
     // Set lower 12 bits of imm20 to 0
     assign imm20_extended_EX = { imm20_EX, 12'b0 };
+
     
     // EXECUTE INSTRUCTION
 
@@ -137,30 +138,39 @@ module cpu (
     // PIPELINE REGISTERS
 
     // Instruction fields needed for WB stage
-    logic [4:0]     rd_wb;          // register to writeback to
+    logic [4:0]     rd_WB;                   // Destination register to writeback to
     logic [31:0]    imm12_extended_WB;       // imm12 for IO-type
     logic [31:0]    imm20_extended_WB;       // imm20 for U-type
 
     // Control fields
-
-    // Intermeditate steps
-
+    logic regwrite_WB;
+    logic regsel_WB;
+    logic gpio_we_WB;
 
     // ALU output
+    logic [31:0]    R_WB;
 
+    // Update Pipeline Registers for next cycle
     always_ff @posedge(clk) begin
-        // Update the fields / control signals needed for the WB stage
+        rd_WB <= rd_EX;
+        imm12_extended_WB <= imm12_extented_EX;
+        imm20_extended_WB <= imm20_extended_EX;
+        regwrite_WB <= regwrite_EX;
         regsel_WB <= regsel_EX;
-
+        gpio_we_WB <= gpio_we_EX;
+        R_WB <= R_EX;
     end
+
+    // Select value to writeback with regsel mux
+    logic   [31:0]  data_WB;
+    assign data_WB = 
+        (regsel == 2'b00) ? SW :                    // Write back switch values
+        (regsel == 2'b01) ? imm20_extended_WB :     // Write back U-type immediate
+        (regsel == 2'b11) ? R_WB;                   // Write back the ALU output
 
     // if csrrw instruction, read from SW or write to HEX
 
 
     
-    assign hex0 = 0;
-    assign hex1 = 1;
-    assign hex2 = 2;
-    assign hex3 = 3;
-    assign hex4 = 4;
+    assign hex_display = 0;
 endmodule
