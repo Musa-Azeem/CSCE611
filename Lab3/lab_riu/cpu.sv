@@ -27,7 +27,7 @@ module cpu (
     logic [31:0] instruction_EX;
     logic [31:0] instruction_WB;
 
-	assign PC_Fetch = 12'd0;
+	assign PC_FETCH = 12'd0;
 
     always_ff @(posedge clk) begin
         if (~rst_n) begin

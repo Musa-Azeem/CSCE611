@@ -4,14 +4,14 @@ module control_fields(
     input       [6:0]       opcode,
     input       [11:0]      imm12,
     output      [3:0]       aluop,
-    output      [1:0]       regsel
+    output      [1:0]       regsel,
     output                  alusrc, regwrite, gpio_we
     );
 
     // Find control signals
 
     // First, IO type (csrrw) control fields
-    if (opcode == 7'h73 && funct3 == 3'b001) {
+	if (opcode == 7'h73 && funct3 == 3'b001) begin
         // Don't set aluop or alusrc - ALU not used for IO
         if (imm12 == 12'hf02) {
             // If the immediate is the second IO port, we are writing to HEX
@@ -25,7 +25,7 @@ module control_fields(
             regwrite = 1;           // Enable write to register
             gpio_we = 0;            // Disable write to IO port
         }
-    }
+    end
 
     // Next, U-type (lui) control fields
     else if (opcode == 7'h37) {
