@@ -27,8 +27,6 @@ module cpu (
     logic [31:0] instruction_EX;
     logic [31:0] instruction_WB;
 
-	assign PC_FETCH = 12'd0;
-
     always_ff @(posedge clk) begin
         if (~rst_n) begin
             PC_FETCH <= 12'd0;
@@ -89,7 +87,7 @@ module cpu (
                           .regsel(regsel_EX),
                           .regwrite(regwrite_EX),
                           .gpio_we(gpio_we_EX) 
-                        )
+                        );
 
     // always_comb() begin
     //     case(opcode_EX)
