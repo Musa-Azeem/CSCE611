@@ -91,43 +91,12 @@ module cpu (
                           .gpio_we(gpio_we_EX) 
                         )
 
-    // always_comb() begin
-    //     case(opcode_EX)
-    //         Rtype: rtype_control_fields rcf_ex( .funct7(funct7_EX),
-    //                                             .funct3(funct3_EX),
-    //                                             .opcode(opcode_EX),
-    //                                             .aluop(aluop_EX),
-    //                                             .alusrc(alusrc_EX),
-    //                                             .regsel(regsel_EX),
-    //                                             .regwrite(regwrite_EX),
-    //                                             .gpio_we(gpio_we_EX) 
-    //                                            )
-    //         Itype: itype_control_fields icf_ex( .opcode(opcode_EX),
-    //                                             .aluop(aluop_EX),
-    //                                             .alusrc(alusrc_EX),
-    //                                             .regsel(regsel_EX),
-    //                                             .regwrite(regwrite_EX),
-    //                                             .gpio_we(gpio_we_EX) 
-    //                                            )
-    //         Utype: utype_control_fields ucf_ex( .opcode(opcode_EX),
-    //                                             .aluop(aluop_EX),
-    //                                             .alusrc(alusrc_EX),
-    //                                             .regsel(regsel_EX),
-    //                                             .regwrite(regwrite_EX),
-    //                                             .gpio_we(gpio_we_EX) 
-    //                                            )
-    //         IOtype: iotype_control_fields iocf( .opcode(opcode_EX),
-    //                                             .aluop(aluop_EX),
-    //                                             .alusrc(alusrc_EX),
-    //                                             .regsel(regsel_EX),
-    //                                             .regwrite(regwrite_EX),
-    //                                             .gpio_we(gpio_we_EX) )
-
-    //     endcase
-    // end
-
     // EXECUTE INSTRUCTION
-    // ALU with aluop and alusrc
+    // read regsiter file (write wb)
+    // sign extend imm12
+    // wire ALU with aluop and alusrc and reg or imm12
+    // Save output of ALU, imm20, or IO to EX/WB pipeline register (32 bit variable)
+    
 
     /*
     ---------------------------- PIPELINE STAGE 3 ----------------------------
