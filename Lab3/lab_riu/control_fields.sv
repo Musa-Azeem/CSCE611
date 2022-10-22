@@ -1,11 +1,11 @@
 module control_fields(
-    input       [6:0]       funct7,
-    input       [2:0]       funct3,
-    input       [6:0]       opcode,
-    input       [11:0]      imm12,
-    output logic      [3:0]       aluop,
-    output logic      [1:0]       regsel,
-    output logic                 alusrc, regwrite, gpio_we
+    input               [6:0]       funct7,
+    input               [2:0]       funct3,
+    input               [6:0]       opcode,
+    input               [11:0]      imm12,
+    output logic        [3:0]       aluop,
+    output logic        [1:0]       regsel,
+    output logic                    alusrc, regwrite, gpio_we
     );
 
     // Find control signals
