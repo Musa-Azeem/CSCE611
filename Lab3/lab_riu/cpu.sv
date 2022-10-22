@@ -139,7 +139,7 @@ module cpu (
     logic [31:0]    R_WB;
 
     // Update Pipeline Registers for next cycle
-    always_ff @posedge(clk) begin
+    always_ff @(posedge clk) begin
         rd_WB <= rd_EX;
         imm12_extended_WB <= imm12_extented_EX;
         imm20_extended_WB <= imm20_extended_EX;
