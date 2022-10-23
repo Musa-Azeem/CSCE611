@@ -10,17 +10,17 @@ z2
 cModel Technology
 Z0 d/acct/mmazeem/611/CSCE611/Lab3/lab_riu
 T_opt
-!s110 1666486099
-VYhbj;LEXRmIZcKn>JIa4C1
+!s110 1666487767
+V8STB]RN>00CXW9>4P03Ca3
 04 6 4 work simtop fast 0
-=1-000ae431a4f1-63548f52-e299c-374ba0
+=1-000ae431a4f1-635495d7-1783e-37a3b5
 o-quiet -auto_acc_if_foreign -work work
 Z1 tCvgOpt 0
 n@_opt
 OL;O;2020.1;71
 valu
 Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z3 !s110 1666486098
+Z3 !s110 1666487766
 !i10b 1
 !s100 Fz;21dl2PMZ6MFeGeLCUd1
 Z4 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -31,13 +31,13 @@ R0
 Z6 w1646062652
 8alu.sv
 Falu.sv
-!i122 46
+!i122 56
 L0 7 48
 Z7 OL;L;2020.1;71
 r1
 !s85 0
 31
-Z8 !s108 1666486098.000000
+Z8 !s108 1666487766.000000
 Z9 !s107 top.sv|simtop.sv|regfile.sv|instruction_decoder.sv|hexdriver.sv|cpu.sv|control_fields.sv|alu.sv|
 Z10 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|alu.sv|control_fields.sv|cpu.sv|hexdriver.sv|instruction_decoder.sv|regfile.sv|simtop.sv|top.sv|
 !i113 0
@@ -56,7 +56,7 @@ R0
 w1666482471
 8control_fields.sv
 Fcontrol_fields.sv
-!i122 46
+!i122 56
 L0 1 105
 R7
 r1
@@ -72,17 +72,17 @@ vcpu
 R2
 R3
 !i10b 1
-!s100 9I3e>o5JP@dS7nmnJ;TI@3
+!s100 Q6N8BI_EzCdaz[j9^o1g20
 R4
-I[NgUNECTG3mT1dO0_inH32
+I<iAfao8]Z5]H@:5ojY?9D1
 R5
 S1
 R0
-w1666484709
+w1666487194
 8cpu.sv
 Fcpu.sv
-!i122 46
-L0 5 185
+!i122 56
+L0 5 199
 R7
 r1
 !s85 0
@@ -106,7 +106,7 @@ R0
 w1665605688
 8hexdriver.sv
 Fhexdriver.sv
-!i122 46
+!i122 56
 L0 1 22
 R7
 r1
@@ -131,7 +131,7 @@ R0
 w1666415768
 8instruction_decoder.sv
 Finstruction_decoder.sv
-!i122 46
+!i122 56
 L0 2 21
 R7
 r1
@@ -156,7 +156,7 @@ R0
 R6
 8regfile.sv
 Fregfile.sv
-!i122 46
+!i122 56
 L0 3 74
 R7
 r1
@@ -172,17 +172,17 @@ vsimtop
 R2
 R3
 !i10b 1
-!s100 EaVDYDlQ@bLDN:ET0]A=M3
+!s100 3=5iAHlC8HPRR54]J5^aJ3
 R4
-ITDgRaA3PEi7=QfaAl33iQ3
+ImzGDnaI[Co=`DNV^VU;7^0
 R5
 S1
 R0
-w1666485373
+w1666487633
 8simtop.sv
 Fsimtop.sv
-!i122 46
-L0 6 55
+!i122 56
+L0 6 59
 R7
 r1
 !s85 0
@@ -197,17 +197,17 @@ vtop
 R2
 R3
 !i10b 1
-!s100 Yb=BEiJVOHPK5^;5EP@ec2
+!s100 cl6BFd9DBSB`dnn5?EXPI0
 R4
-I3Z@_3JVn??g0KA>eUB3>H3
+InJ33Fi[5WzPTf>f[=_F@h0
 R5
 S1
 R0
-w1666486097
+w1666487764
 8top.sv
 Ftop.sv
-!i122 46
-L0 6 131
+!i122 56
+L0 6 133
 R7
 r1
 !s85 0
