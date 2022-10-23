@@ -13,7 +13,6 @@ module simtop;
 	logic	[17:0]		LEDR;
 
 
-
 	top dut
 	(
 		//////////// CLOCK //////////
@@ -22,8 +21,8 @@ module simtop;
 	    .CLOCK3_50(clk),
 
 		//////////// LED //////////
-		.LEDG(),
-		.LEDR(),
+		.LEDG(LEDG),
+		.LEDR(LEDR),
 
 		//////////// KEY //////////
 		.KEY(KEY),
@@ -41,13 +40,17 @@ module simtop;
 		.HEX6(HEX6),
 		.HEX7(HEX7)
 	);
+
+	// SIMULATE CLOCK
     always 
 		#10 clk = ~clk;
 
+	// SIMULATE INPUT
+	integer i;
 	initial begin		
 		SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h0};
 		for (i=0; i<10; i=i+1) begin
-			$display("Simtop: %3t", time);
+			$display("Simtop: %3t", $time);
 			#10
 		end
 	end

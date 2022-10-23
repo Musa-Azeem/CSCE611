@@ -36,15 +36,15 @@ module top (
 	// READ INSTRUCTION FILE INTO RAM
 	logic [31:0] inst_ram [4191:0];
     // initial $readmemh("program.rom", inst_ram);
-	assign inst_ram[0] = 32'd0;
-	assign inst_ram[1] = 32'd0;
-	assign inst_ram[2] = 32'd0;
-	assign inst_ram[3] = 32'd0;
-	assign inst_ram[4] = 32'd0;
+	assign inst_ram[0] = 32'b0;
+	// assign inst_ram[1] = 32'b0;
+	// assign inst_ram[2] = 32'b0;
+	// assign inst_ram[3] = 32'b0;
+	// assign inst_ram[4] = 32'b0;
 
 
 	// ZERO EXTEND SW TO 32 BIT
-	logic [31:0]	SW32;
+	logic [31:0] SW32;
 	assign SW32 = { 15'b0, SW };
 
 	// INSTANCE CPU
