@@ -22,10 +22,10 @@ module cpu (
     ---------------------------- PIPELINE STAGE 1 ----------------------------
                                      FETCH
     */
+
     // FETCH INSTRUCTION
     logic [11:0] PC_FETCH;
     logic [31:0] instruction_EX;
-    logic [31:0] instruction_WB;
 
     always_ff @(posedge clk) begin
         if (~rst_n) begin
@@ -186,4 +186,18 @@ module cpu (
         .readdata1(readdata1_EX),   // Data from rs1 of EX instr
         .readdata2(readdata2_EX)    // Data from rs2 of EX instr
     );
+
+    initial begin
+        $monitor("$cpu.sv @ %3t: Fetch : %3h", $time, PC_FETCH);
+        $monitor("$cpu.sv @ %3t: instr_ex : %8h", $time, instruction_EX);
+        $monitor("$cpu.sv @ %3t: Fetch : %3h", $time, PC_FETCH);
+        $monitor("$cpu.sv @ %3t: funct7_ex : %7b", $time, funct7_EX);
+        $monitor("$cpu.sv @ %3t: funct3_ex : %3b", $time, funct3_EX);
+        $monitor("$cpu.sv @ %3t: rs1_ex : %5b", $time, rs1_EX);
+        $monitor("$cpu.sv @ %3t: rs2_ex : %5b", $time, rs2_EX);
+        $monitor("$cpu.sv @ %3t: rd_ex : %5b", $time, rd_EX);
+        $monitor("$cpu.sv @ %3t: opcode_ex : %7b", $time, opcode_EX);
+        $monitor("$cpu.sv @ %3t: imm12_ex : %12b", $time, imm12_EX);
+        $monitor("$cpu.sv @ %3t: imm20_ex : %20b", $time, imm20_EX);
+    end
 endmodule
