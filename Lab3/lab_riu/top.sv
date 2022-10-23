@@ -68,10 +68,10 @@ module top (
 	hexdriver hex6(.val(4'h0), .HEX(HEX6));
 	hexdriver hex7(.val(4'h0), .HEX(HEX7));
 
-	initial begin
-		$monitor("top RAM[0]: %8h", inst_ram[0]);
-		$monitor("top hex_display: %8h", hex_display);
-	end
+	// initial begin
+	// 	$monitor("top RAM[0]: %8h", inst_ram[0]);
+	// 	$monitor("top hex_display: %8h", hex_display);
+	// end
 
 
 // //=======================================================
