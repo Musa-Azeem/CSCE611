@@ -34,44 +34,43 @@ module top (
 	// LAB 3
 
 	// READ INSTRUCTION FILE INTO RAM
-	// logic [31:0] inst_ram [4191:0];
-    // initial $readmemh("program.rom", inst_ram);
+	logic [31:0] inst_ram [4191:0];
+    initial $readmemh("program.rom", inst_ram);
 	// assign inst_ram[0] = 32'b0;
-	// assign inst_ram[1] = 32'b0;
+	// assign inst_ram[3] = 32'b0;
 	// assign inst_ram[2] = 32'b0;
 	// assign inst_ram[3] = 32'b0;
 	// assign inst_ram[4] = 32'b0;
 
 
 	// ZERO EXTEND SW TO 32 BIT
-	// logic [31:0] SW32;
-	// assign SW32 = { 15'b0, SW };
+	logic [31:0] SW32;
+	assign SW32 = { 15'b0, SW };
 
 	// INSTANCE CPU
-	//logic [31:0] hex_display;
-	// cpu mcpu(
-	// 	.clk(CLOCK_50),
-	// 	.rst_n(KEY[0]), 
-	// 	.inst_ram(inst_ram),
-	// 	.SW(SW32),
-	// 	.display(display)
-	// );
+	logic [31:0] display;
+    cpu mcpu(
+	 	.clk(CLOCK_50),
+	 	.rst_n(KEY[0]), 
+	 	.inst_ram(inst_ram),
+	 	.SW(SW32),
+	 	.display(display)
+	);
 
 	// OUTPUT HEX VALUES
-	// Split hex_display output of CPU into each 8-segement display
-	// hexdriver hex0(.val(hex_display[3:0]), .HEX(HEX0));
-	// hexdriver hex1(.val(hex_display[7:4]), .HEX(HEX1));
-	// hexdriver hex2(.val(hex_display[11:8]), .HEX(HEX2));
-	// hexdriver hex3(.val(hex_display[15:12]), .HEX(HEX3));
-	// hexdriver hex4(.val(hex_display[19:16]), .HEX(HEX4));
-	// hexdriver hex5(.val(4'h0), .HEX(HEX5));
-	// hexdriver hex6(.val(4'h0), .HEX(HEX6));
-	// hexdriver hex7(.val(4'h0), .HEX(HEX7));
+	// Split display output of CPU into each 8-segement display
+	hexdriver hex0(.val(display[3:0]), .HEX(HEX0));
+	hexdriver hex1(.val(display[7:4]), .HEX(HEX1));
+    hexdriver hex2(.val(display[11:8]), .HEX(HEX2));
+	hexdriver hex3(.val(display[15:12]), .HEX(HEX3));
+	hexdriver hex4(.val(display[19:16]), .HEX(HEX4));
+	hexdriver hex5(.val(4'h0), .HEX(HEX5));
+	hexdriver hex6(.val(4'h0), .HEX(HEX6));
+	hexdriver hex7(.val(4'h0), .HEX(HEX7));
 
-	// initial begin
-	// 	$monitor("top RAM[0]: %8h", inst_ram[0]);
-	// 	$monitor("top hex_display: %8h", hex_display);
-	// end
+	initial begin
+	 	$monitor("top.sv @ %3t: display: %8h", $time, display);
+	end
 
 
 // //=======================================================

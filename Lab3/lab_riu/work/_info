@@ -10,17 +10,17 @@ z2
 cModel Technology
 Z0 d/acct/mmazeem/611/CSCE611/Lab3/lab_riu
 T_opt
-!s110 1666416628
-VT1SW]j2no:bZ?3:hLkS=A2
+!s110 1666486099
+VYhbj;LEXRmIZcKn>JIa4C1
 04 6 4 work simtop fast 0
-=1-000ae431a4f1-63537ff3-e7b75-2a5526
+=1-000ae431a4f1-63548f52-e299c-374ba0
 o-quiet -auto_acc_if_foreign -work work
 Z1 tCvgOpt 0
 n@_opt
 OL;O;2020.1;71
 valu
 Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z3 !s110 1666416627
+Z3 !s110 1666486098
 !i10b 1
 !s100 Fz;21dl2PMZ6MFeGeLCUd1
 Z4 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -31,13 +31,13 @@ R0
 Z6 w1646062652
 8alu.sv
 Falu.sv
-!i122 34
+!i122 46
 L0 7 48
 Z7 OL;L;2020.1;71
 r1
 !s85 0
 31
-Z8 !s108 1666416627.000000
+Z8 !s108 1666486098.000000
 Z9 !s107 top.sv|simtop.sv|regfile.sv|instruction_decoder.sv|hexdriver.sv|cpu.sv|control_fields.sv|alu.sv|
 Z10 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|alu.sv|control_fields.sv|cpu.sv|hexdriver.sv|instruction_decoder.sv|regfile.sv|simtop.sv|top.sv|
 !i113 0
@@ -47,16 +47,16 @@ vcontrol_fields
 R2
 R3
 !i10b 1
-!s100 ^]Q1:W2Wli2YbKZG`IAzF1
+!s100 _C8aAoPUNH2>`g_?f<hlo0
 R4
-IESnKASfGH`eDWU5<>CPlN1
+IiR5QWchDSil]W0ozPH5V[2
 R5
 S1
 R0
-w1666416479
+w1666482471
 8control_fields.sv
 Fcontrol_fields.sv
-!i122 34
+!i122 46
 L0 1 105
 R7
 r1
@@ -72,17 +72,17 @@ vcpu
 R2
 R3
 !i10b 1
-!s100 nP@[LbP_jC<25eHZ4z8VC2
+!s100 9I3e>o5JP@dS7nmnJ;TI@3
 R4
-IXn@eTKdZog=?h^mAV]7^D2
+I[NgUNECTG3mT1dO0_inH32
 R5
 S1
 R0
-w1666416625
+w1666484709
 8cpu.sv
 Fcpu.sv
-!i122 34
-L0 5 137
+!i122 46
+L0 5 185
 R7
 r1
 !s85 0
@@ -106,7 +106,7 @@ R0
 w1665605688
 8hexdriver.sv
 Fhexdriver.sv
-!i122 34
+!i122 46
 L0 1 22
 R7
 r1
@@ -131,7 +131,7 @@ R0
 w1666415768
 8instruction_decoder.sv
 Finstruction_decoder.sv
-!i122 34
+!i122 46
 L0 2 21
 R7
 r1
@@ -156,7 +156,7 @@ R0
 R6
 8regfile.sv
 Fregfile.sv
-!i122 34
+!i122 46
 L0 3 74
 R7
 r1
@@ -172,17 +172,17 @@ vsimtop
 R2
 R3
 !i10b 1
-!s100 4V2ZQ=i5Sc`0@6:njP[Lj2
+!s100 EaVDYDlQ@bLDN:ET0]A=M3
 R4
-I3n3PA;4TOChnom;dBC5A81
+ITDgRaA3PEi7=QfaAl33iQ3
 R5
 S1
 R0
-w1666407625
+w1666485373
 8simtop.sv
 Fsimtop.sv
-!i122 34
-L0 6 56
+!i122 46
+L0 6 55
 R7
 r1
 !s85 0
@@ -197,17 +197,17 @@ vtop
 R2
 R3
 !i10b 1
-!s100 HD=f;ehRLKT?:L4KiE8V91
+!s100 Yb=BEiJVOHPK5^;5EP@ec2
 R4
-IYARA<[^[1@QjceM[A?ANc2
+I3Z@_3JVn??g0KA>eUB3>H3
 R5
 S1
 R0
-w1666211190
+w1666486097
 8top.sv
 Ftop.sv
-!i122 34
-L0 6 122
+!i122 46
+L0 6 131
 R7
 r1
 !s85 0
