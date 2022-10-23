@@ -190,7 +190,6 @@ module cpu (
     initial begin
         $display("$cpu.sv @ %3t: Fetch : %3h", $time, PC_FETCH);
         $display("$cpu.sv @ %3t: instr_ex : %8h", $time, instruction_EX);
-        $display("$cpu.sv @ %3t: Fetch : %3h", $time, PC_FETCH);
         $display("$cpu.sv @ %3t: funct7_ex : %7b", $time, funct7_EX);
         $display("$cpu.sv @ %3t: funct3_ex : %3b", $time, funct3_EX);
         $display("$cpu.sv @ %3t: rs1_ex : %5b", $time, rs1_EX);

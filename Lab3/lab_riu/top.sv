@@ -51,7 +51,7 @@ module top (
 	logic [31:0] display;
     cpu mcpu(
 	 	.clk(CLOCK_50),
-	 	.rst_n(KEY[0]), 
+	 	.rst_n(~KEY[0]), 
 	 	.inst_ram(inst_ram),
 	 	.SW(SW32),
 	 	.display(display)
