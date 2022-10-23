@@ -34,9 +34,9 @@ module top (
 	// LAB 3
 
 	// READ INSTRUCTION FILE INTO RAM
-	logic [31:0] inst_ram [4191:0];
+	// logic [31:0] inst_ram [4191:0];
     // initial $readmemh("program.rom", inst_ram);
-	assign inst_ram[0] = 32'b0;
+	// assign inst_ram[0] = 32'b0;
 	// assign inst_ram[1] = 32'b0;
 	// assign inst_ram[2] = 32'b0;
 	// assign inst_ram[3] = 32'b0;
@@ -44,8 +44,8 @@ module top (
 
 
 	// ZERO EXTEND SW TO 32 BIT
-	logic [31:0] SW32;
-	assign SW32 = { 15'b0, SW };
+	// logic [31:0] SW32;
+	// assign SW32 = { 15'b0, SW };
 
 	// INSTANCE CPU
 	logic [31:0] hex_display;
