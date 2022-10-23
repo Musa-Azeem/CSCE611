@@ -188,6 +188,7 @@ module cpu (
     );
 
     initial begin
+        $display("$cpu.sv @ %3t: Reset : %1b", $time, rst_n);
         $display("$cpu.sv @ %3t: Fetch : %3h", $time, PC_FETCH);
         $display("$cpu.sv @ %3t: instr_ex : %8h", $time, instruction_EX);
         $display("$cpu.sv @ %3t: funct7_ex : %7b", $time, funct7_EX);
