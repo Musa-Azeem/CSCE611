@@ -31,70 +31,9 @@ module top (
 	output		     [6:0]		HEX7
 );
 
+	// LAB 3
 
-
-//=======================================================
-//  REG/WIRE declarations
-//=======================================================
-
-	/* 24 bit clock divider, converts 50MHz clock signal to 2.98Hz */
-	logic [23:0] clkdiv;
-	logic ledclk;
-	assign ledclk = clkdiv[23];
-
-	/* driver for LEDs */
-	logic [25:0] leds;
-	assign LEDR = leds[25:8];
-	assign LEDG = leds[7:0];
-
-	/* LED state register, 0 means going left, 1 means going right */
-	logic ledstate;
-
-
-//=======================================================
-//  Behavioral coding
-//=======================================================
-
-
-	initial begin
-		clkdiv = 26'h0;
-		/* start at the far right, LEDG0 */
-		leds = 26'b1;
-		/* start out going to the left */
-		ledstate = 1'b0;
-	end
-
-	always @(posedge CLOCK_50) begin
-		/* drive the clock divider, every 2^26 cycles of CLOCK_50, the
-		* top bit will roll over and give us a clock edge for clkdiv
-		* */
-		clkdiv <= clkdiv + 1;
-	end
-
-	always @(posedge ledclk) begin
-		/* going left and we are at the far left, time to turn around */
-		if ( (ledstate == 0) && (leds == 26'b10000000000000000000000000) ) begin
-			ledstate <= 1;
-			leds <= leds >> 1;
-
-		/* going left and not at the far left, keep going */
-		end else if (ledstate == 0) begin
-			ledstate <= 0;
-			leds <= leds << 1;
-
-		/* going right and we are at the far right, turn around */
-		end else if ( (ledstate == 1) && (leds == 26'b1) ) begin
-			ledstate <= 0;
-			leds <= leds << 1;
-
-		/* going right, and we aren't at the far right */
-		end else begin
-			leds <= leds >> 1;
-		end
-	end
-
-	// Lab 3
-	// Read instructions into RAM
+	// READ INSTRUCTION FILE INTO RAM
 	logic [31:0] inst_ram [4191:0];
     // initial $readmemh("program.rom", inst_ram);
 	assign inst_ram[0] = 32'd0;
@@ -104,20 +43,22 @@ module top (
 	assign inst_ram[4] = 32'd0;
 
 
-	// zero extend SW
+	// ZERO EXTEND SW TO 32 BIT
 	logic [31:0]	SW32;
 	assign SW32 = { 15'b0, SW };
 
-	// logic to get hex values (in binary) from cpu
+	// INSTANCE CPU
 	logic [31:0] hex_display;
 	cpu mcpu(
 		.clk(CLOCK_50),
 		.rst_n(KEY[0]), 
 		.inst_ram(inst_ram),
 		.SW(SW32),
-		.hex_display(hex_display)
+		.display(display)
 	);
 
+	// OUTPUT HEX VALUES
+	// Split hex_display output of CPU into each 8-segement display
 	hexdriver hex0(.val(hex_display[3:0]), .HEX(HEX0));
 	hexdriver hex1(.val(hex_display[7:4]), .HEX(HEX1));
 	hexdriver hex2(.val(hex_display[11:8]), .HEX(HEX2));
@@ -128,10 +69,69 @@ module top (
 	hexdriver hex7(.val(4'h0), .HEX(HEX7));
 
 	initial begin
-		$monitor("top RAM[0]: %d", inst_ram[0])
-		$monitor("top hex_display: %d", hex_display)
+		$monitor("top RAM[0]: %8h", inst_ram[0]);
+		$monitor("top hex_display: %8h", hex_display);
 	end
 
 
+// //=======================================================
+// //  REG/WIRE declarations
+// //=======================================================
+
+// 	/* 24 bit clock divider, converts 50MHz clock signal to 2.98Hz */
+// 	logic [23:0] clkdiv;
+// 	logic ledclk;
+// 	assign ledclk = clkdiv[23];
+
+// 	/* driver for LEDs */
+// 	logic [25:0] leds;
+// 	assign LEDR = leds[25:8];
+// 	assign LEDG = leds[7:0];
+
+// 	/* LED state register, 0 means going left, 1 means going right */
+// 	logic ledstate;
+
+
+// //=======================================================
+// //  Behavioral coding
+// //=======================================================
+
+
+// 	initial begin
+// 		clkdiv = 26'h0;
+// 		/* start at the far right, LEDG0 */
+// 		leds = 26'b1;
+// 		/* start out going to the left */
+// 		ledstate = 1'b0;
+// 	end
+
+// 	always @(posedge CLOCK_50) begin
+// 		/* drive the clock divider, every 2^26 cycles of CLOCK_50, the
+// 		* top bit will roll over and give us a clock edge for clkdiv
+// 		* */
+// 		clkdiv <= clkdiv + 1;
+// 	end
+
+// 	always @(posedge ledclk) begin
+// 		/* going left and we are at the far left, time to turn around */
+// 		if ( (ledstate == 0) && (leds == 26'b10000000000000000000000000) ) begin
+// 			ledstate <= 1;
+// 			leds <= leds >> 1;
+
+// 		/* going left and not at the far left, keep going */
+// 		end else if (ledstate == 0) begin
+// 			ledstate <= 0;
+// 			leds <= leds << 1;
+
+// 		/* going right and we are at the far right, turn around */
+// 		end else if ( (ledstate == 1) && (leds == 26'b1) ) begin
+// 			ledstate <= 0;
+// 			leds <= leds << 1;
+
+// 		/* going right, and we aren't at the far right */
+// 		end else begin
+// 			leds <= leds >> 1;
+// 		end
+// 	end
 
 endmodule

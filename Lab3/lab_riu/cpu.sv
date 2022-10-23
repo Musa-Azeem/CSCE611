@@ -13,7 +13,7 @@ module cpu (
     input       [31:0]      SW,
 
     // Output values to display (lower 20 bits are the 5 4-bit decimal values to display)
-    output      [31:0]       hex_display
+    output      [31:0]       display
     );
 
     // opcode values for each type of instruction
@@ -168,7 +168,7 @@ module cpu (
 
     // IO OUTPUT
     // if csrrw instruction is writing to HEX, assign readdata1 to CPU output (otherwise, do nothing)
-    assign hex_display = 
+    assign display = 
         (gpio_we_WB == 1'b1) ? readdata1_EX : hex_display;
 
 
@@ -186,6 +186,4 @@ module cpu (
         .readdata1(readdata1_EX),   // Data from rs1 of EX instr
         .readdata2(readdata2_EX)    // Data from rs2 of EX instr
     );
-    
-    assign hex_display = 0;
 endmodule

@@ -8,20 +8,25 @@ module simtop;
 	logic clk;
 	logic 	[6:0] 		HEX0,HEX1,HEX2,HEX3,HEX4,HEX5,HEX6,HEX7;
 	logic 	[17:0]		SW;
+	logic	[3:0]		KEY;
+	logic	[8:0]		LEDG;
+	logic	[17:0]		LEDR;
+
+
 
 	top dut
 	(
 		//////////// CLOCK //////////
 		.CLOCK_50(clk),
-		.CLOCK2_50(),
-	        .CLOCK3_50(),
+		.CLOCK2_50(clk),
+	    .CLOCK3_50(clk),
 
 		//////////// LED //////////
 		.LEDG(),
 		.LEDR(),
 
 		//////////// KEY //////////
-		.KEY(),
+		.KEY(KEY),
 
 		//////////// SW //////////
 		.SW(SW),
