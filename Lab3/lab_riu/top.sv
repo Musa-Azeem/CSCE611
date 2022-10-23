@@ -59,14 +59,14 @@ module top (
 
 	// OUTPUT HEX VALUES
 	// Split hex_display output of CPU into each 8-segement display
-	hexdriver hex0(.val(hex_display[3:0]), .HEX(HEX0));
-	hexdriver hex1(.val(hex_display[7:4]), .HEX(HEX1));
-	hexdriver hex2(.val(hex_display[11:8]), .HEX(HEX2));
-	hexdriver hex3(.val(hex_display[15:12]), .HEX(HEX3));
-	hexdriver hex4(.val(hex_display[19:16]), .HEX(HEX4));
-	hexdriver hex5(.val(4'h0), .HEX(HEX5));
-	hexdriver hex6(.val(4'h0), .HEX(HEX6));
-	hexdriver hex7(.val(4'h0), .HEX(HEX7));
+	// hexdriver hex0(.val(hex_display[3:0]), .HEX(HEX0));
+	// hexdriver hex1(.val(hex_display[7:4]), .HEX(HEX1));
+	// hexdriver hex2(.val(hex_display[11:8]), .HEX(HEX2));
+	// hexdriver hex3(.val(hex_display[15:12]), .HEX(HEX3));
+	// hexdriver hex4(.val(hex_display[19:16]), .HEX(HEX4));
+	// hexdriver hex5(.val(4'h0), .HEX(HEX5));
+	// hexdriver hex6(.val(4'h0), .HEX(HEX6));
+	// hexdriver hex7(.val(4'h0), .HEX(HEX7));
 
 	// initial begin
 	// 	$monitor("top RAM[0]: %8h", inst_ram[0]);
