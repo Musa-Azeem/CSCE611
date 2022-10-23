@@ -188,16 +188,16 @@ module cpu (
     );
 
     initial begin
-        $monitor("$cpu.sv @ %3t: Fetch : %3h", $time, PC_FETCH);
-        $monitor("$cpu.sv @ %3t: instr_ex : %8h", $time, instruction_EX);
-        $monitor("$cpu.sv @ %3t: Fetch : %3h", $time, PC_FETCH);
-        $monitor("$cpu.sv @ %3t: funct7_ex : %7b", $time, funct7_EX);
-        $monitor("$cpu.sv @ %3t: funct3_ex : %3b", $time, funct3_EX);
-        $monitor("$cpu.sv @ %3t: rs1_ex : %5b", $time, rs1_EX);
-        $monitor("$cpu.sv @ %3t: rs2_ex : %5b", $time, rs2_EX);
-        $monitor("$cpu.sv @ %3t: rd_ex : %5b", $time, rd_EX);
-        $monitor("$cpu.sv @ %3t: opcode_ex : %7b", $time, opcode_EX);
-        $monitor("$cpu.sv @ %3t: imm12_ex : %12b", $time, imm12_EX);
-        $monitor("$cpu.sv @ %3t: imm20_ex : %20b", $time, imm20_EX);
+        $display("$cpu.sv @ %3t: Fetch : %3h", $time, PC_FETCH);
+        $display("$cpu.sv @ %3t: instr_ex : %8h", $time, instruction_EX);
+        $display("$cpu.sv @ %3t: Fetch : %3h", $time, PC_FETCH);
+        $display("$cpu.sv @ %3t: funct7_ex : %7b", $time, funct7_EX);
+        $display("$cpu.sv @ %3t: funct3_ex : %3b", $time, funct3_EX);
+        $display("$cpu.sv @ %3t: rs1_ex : %5b", $time, rs1_EX);
+        $display("$cpu.sv @ %3t: rs2_ex : %5b", $time, rs2_EX);
+        $display("$cpu.sv @ %3t: rd_ex : %5b", $time, rd_EX);
+        $display("$cpu.sv @ %3t: opcode_ex : %7b", $time, opcode_EX);
+        $display("$cpu.sv @ %3t: imm12_ex : %12b", $time, imm12_EX);
+        $display("$cpu.sv @ %3t: imm20_ex : %20b", $time, imm20_EX);
     end
 endmodule
