@@ -98,6 +98,11 @@ module top (
 	logic [31:0] inst_ram [4191:0];
     // initial $readmemh("program.rom", inst_ram);
 	assign inst_ram[0] = 32'd0;
+	assign inst_ram[1] = 32'd0;
+	assign inst_ram[2] = 32'd0;
+	assign inst_ram[3] = 32'd0;
+	assign inst_ram[4] = 32'd0;
+
 
 	// zero extend SW
 	logic [31:0]	SW32;
@@ -121,6 +126,11 @@ module top (
 	hexdriver hex5(.val(4'h0), .HEX(HEX5));
 	hexdriver hex6(.val(4'h0), .HEX(HEX6));
 	hexdriver hex7(.val(4'h0), .HEX(HEX7));
+
+	initial begin
+		$monitor("top RAM[0]: %d", inst_ram[0])
+		$monitor("top hex_display: %d", hex_display)
+	end
 
 
 
