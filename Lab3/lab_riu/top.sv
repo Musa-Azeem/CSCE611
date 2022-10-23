@@ -37,10 +37,10 @@ module top (
 	logic [31:0] inst_ram [4191:0];
     // initial $readmemh("program.rom", inst_ram);
 	assign inst_ram[0] = 32'b0;
-	// assign inst_ram[3] = 32'b0;
-	// assign inst_ram[2] = 32'b0;
-	// assign inst_ram[3] = 32'b0;
-	// assign inst_ram[4] = 32'b0;
+	assign inst_ram[1] = 32'b0;
+	assign inst_ram[2] = 32'b0;
+	assign inst_ram[3] = 32'b0;
+	assign inst_ram[4] = 32'b0;
 
 
 	// ZERO EXTEND SW TO 32 BIT
@@ -69,8 +69,9 @@ module top (
 	hexdriver hex7(.val(4'h0), .HEX(HEX7));
 
 	initial begin
-	 	$monitor("top.sv @ %3t: display: %8h", $time, display);
+	 	$monitor("top.sv @ %3t: keys: %4b", $time, KEY);
 	 	$display("top.sv @ %3t: instr: %8h", $time, inst_ram[0]);
+	 	$monitor("top.sv @ %3t: display: %8h", $time, display);
 	end
 
 
