@@ -35,8 +35,8 @@ module top (
 
 	// READ INSTRUCTION FILE INTO RAM
 	logic [31:0] inst_ram [4191:0];
-    initial $readmemh("program.rom", inst_ram);
-	// assign inst_ram[0] = 32'b0;
+    // initial $readmemh("program.rom", inst_ram);
+	assign inst_ram[0] = 32'b0;
 	// assign inst_ram[3] = 32'b0;
 	// assign inst_ram[2] = 32'b0;
 	// assign inst_ram[3] = 32'b0;
