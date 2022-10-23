@@ -49,13 +49,13 @@ module top (
 
 	// INSTANCE CPU
 	logic [31:0] hex_display;
-	cpu mcpu(
-		.clk(CLOCK_50),
-		.rst_n(KEY[0]), 
-		.inst_ram(inst_ram),
-		.SW(SW32),
-		.display(display)
-	);
+	// cpu mcpu(
+	// 	.clk(CLOCK_50),
+	// 	.rst_n(KEY[0]), 
+	// 	.inst_ram(inst_ram),
+	// 	.SW(SW32),
+	// 	.display(display)
+	// );
 
 	// OUTPUT HEX VALUES
 	// Split hex_display output of CPU into each 8-segement display
