@@ -70,6 +70,7 @@ module top (
 
 	initial begin
 	 	$monitor("top.sv @ %3t: display: %8h", $time, display);
+	 	$display("top.sv @ %3t: instr: %8h", $time, inst_ram[0]);
 	end
 
 
