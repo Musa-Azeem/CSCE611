@@ -45,17 +45,17 @@ module simtop;
     always begin
 		#5 clk = 1;
 		#5 clk = 0;
-
 	end
+
 	// SIMULATE INPUT
 	integer i;
 	initial begin		
 		SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h0};
-		#10
-	// 	// for (i=0; i<10; i=i+1) begin
-	// 	// 	$display("Simtop: %3t", $time);
-	// 	// 	#10
-	// 	// end
+		#10;
+		for (i=0; i<10; i=i+1) begin
+			$display("Simtop: %3t", $time);
+			#10
+		end
 	end
 
 endmodule

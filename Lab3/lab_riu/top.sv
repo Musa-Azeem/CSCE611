@@ -48,7 +48,7 @@ module top (
 	// assign SW32 = { 15'b0, SW };
 
 	// INSTANCE CPU
-	logic [31:0] hex_display;
+	//logic [31:0] hex_display;
 	// cpu mcpu(
 	// 	.clk(CLOCK_50),
 	// 	.rst_n(KEY[0]), 
