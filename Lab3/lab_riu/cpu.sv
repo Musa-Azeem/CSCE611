@@ -13,7 +13,7 @@ module cpu (
     input       [31:0]      SW,
 
     // Output values to display (lower 20 bits are the 5 4-bit decimal values to display)
-    output      [31:0]       display
+    output logic      [31:0]       display
     );
 
     // opcode values for each type of instruction
