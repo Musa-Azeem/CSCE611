@@ -170,7 +170,7 @@ module cpu (
     // IO OUTPUT
     // if csrrw instruction is writing to HEX, assign readdata1 to CPU output (otherwise, do nothing)
     always_comb begin
-        if(gpio_we_WB == 1'b1) display = readdata1_ex;
+        if(gpio_we_WB == 1'b1) display = readdata1_EX;
     end
 
     regfile mregfile(   
