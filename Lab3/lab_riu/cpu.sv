@@ -160,15 +160,12 @@ module cpu (
 
         // IO OUTPUT
         // if csrrw instruction is writing to HEX, assign readdata1 to CPU output (otherwise, do nothing)
-        always_comb begin
-            if(gpio_we_WB == 1'b1) 
-                display <= readdata1_EX;
-            else if (~rst_n) 
-                display <= 32'b0;           // Reset hex displays
-            else 
-                display <= display;         // Don't change
-        end
-
+        if(gpio_we_WB == 1'b1) 
+            display <= readdata1_EX;
+        else if (~rst_n) 
+            display <= 32'b0;           // Reset hex displays
+        else 
+            display <= display;         // Don't change
     end
 
     // Select value to writeback with regsel mux
