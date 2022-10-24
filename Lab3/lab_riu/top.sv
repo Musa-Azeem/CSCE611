@@ -49,9 +49,13 @@ module top (
 
 	// INSTANCE CPU
 	logic [31:0] display;
+
+	logic rst;
+	assign SW = 0;
     cpu mcpu(
 	 	.clk(CLOCK_50),
-	 	.rst_n(~KEY[0]), 
+	 	// .rst_n(~KEY[0]),
+	 	.rst_n(rst), 
 	 	.inst_ram(inst_ram),
 	 	.SW(SW32),
 	 	.display(display)
@@ -69,7 +73,7 @@ module top (
 	hexdriver hex7(.val(4'h0), .HEX(HEX7));
 
 	initial begin
-	 	$monitor("top.sv @ %3t: keys: %4b", $time, KEY);
+	 	$monitor("top.sv @ %3t: keys: %4b", $time, rst);
 	 	$monitor("top.sv @ %3t: instr: %8h", $time, inst_ram[0]);
 	 	$monitor("top.sv @ %3t: display: %8h", $time, display);
 	end
