@@ -193,7 +193,7 @@ module cpu (
         .readdata2(readdata2_EX)    // Data from rs2 of EX instr
     );
 
-    integer i
+    integer i;
     initial begin
 		for (i=0; i<4; i=i+1) begin
             #10;
