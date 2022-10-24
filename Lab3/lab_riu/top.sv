@@ -37,7 +37,7 @@ module top (
 	logic [31:0] inst_ram [4191:0];
     // initial $readmemh("program.rom", inst_ram);
 	assign inst_ram[0] = 32'b0;
-	assign inst_ram[1] = 32'b0;
+	assign inst_ram[1] = 32'b1;
 	assign inst_ram[2] = 32'b0;
 	assign inst_ram[3] = 32'b0;
 	assign inst_ram[4] = 32'b0;
@@ -71,9 +71,14 @@ module top (
 	initial begin
 		#10;
 	 	$display("top.sv @ %3t: keys: %4b", $time, KEY);
-	 	$display("top.sv @ %3t: instr: %8h", $time, inst_ram[0]);
+	 	$display("top.sv @ %3t: instr: %32b", $time, inst_ram[0]);
 	 	$display("top.sv @ %3t: SW: %18b", $time, SW);
-	 	$display("top.sv @ %3t: display: %8h", $time, display);
+	 	$display("top.sv @ %3t: display(hex): %8h", $time, display);
+		#10;
+		$display("top.sv @ %3t: keys: %4b", $time, KEY);
+	 	$display("top.sv @ %3t: instr: %32b", $time, inst_ram[0]);
+	 	$display("top.sv @ %3t: SW: %18b", $time, SW);
+	 	$display("top.sv @ %3t: display(hex): %8h", $time, display);
 	end
 
 

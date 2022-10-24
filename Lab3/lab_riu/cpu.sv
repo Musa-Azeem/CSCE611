@@ -24,18 +24,19 @@ module cpu (
     */
 
     // FETCH INSTRUCTION
-    logic [11:0] PC_FETCH;
+    logic [11:0] PC_F;
     logic [31:0] instruction_EX;
 
     always_ff @(posedge clk) begin
         if (~rst_n) begin
-            PC_FETCH <= 12'd0;
-            instruction_EX <= 32'd0;
+            PC_F <= 12'd0;              // Reset PC to 0
+            instruction_EX <= 32'd0;        // Reset executing instruction
+            display <= 32'b0;               // Reset hex displays
         end 
         else begin
-            // Update PC_FETCH and instruction_EX for execution in next cycle
-            PC_FETCH <= PC_FETCH + 1'b1;
-            instruction_EX <= inst_ram[PC_FETCH];
+            // Update PC_F and instruction_EX for execution in next cycle
+            PC_F <= PC_F + 1'b1;
+            instruction_EX <= inst_ram[PC_F];
         end
     end
 
@@ -189,9 +190,21 @@ module cpu (
 
     initial begin
         #10;
-        $display("$cpu.sv @ %3t: Reset : %1b", $time, rst_n);
-        $display("$cpu.sv @ %3t: Fetch : %3h", $time, PC_FETCH);
-        $display("$cpu.sv @ %3t: instr_ex : %8h", $time, instruction_EX);
+        $display("$cpu.sv @ %3t: Reset_N : %1b", $time, rst_n);
+        $display("$cpu.sv @ %3t: Fetch : %12b", $time, PC_F);
+        $display("$cpu.sv @ %3t: instr_ex : %32b", $time, instruction_EX);
+        $display("$cpu.sv @ %3t: funct7_ex : %7b", $time, funct7_EX);
+        $display("$cpu.sv @ %3t: funct3_ex : %3b", $time, funct3_EX);
+        $display("$cpu.sv @ %3t: rs1_ex : %5b", $time, rs1_EX);
+        $display("$cpu.sv @ %3t: rs2_ex : %5b", $time, rs2_EX);
+        $display("$cpu.sv @ %3t: rd_ex : %5b", $time, rd_EX);
+        $display("$cpu.sv @ %3t: opcode_ex : %7b", $time, opcode_EX);
+        $display("$cpu.sv @ %3t: imm12_ex : %12b", $time, imm12_EX);
+        $display("$cpu.sv @ %3t: imm20_ex : %20b", $time, imm20_EX);
+        #10;
+        $display("$cpu.sv @ %3t: Reset_N : %1b", $time, rst_n);
+        $display("$cpu.sv @ %3t: Fetch : %12b", $time, PC_F);
+        $display("$cpu.sv @ %3t: instr_ex : %32b", $time, instruction_EX);
         $display("$cpu.sv @ %3t: funct7_ex : %7b", $time, funct7_EX);
         $display("$cpu.sv @ %3t: funct3_ex : %3b", $time, funct3_EX);
         $display("$cpu.sv @ %3t: rs1_ex : %5b", $time, rs1_EX);
