@@ -70,10 +70,10 @@ module top (
 
 	initial begin
 		#10;
-	 	$monitor("top.sv @ %3t: keys: %4b", $time, KEY);
-	 	$monitor("top.sv @ %3t: instr: %8h", $time, inst_ram[0]);
-	 	$monitor("top.sv @ %3t: SW: %18b", $time, SW);
-	 	$monitor("top.sv @ %3t: display: %8h", $time, display);
+	 	$display("top.sv @ %3t: keys: %4b", $time, KEY);
+	 	$display("top.sv @ %3t: instr: %8h", $time, inst_ram[0]);
+	 	$display("top.sv @ %3t: SW: %18b", $time, SW);
+	 	$display("top.sv @ %3t: display: %8h", $time, display);
 	end
 
 
