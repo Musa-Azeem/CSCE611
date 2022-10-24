@@ -56,7 +56,7 @@ module simtop;
 		#10;
 		
 		KEY = 4'b0000;
-		$dsiplay("Simtop: %3t", $time);
+		$display("Simtop: %3t", $time);
 		#10;
 		// for (i=0; i<3; i=i+1) begin
 		// 	$display("Simtop: %3t", $time);
