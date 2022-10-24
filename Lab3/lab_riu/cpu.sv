@@ -31,7 +31,6 @@ module cpu (
         if (~rst_n) begin
             PC_F <= 12'd0;              // Reset PC to 0
             instruction_EX <= 32'd0;        // Reset executing instruction
-            display <= 32'b0;               // Reset hex displays
         end 
         else begin
             // Update PC_F and instruction_EX for execution in next cycle
@@ -149,7 +148,7 @@ module cpu (
     // ALU output
     logic [31:0]    R_WB;
 
-    // Update Pipeline Registers for next cycle
+    // Update Pipeline Registers and Display output for next cycle
     always_ff @(posedge clk) begin
         rd_WB <= rd_EX;
         imm12_extended_WB <= imm12_extented_EX;
@@ -158,6 +157,18 @@ module cpu (
         regsel_WB <= regsel_EX;
         gpio_we_WB <= gpio_we_EX;
         R_WB <= R_EX;
+
+        // IO OUTPUT
+        // if csrrw instruction is writing to HEX, assign readdata1 to CPU output (otherwise, do nothing)
+        always_comb begin
+            if(gpio_we_WB == 1'b1) 
+                display <= readdata1_EX;
+            else if (~rst_n) 
+                display <= 32'b0;           // Reset hex displays
+            else 
+                display <= display;         // Don't change
+        end
+
     end
 
     // Select value to writeback with regsel mux
@@ -168,10 +179,7 @@ module cpu (
         R_WB;                                           // Write back the ALU output
 
     // IO OUTPUT
-    // if csrrw instruction is writing to HEX, assign readdata1 to CPU output (otherwise, do nothing)
-    always_comb begin
-        if(gpio_we_WB == 1'b1) display = readdata1_EX;
-    end
+
 
     regfile mregfile(   
         .clk(clk),
