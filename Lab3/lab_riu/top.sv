@@ -72,10 +72,10 @@ module top (
 	hexdriver hex6(.val(4'h0), .HEX(HEX6));
 	hexdriver hex7(.val(4'h0), .HEX(HEX7));
 
-	initial begin
-	 	$monitor("top.sv @ %3t: keys: %4b", $time, rst);
-	 	$monitor("top.sv @ %3t: instr: %8h", $time, inst_ram[0]);
-	 	$monitor("top.sv @ %3t: display: %8h", $time, display);
+	always_ff @(posedge CLOCK_50) begin
+	 	$display("top.sv @ %3t: keys: %4b", $time, rst);
+	 	$display("top.sv @ %3t: instr: %8h", $time, inst_ram[0]);
+	 	$display("top.sv @ %3t: display: %8h", $time, display);
 	end
 
 
