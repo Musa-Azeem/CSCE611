@@ -1,7 +1,7 @@
 m255
 K4
 z2
-!s11f MIXED_VERSIONS
+!s11f vlog 2020.1 2020.01, Jan 28 2020
 13
 !s112 1.1
 !i10d 8192
@@ -10,100 +10,90 @@ z2
 cModel Technology
 Z0 d/acct/mmazeem/611/CSCE611/Lab3/lab_riu
 T_opt
-Z1 !s110 1666646229
-Vba:?P`zMIFZo:2nmSIA:h2
-Z2 04 6 4 work simtop fast 0
-=1-000ae431a4f1-635700d5-cec1f-3de3
-Z3 o-quiet -auto_acc_if_foreign -work work
-Z4 tCvgOpt 0
+!s110 1666650022
+Vll1PK@oBo`>>Y6HRQ7h0;0
+Z1 04 6 4 work simtop fast 0
+=1-000ae431a4f1-63570fa6-4d1f2-4d40
+o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
 n@_opt
-Z5 OL;O;2020.1;71
+Z3 OL;O;2020.1;71
+R0
 T_opt1
-!s110 1666638670
-Vk1K0cCnJ^84=UB`NV394N2
-04 3 4 work cpu fast 0
-=1-000ae431a4f1-6356e34d-e85a9-2645
-R3
-R4
-n@_opt1
-R5
-R0
-T_opt2
-!s110 1666640290
-VgWVhNKZ8@j;<mJ_XKBAVU3
-R2
-=1-000ae431a4f1-6356e9a2-32850-2c29
+!s110 1666651163
+VjDCm=JmAREGkoXn7Rh^V02
+R1
+=13-000ae431a4f1-6357141b-3fc8-4dc7
 o-quiet -auto_acc_if_foreign -work work +acc
-R4
-n@_opt2
-R5
-R0
+R2
+n@_opt1
+R3
 valu
-Z6 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-!s110 1666646228
+Z4 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+!s110 1666649651
 !i10b 1
 !s100 Fz;21dl2PMZ6MFeGeLCUd1
-Z7 !s11b Dg1SIo80bB@j0V0VzS_@n1
-Idkda=b6UUa[8UodDQhYLI2
-Z8 VDg1SIo80bB@j0V0VzS_@n1
+Z5 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IM_YTzY`<cjkKL0<I3EL5V0
+Z6 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
-Z9 w1646062652
-8alu.sv
-Falu.sv
-!i122 95
+Z7 w1646062652
+8/acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv
+F/acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv
+!i122 4
 L0 7 48
-Z10 OL;L;2020.1;71
+Z8 OL;L;2020.1;71
 r1
 !s85 0
 31
-Z11 !s108 1666646228.000000
-Z12 !s107 top.sv|simtop.sv|regfile.sv|instruction_decoder.sv|hexdriver.sv|cpu.sv|control_fields.sv|alu.sv|
-Z13 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|alu.sv|control_fields.sv|cpu.sv|hexdriver.sv|instruction_decoder.sv|regfile.sv|simtop.sv|top.sv|
+!s108 1666649651.000000
+!s107 /acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv|
+!s90 -reportprogress|300|-work|work|/acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv|
 !i113 0
-Z14 o-pedanticerrors -lint -hazards -source -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R4
+Z9 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
 vcontrol_fields
-R6
-R1
+R4
+Z10 !s110 1666651160
 !i10b 1
-!s100 _C8aAoPUNH2>`g_?f<hlo0
-R7
-IiR5QWchDSil]W0ozPH5V[2
-R8
+!s100 0`bBfA>1Z4BJL[Gc`U=bc0
+R5
+InPX064eMboLf8IIN`JYWG1
+R6
 S1
 R0
-w1666645742
+w1666651148
 8control_fields.sv
 Fcontrol_fields.sv
-!i122 95
+!i122 29
 L0 1 105
-R10
+R8
 r1
 !s85 0
 31
-R11
-R12
-R13
+Z11 !s108 1666651160.000000
+Z12 !s107 top.sv|cpu.sv|control_fields.sv|
+Z13 !s90 -reportprogress|300|control_fields.sv|cpu.sv|top.sv|
 !i113 0
-R14
-R4
+Z14 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
 vcpu
-R6
-R1
+R4
+R10
 !i10b 1
-!s100 >0JzPPiUnU7DGM?0aP1c^2
-R7
-I2_IY1<>`J<lXNkzFk9Nm@3
-R8
+!s100 K8=jjBnOVzbNNTMZUS>2^0
+R5
+IRg[Db0m?KCc0=8ZlzNnRL2
+R6
 S1
 R0
-w1666646226
+w1666651087
 8cpu.sv
 Fcpu.sv
-!i122 95
-L0 5 229
-R10
+!i122 29
+L0 5 222
+R8
 r1
 !s85 0
 31
@@ -112,123 +102,123 @@ R12
 R13
 !i113 0
 R14
-R4
+R2
 vhexdriver
-R6
-R1
+R4
+Z15 !s110 1666649652
 !i10b 1
 !s100 9]g92U:1R]Fh_59Z8m4?W0
-R7
-IReBzKHPSSoR5JD7N9j31`0
-R8
+R5
+Ilfc7C[0kW]o`0AU764nSF0
+R6
 S1
 R0
 w1665605688
-8hexdriver.sv
-Fhexdriver.sv
-!i122 95
+8/acct/mmazeem/611/CSCE611/Lab3/lab_riu/hexdriver.sv
+F/acct/mmazeem/611/CSCE611/Lab3/lab_riu/hexdriver.sv
+!i122 7
 L0 1 22
-R10
+R8
 r1
 !s85 0
 31
-R11
-R12
-R13
+Z16 !s108 1666649652.000000
+!s107 /acct/mmazeem/611/CSCE611/Lab3/lab_riu/hexdriver.sv|
+!s90 -reportprogress|300|-work|work|/acct/mmazeem/611/CSCE611/Lab3/lab_riu/hexdriver.sv|
 !i113 0
-R14
-R4
+R9
+R2
 vinst_decoder
-R6
-R1
+R4
+R15
 !i10b 1
 !s100 KziM@YVmV]bB[daFkCQ@i2
-R7
-I3<HWDDMIV2AoTW[L_Chfz0
-R8
+R5
+In8H9M:RhQZ;=NQJO;iO9O1
+R6
 S1
 R0
 w1666415768
-8instruction_decoder.sv
-Finstruction_decoder.sv
-!i122 95
+8/acct/mmazeem/611/CSCE611/Lab3/lab_riu/instruction_decoder.sv
+F/acct/mmazeem/611/CSCE611/Lab3/lab_riu/instruction_decoder.sv
+!i122 8
 L0 2 21
-R10
+R8
 r1
 !s85 0
 31
-R11
-R12
-R13
+R16
+!s107 /acct/mmazeem/611/CSCE611/Lab3/lab_riu/instruction_decoder.sv|
+!s90 -reportprogress|300|-work|work|/acct/mmazeem/611/CSCE611/Lab3/lab_riu/instruction_decoder.sv|
 !i113 0
-R14
-R4
+R9
+R2
 vregfile
-R6
-R1
+R4
+R15
 !i10b 1
 !s100 FTTIUH1N4_CNg4Yi`?kN>3
-R7
-IXN8VVa4lPF2F61D6fAIkT3
-R8
+R5
+I6nE^O[]NacnUV_G2dz]PU3
+R6
 S1
 R0
-R9
-8regfile.sv
-Fregfile.sv
-!i122 95
+R7
+8/acct/mmazeem/611/CSCE611/Lab3/lab_riu/regfile.sv
+F/acct/mmazeem/611/CSCE611/Lab3/lab_riu/regfile.sv
+!i122 9
 L0 3 74
-R10
+R8
 r1
 !s85 0
 31
-R11
-R12
-R13
+R16
+!s107 /acct/mmazeem/611/CSCE611/Lab3/lab_riu/regfile.sv|
+!s90 -reportprogress|300|-work|work|/acct/mmazeem/611/CSCE611/Lab3/lab_riu/regfile.sv|
 !i113 0
-R14
-R4
+R9
+R2
 vsimtop
-R6
-R1
+R4
+!s110 1666650178
 !i10b 1
 !s100 oJjSbEhN=[glH<g>K5ON@0
-R7
-I0m9>NPca<3k:Sfii>PeZA2
-R8
+R5
+Ic4ZXn:L83nN01YNCc:Jl21
+R6
 S1
 R0
 w1666640187
 8simtop.sv
 Fsimtop.sv
-!i122 95
+!i122 18
 L0 6 59
-R10
+R8
 r1
 !s85 0
 31
-R11
-R12
-R13
+!s108 1666650178.000000
+!s107 simtop.sv|
+!s90 -reportprogress|300|simtop.sv|
 !i113 0
 R14
-R4
+R2
 vtop
-R6
-R1
+R4
+R10
 !i10b 1
 !s100 F;D?QoTBGV=C=eo7lDX8J2
-R7
-ILe^Cb`lal9XEFof<h4k_Z1
-R8
+R5
+I:05mN[Q;DmbJk7g5]zeEW1
+R6
 S1
 R0
-w1666630305
+w1666651093
 8top.sv
 Ftop.sv
-!i122 95
+!i122 29
 L0 6 140
-R10
+R8
 r1
 !s85 0
 31
@@ -237,4 +227,4 @@ R12
 R13
 !i113 0
 R14
-R4
+R2

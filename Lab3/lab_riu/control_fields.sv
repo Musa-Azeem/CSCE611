@@ -47,29 +47,29 @@ module control_fields(
             case(funct7)
                 7'h0: begin
                     case (funct3)
-                        3'b000:     aluop = 0011;       // add
-                        3'b001:     aluop = 1000;       // sll      (<<)
-                        3'b010:     aluop = 1100;       // slt      (<)
-                        3'b011:     aluop = 1101;       // sltu     (< unsigned)
-                        3'b100:     aluop = 0010;       // xor
-                        3'b101:     aluop = 1001;       // srl      (>>)
-                        3'b110:     aluop = 0001;       // or
-                        3'b111:     aluop = 0000;       // and
+                        3'b000:     aluop = 4'b0011;       // add
+                        3'b001:     aluop = 4'b1000;       // sll      (<<)
+                        3'b010:     aluop = 4'b1100;       // slt      (<)
+                        3'b011:     aluop = 4'b1101;       // sltu     (< unsigned)
+                        3'b100:     aluop = 4'b0010;       // xor
+                        3'b101:     aluop = 4'b1001;       // srl      (>>)
+                        3'b110:     aluop = 4'b0001;       // or
+                        3'b111:     aluop = 4'b0000;       // and
                     endcase
                 end
 
                 7'h1: begin
                     case (funct3)
-                        3'b000:     aluop = 0101;       // mul
-                        3'b001:     aluop = 0110;       // mulh
-                        3'b011:     aluop = 0111;       // mulhu     
+                        3'b000:     aluop = 4'b0101;       // mul
+                        3'b001:     aluop = 4'b0110;       // mulh
+                        3'b011:     aluop = 4'b0111;       // mulhu     
                     endcase
                 end
 
                 7'h20: begin
                     case (funct3)
-                        3'b000:     aluop = 0100;       // sub
-                        3'b101:     aluop = 1010;       // sra      (>>>)
+                        3'b000:     aluop = 4'b0100;       // sub
+                        3'b101:     aluop = 4'b1010;       // sra      (>>>)
                     endcase
                 end
 
@@ -85,17 +85,17 @@ module control_fields(
 
             // Get aluop based on funct3
             case (funct3)
-                3'b000:     aluop = 0011;       // addi
-                3'b001:     aluop = 1000;       // slli 
-                3'b100:     aluop = 0010;       // xori
-                3'b110:     aluop = 0001;       // ori
-                3'b111:     aluop = 0000;       // andi
+                3'b000:     aluop = 4'b0011;       // addi
+                3'b001:     aluop = 4'b1000;       // slli 
+                3'b100:     aluop = 4'b0010;       // xori
+                3'b110:     aluop = 4'b0001;       // ori
+                3'b111:     aluop = 4'b0000;       // andi
 
                 // Shift instructions - choose aluop based on first 7 bits of imm12
                 3'b101: begin
                     case (imm12[11:5])
-                        7'h0:   aluop = 1001;   // srli
-                        7'h20:  aluop = 1010;   // srai
+                        7'h0:   aluop = 4'b1001;   // srli
+                        7'h20:  aluop = 4'b1010;   // srai
                     endcase
                 end
             endcase
