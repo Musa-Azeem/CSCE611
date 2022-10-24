@@ -38,9 +38,9 @@ module top (
     // initial $readmemh("program.rom", inst_ram);
 	assign inst_ram[0] = 32'b0;
 	assign inst_ram[1] = 32'b1;
-	assign inst_ram[2] = 32'b0;
-	assign inst_ram[3] = 32'b0;
-	assign inst_ram[4] = 32'b0;
+	// assign inst_ram[2] = 32'b0;
+	// assign inst_ram[3] = 32'b0;
+	// assign inst_ram[4] = 32'b0;
 
 
 	// ZERO EXTEND SW TO 32 BIT
@@ -68,18 +68,18 @@ module top (
 	hexdriver hex6(.val(4'h0), .HEX(HEX6));
 	hexdriver hex7(.val(4'h0), .HEX(HEX7));
 
-	initial begin
-		#10;
-	 	$display("top.sv @ %3t: keys: %4b", $time, KEY);
-	 	$display("top.sv @ %3t: instr: %32b", $time, inst_ram[0]);
-	 	$display("top.sv @ %3t: SW: %18b", $time, SW);
-	 	$display("top.sv @ %3t: display(hex): %8h", $time, display);
-		#10;
-		$display("top.sv @ %3t: keys: %4b", $time, KEY);
-	 	$display("top.sv @ %3t: instr: %32b", $time, inst_ram[0]);
-	 	$display("top.sv @ %3t: SW: %18b", $time, SW);
-	 	$display("top.sv @ %3t: display(hex): %8h", $time, display);
-	end
+	// initial begin
+		// #10;
+	 	// $display("top.sv @ %3t: keys: %4b", $time, KEY);
+	 	// $display("top.sv @ %3t: instr: %32b", $time, inst_ram[0]);
+	 	// $display("top.sv @ %3t: SW: %18b", $time, SW);
+	 	// $display("top.sv @ %3t: display(hex): %8h", $time, display);
+		// #10;
+		// $display("top.sv @ %3t: keys: %4b", $time, KEY);
+	 	// $display("top.sv @ %3t: instr: %32b", $time, inst_ram[0]);
+	 	// $display("top.sv @ %3t: SW: %18b", $time, SW);
+	 	// $display("top.sv @ %3t: display(hex): %8h", $time, display);
+	// end
 
 
 // //=======================================================

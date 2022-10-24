@@ -50,18 +50,15 @@ module simtop;
 	// SIMULATE INPUT
 	integer i;
 	initial begin		
-		SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h0};
-		KEY = 4'b1111;
-		$display("Simtop: %3t", $time);
-		#10;
-		
-		KEY = 4'b0000;
-		$display("Simtop: %3t", $time);
-		#10;
-		// for (i=0; i<3; i=i+1) begin
-		// 	$display("Simtop: %3t", $time);
-		// 	#10;
-		// end
+		for (i=0; i<4; i=i+1) begin
+			if (i==0)
+				KEY = 4'b1111;
+			else
+				KEY = 4'b0000;
+			SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h0};
+			$display("Simtop: %3t", $time);
+			#10;
+		end
 		$finish;
 	end
 
