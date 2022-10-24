@@ -1,5 +1,5 @@
 # vsim -pedanticerrors -hazards -c -sva -immedassert work.simtop -do "/dev/stdin" 
-# Start time: 21:16:07 on Oct 22,2022
+# Start time: 17:17:09 on Oct 24,2022
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  Questa Sim-64
 # //  Version 2020.1 linux_x86_64 Jan 28 2020
@@ -18,30 +18,15 @@
 # Loading sv_std.std
 # Loading work.simtop(fast)
 # do /dev/stdin
-# $cpu.sv @   0: Reset : x
-# $cpu.sv @   0: Fetch : xxx
-# $cpu.sv @   0: instr_ex : xxxxxxxx
-# $cpu.sv @   0: funct7_ex : xxxxxxx
-# $cpu.sv @   0: funct3_ex : xxx
-# $cpu.sv @   0: rs1_ex : xxxxx
-# $cpu.sv @   0: rs2_ex : xxxxx
-# $cpu.sv @   0: rd_ex : xxxxx
-# $cpu.sv @   0: opcode_ex : xxxxxxx
-# $cpu.sv @   0: imm12_ex : xxxxxxxxxxxx
-# $cpu.sv @   0: imm20_ex : xxxxxxxxxxxxxxxxxxxx
 # Simtop:   0
-# top.sv @   0: display: xxxxxxxx
+# aluop2 xxxx
+# aluop1 xxxx
 # Simtop:  10
+# aluop1 1011
+# aluop2 1011
 # Simtop:  20
 # Simtop:  30
-# Simtop:  40
-# Simtop:  50
-# Simtop:  60
-# Simtop:  70
-# Simtop:  80
-# Simtop:  90
-# Simtop: 100
 # 
 # <EOF>
-# End time: 21:16:07 on Oct 22,2022, Elapsed time: 0:00:00
+# End time: 17:17:10 on Oct 24,2022, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0

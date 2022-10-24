@@ -141,8 +141,8 @@ module cpu (
     logic [31:0]    imm20_extended_WB;       // imm20 for U-type
 
     // Control fields
+    logic [1:0] regsel_WB;
     logic regwrite_WB;
-    logic regsel_WB;
     logic gpio_we_WB;
 
     // ALU output
@@ -180,7 +180,7 @@ module cpu (
 
     regfile mregfile(   
         .clk(clk),
-        .rst(rst_n),
+        .rst(~rst_n),
         .we(regwrite_WB),           // Pass we control signal for WB stage
         // Read data - EX stage
         .readaddr1(rs1_EX),         // Connect rs1 field from EX instr
@@ -193,34 +193,34 @@ module cpu (
         .readdata2(readdata2_EX)    // Data from rs2 of EX instr
     );
 
-    integer i;
-    initial begin
-		for (i=0; i<4; i=i+1) begin
-            #10;
-            $display("$cpu.sv @ %3t: Reset_N : %1b", $time, rst_n);
+    // integer i;
+    // initial begin
+	// 	for (i=0; i<4; i=i+1) begin
+    //         #10;
+    //         $display("$cpu.sv @ %3t: Reset_N : %1b", $time, rst_n);
 
-            // Fetch
-            $display("$cpu.sv @ %3t: Fetch : %12b", $time, PC_F);
+    //         // Fetch
+    //         $display("$cpu.sv @ %3t: Fetch : %12b", $time, PC_F);
 
-            // Decode
-            $display("$cpu.sv @ %3t: instr_ex : %32b", $time, instruction_EX);
-            $display("$cpu.sv @ %3t: funct7_ex : %7b", $time, funct7_EX);
-            $display("$cpu.sv @ %3t: funct3_ex : %3b", $time, funct3_EX);
-            $display("$cpu.sv @ %3t: rs1_ex : %5b", $time, rs1_EX);
-            $display("$cpu.sv @ %3t: rs2_ex : %5b", $time, rs2_EX);
-            $display("$cpu.sv @ %3t: rd_ex : %5b", $time, rd_EX);
-            $display("$cpu.sv @ %3t: opcode_ex : %7b", $time, opcode_EX);
-            $display("$cpu.sv @ %3t: imm12_ex : %12b", $time, imm12_EX);
-            $display("$cpu.sv @ %3t: imm20_ex : %20b", $time, imm20_EX);
+    //         // Decode
+    //         $display("$cpu.sv @ %3t: instr_ex : %32b", $time, instruction_EX);
+    //         $display("$cpu.sv @ %3t: funct7_ex : %7b", $time, funct7_EX);
+    //         $display("$cpu.sv @ %3t: funct3_ex : %3b", $time, funct3_EX);
+    //         $display("$cpu.sv @ %3t: rs1_ex : %5b", $time, rs1_EX);
+    //         $display("$cpu.sv @ %3t: rs2_ex : %5b", $time, rs2_EX);
+    //         $display("$cpu.sv @ %3t: rd_ex : %5b", $time, rd_EX);
+    //         $display("$cpu.sv @ %3t: opcode_ex : %7b", $time, opcode_EX);
+    //         $display("$cpu.sv @ %3t: imm12_ex : %12b", $time, imm12_EX);
+    //         $display("$cpu.sv @ %3t: imm20_ex : %20b", $time, imm20_EX);
 
-            // Control
+    //         // Control
 
 
-            // ALU output
+    //         // ALU output
 
-            // WB
+    //         // WB
             
 
-        end
-    end
+    //     end
+    // end
 endmodule
