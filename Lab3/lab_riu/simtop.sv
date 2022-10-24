@@ -61,5 +61,9 @@ module simtop;
 		end
 	end
 
+	always_ff @(posedge clk) begin
+	 	$display("%3t", $time);
+	end
+
 endmodule
 
