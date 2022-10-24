@@ -51,7 +51,6 @@ module top (
 	logic [31:0] display;
 
 	logic rst;
-	assign SW = 0;
     cpu mcpu(
 	 	.clk(CLOCK_50),
 	 	// .rst_n(~KEY[0]),
@@ -73,9 +72,11 @@ module top (
 	hexdriver hex7(.val(4'h0), .HEX(HEX7));
 
 	always_ff @(posedge CLOCK_50) begin
-	 	$display("top.sv @ %3t: keys: %4b", $time, rst);
-	 	$display("top.sv @ %3t: instr: %8h", $time, inst_ram[0]);
-	 	$display("top.sv @ %3t: display: %8h", $time, display);
+	 	$display("%3t", $time);
+	 	// $display("top.sv @ %3t: keys: %4b", $time, rst);
+	 	// $display("top.sv @ %3t: instr: %8h", $time, inst_ram[0]);
+	 	// $display("top.sv @ %3t: SW: %17b", $time, SW32);
+	 	// $display("top.sv @ %3t: display: %8h", $time, display);
 	end
 
 
