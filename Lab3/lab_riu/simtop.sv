@@ -60,7 +60,7 @@ module simtop;
 			$display("Simtop: %3t", $time);
 			#10;
 		end
-		$finish
+		$finish;
 	end
 
 endmodule
