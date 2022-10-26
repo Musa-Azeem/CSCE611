@@ -1,58 +1,61 @@
-li x10,10
-li x11,429496730
+li a0, 10
+li a1, 4191
 
-add	x15	x0	x0	# clear registers 15, 5, 6
-add	x5	x0	x0
-add	x6	x0	x0
+#clear registers for use
+add	a2,	zero,	zero
+add	t1, zero, zero
+add	t2, zero, zero
 
-csrrw	x5	io0	x0
+csrrw	t1,	mhex2,	zero
 
-mul	x6	x5	x11	# x6 is the fractional part
-mulhu	x5	x5	x11	# x5 is the running value
-mulhu	x6	x6	x10	# multiply by 10, x6 is now the modulus
-slli	x6	x6	0
-or	x15	x15	x6
+#process: get the fractional part, the actual value, and multiply by 10 to get the modulous of the temp register
+#increment the slli by 4 each time from 31:0 - which is the num of inputs
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 0
+or	a2, a2, t2
 
-mul	x6	x5	x11	#  x6 is the fractional part
-mulhu	x5	x5	x11	# x5 is the running value
-mulhu	x6	x6	x10	# multiply by 10, x6 is now the modulus
-slli	x6	x6	4
-or	x15	x15	x6
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 4
+or	a2, a2, t2
 
-mul	x6	x5	x11	#  x6 is the fractional part
-mulhu	x5	x5	x11	# x5 is the running value
-mulhu	x6	x6	x10	# multiply by 10, x6 is now the modulus
-slli	x6	x6	8
-or	x15	x15	x6
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 8
+or	a2, a2, t2
 
-mul	x6	x5	x11	#  x6 is the fractional part
-mulhu	x5	x5	x11	# x5 is the running value
-mulhu	x6	x6	x10	# multiply by 10, x6 is now the modulus
-slli	x6	x6	12
-or	x15	x15	x6
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 16
+or	a2, a2, t2
 
-mul	x6	x5	x11	#  x6 is the fractional part
-mulhu	x5	x5	x11	# x5 is the running value
-mulhu	x6	x6	x10	# multiply by 10, x6 is now the modulus
-slli	x6	x6	16
-or	x15	x15	x6
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 20
+or	a2, a2, t2
 
-mul	x6	x5	x11	#  x6 is the fractional part
-mulhu	x5	x5	x11	# x5 is the running value
-mulhu	x6	x6	x10	# multiply by 10, x6 is now the modulus
-slli	x6	x6	20
-or	x15	x15	x6
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 24
+or	a2, a2, t2
 
-mul	x6	x5	x11	#  x6 is the fractional part
-mulhu	x5	x5	x11	# x5 is the running value
-mulhu	x6	x6	x10	# multiply by 10, x6 is now the modulus
-slli	x6	x6	24
-or	x15	x15	x6
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 28
+or	a2, a2, t2
 
-mul	x6	x5	x11	#  x6 is the fractional part
-mulhu	x5	x5	x11	# x5 is the running value
-mulhu	x6	x6	x10	# multiply by 10, x6 is now the modulus
-slli	x6	x6	28
-or	x15	x15	x6
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 32
+or	a2, a2, t2
 
-csrrw	x0	io2	x15
+csrrw	zero, mhex2, a2
