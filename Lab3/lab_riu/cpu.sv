@@ -114,7 +114,7 @@ module cpu (
 
     // set second ALU input with alusrc control mux
     assign B_EX =
-        (alusrc_EX == 1'b0) ? readdata1_EX :        // If alusrc is 0, use data read from rs2
+        (alusrc_EX == 1'b0) ? readdata2_EX :        // If alusrc is 0, use data read from rs2
         imm12_extented_EX;                          // if alusrc is 1, use sign extended imm12
 
     // EXECUTE INSTRUCTION IN ALU

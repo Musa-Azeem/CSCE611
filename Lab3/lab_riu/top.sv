@@ -35,11 +35,11 @@ module top (
 
 	// READ INSTRUCTION FILE INTO RAM
 	logic [31:0] inst_ram [4191:0];
-    // initial $readmemh("program.rom", inst_ram);
-	assign inst_ram[0] = {12'b1010, 5'b0, 3'b0, 5'b1, 7'b0010011};	//addi x1, x0, 10
-	assign inst_ram[1] = 32'b0;
-	assign inst_ram[2] = 32'b0;
-	assign inst_ram[3] = 32'b0;
+    initial $readmemh("../riscv1.rom", inst_ram);
+	// assign inst_ram[0] = {12'b1010, 5'b0, 3'b0, 5'b1, 7'b0010011};	//addi x1, x0, 10
+	// assign inst_ram[1] = 32'b0;
+	// assign inst_ram[2] = 32'b0;
+	// assign inst_ram[3] = 32'b0;
 	// assign inst_ram[4] = 32'b0;
 
 
