@@ -1,5 +1,5 @@
-li a0, 10
-li a1, 4191
+li a0, 10 #used for multiplying by 10 to get the modulous
+li a1, 4194304 #Initial = 256
 
 #clear registers for use
 add	a2,	zero,	zero
