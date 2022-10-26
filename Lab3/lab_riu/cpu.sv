@@ -175,9 +175,8 @@ module cpu (
         (regsel_WB == 2'b01) ? imm20_extended_WB :      // Write back U-type immediate
         R_WB;                                           // Write back the ALU output
 
-    // IO OUTPUT
 
-
+    // REGISTER FILE
     regfile mregfile(   
         .clk(clk),
         .rst(~rst_n),
