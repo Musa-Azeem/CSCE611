@@ -6,22 +6,21 @@ module cpu (
     // Clock and Reset
     input                   clk, rst_n,
 
-    // RAM
-    input       [31:0]      inst_ram [4191:0],
-
     // Switches (lower 17 bits are input from switches)
     input       [31:0]      SW,
 
-    // Output values to display (lower 20 bits are the 5 4-bit decimal values to display)
+    // Output values to display (8 4-bit fields go to each 8-segment display)
     output logic     [31:0]       display
     );
-
-    // opcode values for each type of instruction
 
     /*
     ---------------------------- PIPELINE STAGE 1 ----------------------------
                                      FETCH
     */
+	
+    // READ INSTRUCTION FILE INTO RAM
+	logic [31:0] inst_ram [4191:0];
+    initial $readmemh("../riscv1.rom", inst_ram);
 
     // FETCH INSTRUCTION
     logic [11:0] PC_F;
@@ -147,9 +146,8 @@ module cpu (
 
     // ALU output
     logic [31:0]    R_WB;
-
-    // Instruction for debug
-	logic [31:0] instr_WB;
+    // data read from rs1 (for IO Output)
+    logic [31:0]    readdata1_WB;
 
     // Update Pipeline Registers and Display output for next cycle
     always_ff @(posedge clk) begin
@@ -160,14 +158,12 @@ module cpu (
         regsel_WB <= regsel_EX;
         gpio_we_WB <= gpio_we_EX;
         R_WB <= R_EX;
-
-		//Debug
-		instr_WB <= instruction_EX;
+        readdata1_WB <= readdata1_EX;
 
         // IO OUTPUT
         // if csrrw instruction is writing to HEX, assign readdata1 to CPU output (otherwise, do nothing)
         if(gpio_we_WB == 1'b1) 
-            display <= readdata1_EX;
+            display <= readdata1_WB;
         else if (~rst_n) 
             display <= 32'b0;           // Reset hex displays
         else 
@@ -199,60 +195,60 @@ module cpu (
     );
 
     // testing register values
-    always begin
-        #10;
-        // During first cycle, instruction_WB is X
-        // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
-        #10;
-        // second cycle, instruction_WB is 0 (from reset)
-        // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
-        #10;
-        // third cycle, instruction_WB is ram[0]
-        // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
-		if (data_WB != 8'hA) $display("instruction 0 incorrect");
-        #10;
-        // fourth cycle, instruction_WB is ram[1]
-        // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
-        if (data_WB != 8'h5) $display("instruction 1 incorrect");
+    // always begin
+    //     #10;
+    //     // During first cycle, instruction_WB is X
+    //     // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
+    //     #10;
+    //     // second cycle, instruction_WB is 0 (from reset)
+    //     // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
+    //     #10;
+    //     // third cycle, instruction_WB is ram[0]
+    //     // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
+	// 	if (data_WB != 8'hA) $display("instruction 0 incorrect");
+    //     #10;
+    //     // fourth cycle, instruction_WB is ram[1]
+    //     // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
+    //     if (data_WB != 8'h5) $display("instruction 1 incorrect");
 
-        #10;
-        if (data_WB != 8'hF) $display("instruction 2 incorrect");
+    //     #10;
+    //     if (data_WB != 8'hF) $display("instruction 2 incorrect");
 
-        #10;
-		if (data_WB != 8'h5) $display("instruction 3 incorrect");
+    //     #10;
+	// 	if (data_WB != 8'h5) $display("instruction 3 incorrect");
 
-        #10;
-        if (data_WB != 8'h0) $display("instruction 4 incorrect");
+    //     #10;
+    //     if (data_WB != 8'h0) $display("instruction 4 incorrect");
 
-        #10;
-        if (data_WB != 8'hf) $display("instruction 5 incorrect");
+    //     #10;
+    //     if (data_WB != 8'hf) $display("instruction 5 incorrect");
 
-        #10;
-        if (data_WB != 8'hf) $display("instruction 6 incorrect");
+    //     #10;
+    //     if (data_WB != 8'hf) $display("instruction 6 incorrect");
 
-        #10;
-        if (data_WB != 8'h00000140) $display("instruction 7 incorrect");
+    //     #10;
+    //     if (data_WB != 8'h00000140) $display("instruction 7 incorrect");
 
-        #10;
-        if (data_WB != 8'h0) $display("instruction 8 incorrect");
+    //     #10;
+    //     if (data_WB != 8'h0) $display("instruction 8 incorrect");
 
-        #10;
-        if (data_WB != 8'h0) $display("instruction 9 incorrect");
+    //     #10;
+    //     if (data_WB != 8'h0) $display("instruction 9 incorrect");
 
-        #10;
-        if (data_WB != 8'h0) $display("instruction 10 incorrect");
+    //     #10;
+    //     if (data_WB != 8'h0) $display("instruction 10 incorrect");
 
-        #10;
-        if (data_WB != 8'h0) $display("instruction 11 incorrect");
+    //     #10;
+    //     if (data_WB != 8'h0) $display("instruction 11 incorrect");
 
-        #10;
-        if (data_WB != 8'h32) $display("instruction 12 incorrect");
+    //     #10;
+    //     if (data_WB != 8'h32) $display("instruction 12 incorrect");
 
-        #10;
-        if (data_WB != 8'h0) $display("instruction 13 incorrect");
+    //     #10;
+    //     if (data_WB != 8'h0) $display("instruction 13 incorrect");
 
-        #10;
-        if (data_WB != 8'h0) $display("instruction 14 incorrect");
-        $finish;
-    end
+    //     #10;
+    //     if (data_WB != 8'h0) $display("instruction 14 incorrect");
+    //     $finish;
+    // end
 endmodule

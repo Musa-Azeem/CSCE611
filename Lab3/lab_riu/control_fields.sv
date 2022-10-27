@@ -12,8 +12,8 @@ module control_fields(
 
     always_comb begin
         // First, IO type (csrrw) control fields
-        if (opcode == 7'h73 && funct3 == 3'b001) begin
-            // Don't set aluop or alusrc - ALU not used for IO
+        if (opcode == 7'h73) begin
+            // Don't care about aluop or alusrc - ALU not used for IO
             if (imm12 == 12'hf02) begin
                 // If the immediate is the second IO port, we are writing to HEX
                 // Don't set regsel - not writing to registers
@@ -22,7 +22,7 @@ module control_fields(
             end
             else if (imm12 == 12'hf00) begin
                 // If the immediate is the first IO port, we are reading from switches
-                regsel = 2'b00;         // Set to 0 to read IO port to EX/WB pipeline register
+                regsel = 2'b00;         // Set to 0 to read IO port to register
                 regwrite = 1;           // Enable write to register
                 gpio_we = 0;            // Disable write to IO port
             end
@@ -31,7 +31,7 @@ module control_fields(
         // Next, U-type (lui) control fields
         else if (opcode == 7'h37) begin
             // Don't set aluop or alusrc - ALU not used for U-type
-            regsel = 2'b01;             // Set to 1 to read imm20 to EX/WB pipeline register
+            regsel = 2'b01;             // Set to 1 to read imm20 to register
             regwrite = 1;               // Enable write to register
             gpio_we = 0;                // Disable write to IO
         end

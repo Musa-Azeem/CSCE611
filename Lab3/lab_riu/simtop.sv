@@ -55,7 +55,7 @@ module simtop;
 				KEY = 4'b1111;
 			else
 				KEY = 4'b0000;
-			SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h0};
+			SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h1};
 			$display("Simtop: %3t", $time);
 			#10;
 		end

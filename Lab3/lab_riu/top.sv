@@ -33,9 +33,6 @@ module top (
 
 	// LAB 3
 
-	// READ INSTRUCTION FILE INTO RAM
-	logic [31:0] inst_ram [4191:0];
-    initial $readmemh("../riscv1.rom", inst_ram);
 	// assign inst_ram[0] = {12'b1010, 5'b0, 3'b0, 5'b1, 7'b0010011};	//addi x1, x0, 10
 	// assign inst_ram[1] = 32'b0;
 	// assign inst_ram[2] = 32'b0;
@@ -52,7 +49,6 @@ module top (
     cpu mcpu(
 	 	.clk(CLOCK_50),
 	 	.rst_n(~KEY[0]), 
-	 	.inst_ram(inst_ram),
 	 	.SW(SW32),
 	 	.display(display)
 	);
@@ -64,9 +60,9 @@ module top (
     hexdriver hex2(.val(display[11:8]), .HEX(HEX2));
 	hexdriver hex3(.val(display[15:12]), .HEX(HEX3));
 	hexdriver hex4(.val(display[19:16]), .HEX(HEX4));
-	hexdriver hex5(.val(4'h0), .HEX(HEX5));
-	hexdriver hex6(.val(4'h0), .HEX(HEX6));
-	hexdriver hex7(.val(4'h0), .HEX(HEX7));
+	hexdriver hex5(.val(display[23:20]), .HEX(HEX5));
+	hexdriver hex6(.val(display[27:24]), .HEX(HEX6));
+	hexdriver hex7(.val(display[31:28]), .HEX(HEX7));
 
 	// initial begin
 		// #10;
