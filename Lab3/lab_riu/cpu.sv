@@ -202,18 +202,57 @@ module cpu (
     always begin
         #10;
         // During first cycle, instruction_WB is X
-        $display("time: %3t: instr_wb: %8h", $time, instr_WB);
+        // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
         #10;
         // second cycle, instruction_WB is 0 (from reset)
-        $display("time: %3t: instr_wb: %8h", $time, instr_WB);
+        // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
         #10;
         // third cycle, instruction_WB is ram[0]
-        $display("time: %3t: instr_wb: %8h", $time, instr_WB);
+        // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
 		if (data_WB != 8'hA) $display("instruction 0 incorrect");
         #10;
         // fourth cycle, instruction_WB is ram[1]
-        $display("time: %3t: instr_wb: %8h", $time, instr_WB);
-        //$display()  //check if data_WB is the right value
-		$finish;
+        // $display("time: %3t: instr_wb: %8h", $time, instr_WB);
+        if (data_WB != 8'h5) $display("instruction 1 incorrect");
+
+        #10;
+        if (data_WB != 8'hF) $display("instruction 2 incorrect");
+
+        #10;
+		if (data_WB != 8'h5) $display("instruction 3 incorrect");
+
+        #10;
+        if (data_WB != 8'h0) $display("instruction 4 incorrect");
+
+        #10;
+        if (data_WB != 8'hf) $display("instruction 5 incorrect");
+
+        #10;
+        if (data_WB != 8'hf) $display("instruction 6 incorrect");
+
+        #10;
+        if (data_WB != 8'h140) $display("instruction 7 incorrect");
+
+        #10;
+        if (data_WB != 8'h0) $display("instruction 8 incorrect");
+
+        #10;
+        if (data_WB != 8'h0) $display("instruction 9 incorrect");
+
+        #10;
+        if (data_WB != 8'h0) $display("instruction 10 incorrect");
+
+        #10;
+        if (data_WB != 8'h0) $display("instruction 11 incorrect");
+
+        #10;
+        if (data_WB != 8'h32) $display("instruction 12 incorrect");
+
+        #10;
+        if (data_WB != 8'h0) $display("instruction 13 incorrect");
+
+        #10;
+        if (data_WB != 8'h0) $display("instruction 14 incorrect");
+        $finish;
     end
 endmodule
