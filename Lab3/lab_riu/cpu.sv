@@ -217,7 +217,6 @@ module cpu (
 
         #10;
         if (data_WB != 8'hF) $display("instruction 2 incorrect");
-        $display("2: %8h", instruction_WB);
 
         #10;
 		if (data_WB != 8'h5) $display("instruction 3 incorrect");
@@ -232,7 +231,7 @@ module cpu (
         if (data_WB != 8'hf) $display("instruction 6 incorrect");
 
         #10;
-        if (data_WB != 8'h140) $display("instruction 7 incorrect");
+        if (data_WB != 8'h00000140) $display("instruction 7 incorrect");
 
         #10;
         if (data_WB != 8'h0) $display("instruction 8 incorrect");
