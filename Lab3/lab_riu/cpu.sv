@@ -23,7 +23,7 @@ module cpu (
     initial $readmemh("../riscv1.rom", inst_ram);
 
     // FETCH INSTRUCTION
-    logic [11:0] PC_F;
+    logic [11:0] PC_F = 12'b0;
     logic [31:0] instruction_EX;
 
     always_ff @(posedge clk) begin
@@ -56,7 +56,7 @@ module cpu (
     // TODO J-type
 
     // Decode instruction into fields
-    inst_decoder ex_decoder(
+    instruction_decoder ex_decoder(
         .instr(instruction_EX), 
         // output intruction fields
         .funct7(funct7_EX),
@@ -136,7 +136,7 @@ module cpu (
 
     // Instruction fields needed for WB stage
     logic [4:0]     rd_WB;                   // Destination register to writeback to
-    logic [31:0]    imm12_extended_WB;       // imm12 for IO-type
+    // logic [31:0]    imm12_extended_WB;       // imm12 for IO-type
     logic [31:0]    imm20_extended_WB;       // imm20 for U-type
 
     // Control fields
@@ -152,7 +152,7 @@ module cpu (
     // Update Pipeline Registers and Display output for next cycle
     always_ff @(posedge clk) begin
         rd_WB <= rd_EX;
-        imm12_extended_WB <= imm12_extented_EX;
+        // imm12_extended_WB <= imm12_extented_EX;
         imm20_extended_WB <= imm20_extended_EX;
         regwrite_WB <= regwrite_EX;
         regsel_WB <= regsel_EX;
