@@ -1,3 +1,6 @@
+# vsim -pedanticerrors -hazards -c -sva -immedassert work.simtop -do "/dev/stdin" 
+# Start time: 11:52:04 on Oct 27,2022
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  Questa Sim-64
 # //  Version 2020.1 linux_x86_64 Jan 28 2020
 # //
@@ -12,186 +15,18 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# OpenFile simtop.sv
-vlog *.sv
-# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
-# Start time: 16:47:22 on Oct 26,2022
-# vlog -reportprogress 300 alu.sv control_fields.sv cpu.sv hexdriver.sv instruction_decoder.sv regfile.sv simtop.sv top.sv 
-# -- Compiling module alu
-# -- Compiling module control_fields
-# -- Compiling module cpu
-# -- Compiling module hexdriver
-# -- Compiling module inst_decoder
-# -- Compiling module regfile
-# -- Compiling module simtop
-# -- Compiling module top
-# 
-# Top level modules:
-# 	simtop
-# End time: 16:47:22 on Oct 26,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim work.simtop -voptargs=+acc
-# vsim work.simtop -voptargs="+acc" 
-# Start time: 16:47:49 on Oct 26,2022
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading sv_std.std
 # Loading work.simtop(fast)
-# Loading work.top(fast)
-# Loading work.cpu(fast)
-# Loading work.inst_decoder(fast)
-# Loading work.control_fields(fast)
-# Loading work.alu(fast)
-# Loading work.regfile(fast)
-# Loading work.hexdriver(fast)
-add wave -position insertpoint  \
-sim:/simtop/dut/mcpu/clk \
-sim:/simtop/dut/mcpu/rst_n \
-sim:/simtop/dut/mcpu/inst_ram \
-sim:/simtop/dut/mcpu/SW \
-sim:/simtop/dut/mcpu/display \
-sim:/simtop/dut/mcpu/PC_F \
-sim:/simtop/dut/mcpu/instruction_EX \
-sim:/simtop/dut/mcpu/funct7_EX \
-sim:/simtop/dut/mcpu/rs1_EX \
-sim:/simtop/dut/mcpu/rs2_EX \
-sim:/simtop/dut/mcpu/rd_EX \
-sim:/simtop/dut/mcpu/funct3_EX \
-sim:/simtop/dut/mcpu/opcode_EX \
-sim:/simtop/dut/mcpu/imm12_EX \
-sim:/simtop/dut/mcpu/imm20_EX \
-sim:/simtop/dut/mcpu/aluop_EX \
-sim:/simtop/dut/mcpu/regsel_EX \
-sim:/simtop/dut/mcpu/alusrc_EX \
-sim:/simtop/dut/mcpu/regwrite_EX \
-sim:/simtop/dut/mcpu/gpio_we_EX \
-sim:/simtop/dut/mcpu/readdata1_EX \
-sim:/simtop/dut/mcpu/readdata2_EX \
-sim:/simtop/dut/mcpu/imm12_extented_EX \
-sim:/simtop/dut/mcpu/imm20_extended_EX \
-sim:/simtop/dut/mcpu/B_EX \
-sim:/simtop/dut/mcpu/R_EX \
-sim:/simtop/dut/mcpu/alu_zero_EX \
-sim:/simtop/dut/mcpu/rd_WB \
-sim:/simtop/dut/mcpu/imm12_extended_WB \
-sim:/simtop/dut/mcpu/imm20_extended_WB \
-sim:/simtop/dut/mcpu/regsel_WB \
-sim:/simtop/dut/mcpu/regwrite_WB \
-sim:/simtop/dut/mcpu/gpio_we_WB \
-sim:/simtop/dut/mcpu/R_WB \
-sim:/simtop/dut/mcpu/data_WB
-run
+# do /dev/stdin
 # Simtop:   0
+# time:  10: instr_wb: xxxxxxxx
 # Simtop:  10
+# time:  20: instr_wb: 00000000
 # Simtop:  20
+# time:  30: instr_wb: 00a00093
 # Simtop:  30
-restart -f
-# ** Note: (vsim-8009) Loading existing optimized design _opt1
-# Loading work.simtop(fast)
-# Loading work.top(fast)
-# Loading work.cpu(fast)
-# Loading work.inst_decoder(fast)
-# Loading work.control_fields(fast)
-# Loading work.alu(fast)
-# Loading work.regfile(fast)
-# Loading work.hexdriver(fast)
-run
-# Simtop:   0
-# Simtop:  10
-# Simtop:  20
-# Simtop:  30
-add wave -position insertpoint  \
-sim:/simtop/dut/mcpu/mregfile/mem
-restart -f
-# ** Note: (vsim-8009) Loading existing optimized design _opt1
-# Loading work.simtop(fast)
-# Loading work.top(fast)
-# Loading work.cpu(fast)
-# Loading work.inst_decoder(fast)
-# Loading work.control_fields(fast)
-# Loading work.alu(fast)
-# Loading work.regfile(fast)
-# Loading work.hexdriver(fast)
-run
-# Simtop:   0
-# Simtop:  10
-# Simtop:  20
-# Simtop:  30
-# Causality operation skipped due to absence of debug database file
-add wave -position insertpoint  \
-sim:/simtop/dut/mcpu/malu/A \
-sim:/simtop/dut/mcpu/malu/B \
-sim:/simtop/dut/mcpu/malu/op \
-sim:/simtop/dut/mcpu/malu/R
-restart -f
-# ** Note: (vsim-8009) Loading existing optimized design _opt1
-# Loading work.simtop(fast)
-# Loading work.top(fast)
-# Loading work.cpu(fast)
-# Loading work.inst_decoder(fast)
-# Loading work.control_fields(fast)
-# Loading work.alu(fast)
-# Loading work.regfile(fast)
-# Loading work.hexdriver(fast)
-run
-# Simtop:   0
-# Simtop:  10
-# Simtop:  20
-# Simtop:  30
-vlog cpu.sv
-# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
-# Start time: 17:03:54 on Oct 26,2022
-# vlog -reportprogress 300 cpu.sv 
-# -- Compiling module cpu
-# 
-# Top level modules:
-# 	cpu
-# End time: 17:03:54 on Oct 26,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart -f
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading sv_std.std
-# Loading work.simtop(fast)
-# Loading work.top(fast)
-# Loading work.cpu(fast)
-# Loading work.inst_decoder(fast)
-# Loading work.control_fields(fast)
-# Loading work.alu(fast)
-# Loading work.regfile(fast)
-# Loading work.hexdriver(fast)
-run
-# Simtop:   0
-# Simtop:  10
-# Simtop:  20
-# Simtop:  30
-restart -f
-# ** Note: (vsim-8009) Loading existing optimized design _opt1
-# Loading work.simtop(fast)
-# Loading work.top(fast)
-# Loading work.cpu(fast)
-# Loading work.inst_decoder(fast)
-# Loading work.control_fields(fast)
-# Loading work.alu(fast)
-# Loading work.regfile(fast)
-# Loading work.hexdriver(fast)
-run
-# Simtop:   0
-# Simtop:  10
-# Simtop:  20
-# Simtop:  30
-restart -f
-# ** Note: (vsim-8009) Loading existing optimized design _opt1
-# Loading work.simtop(fast)
-# Loading work.top(fast)
-# Loading work.cpu(fast)
-# Loading work.inst_decoder(fast)
-# Loading work.control_fields(fast)
-# Loading work.alu(fast)
-# Loading work.regfile(fast)
-# Loading work.hexdriver(fast)
-run
-# Simtop:   0
-# Simtop:  10
-# Simtop:  20
-# Simtop:  30
-# End time: 17:14:51 on Oct 26,2022, Elapsed time: 0:27:02
+# time:  40: instr_wb: 00500113
+# ** Note: $finish    : cpu.sv(217)
+#    Time: 40 ns  Iteration: 0  Instance: /simtop/dut/mcpu
+# End time: 11:52:05 on Oct 27,2022, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0

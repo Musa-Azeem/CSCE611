@@ -148,6 +148,9 @@ module cpu (
     // ALU output
     logic [31:0]    R_WB;
 
+    // Instruction for debug
+	logic [31:0] instr_WB;
+
     // Update Pipeline Registers and Display output for next cycle
     always_ff @(posedge clk) begin
         rd_WB <= rd_EX;
@@ -157,6 +160,9 @@ module cpu (
         regsel_WB <= regsel_EX;
         gpio_we_WB <= gpio_we_EX;
         R_WB <= R_EX;
+
+		//Debug
+		instr_WB <= instruction_EX;
 
         // IO OUTPUT
         // if csrrw instruction is writing to HEX, assign readdata1 to CPU output (otherwise, do nothing)
@@ -194,18 +200,20 @@ module cpu (
 
     // testing register values
     always begin
-        #10
-        // During first cycle, everything is reset
-        $display("time: %t: instr_wb: %b")
-        #20
-        $display("time: %t: instr_wb: %b")
-        // second cycle, instruction 0 is is being fetched
-        #30
-        $display("time: %t: instr_wb: %b")
-        // third cycle, instruction 0 is being executed
-        #40
-        $display("time: %t: instr_wb: %b")
-        // fourth cycle, instruction 0 is being written
+        #10;
+        // During first cycle, instruction_WB is X
+        $display("time: %3t: instr_wb: %8h", $time, instr_WB);
+        #10;
+        // second cycle, instruction_WB is 0 (from reset)
+        $display("time: %3t: instr_wb: %8h", $time, instr_WB);
+        #10;
+        // third cycle, instruction_WB is ram[0]
+        $display("time: %3t: instr_wb: %8h", $time, instr_WB);
+		if (data_WB != 8'hA) $display("instruction 0 incorrect");
+        #10;
+        // fourth cycle, instruction_WB is ram[1]
+        $display("time: %3t: instr_wb: %8h", $time, instr_WB);
         //$display()  //check if data_WB is the right value
+		$finish;
     end
 endmodule
