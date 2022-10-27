@@ -191,4 +191,21 @@ module cpu (
         .readdata1(readdata1_EX),   // Data from rs1 of EX instr
         .readdata2(readdata2_EX)    // Data from rs2 of EX instr
     );
+
+    // testing register values
+    always begin
+        #10
+        // During first cycle, everything is reset
+        $display("time: %t: instr_wb: %b")
+        #20
+        $display("time: %t: instr_wb: %b")
+        // second cycle, instruction 0 is is being fetched
+        #30
+        $display("time: %t: instr_wb: %b")
+        // third cycle, instruction 0 is being executed
+        #40
+        $display("time: %t: instr_wb: %b")
+        // fourth cycle, instruction 0 is being written
+        //$display()  //check if data_WB is the right value
+    end
 endmodule
