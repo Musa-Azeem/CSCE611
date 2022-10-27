@@ -6,7 +6,8 @@ add	a2,	zero,	zero
 add	t1, zero, zero
 add	t2, zero, zero
 
-csrrw	t1,	mhex2,	zero
+#csrrw	t1,	0xf00,	zero
+li	t1, 2
 
 #process: get the fractional part, the actual value, and multiply by 10 to get the modulous of the temp register
 #increment the slli by 4 each time from 31:0 - which is the num of inputs
@@ -52,10 +53,10 @@ mulhu	t2, t2, a0
 slli	t2, t2, 28
 or	a2, a2, t2
 
-mul	t2, t1, a1	
-mulhu	t1, t1, a1	
-mulhu	t2, t2, a0	
-slli	t2, t2, 32
-or	a2, a2, t2
-
-csrrw	zero, mhex2, a2
+#mul	t2, t1, a1	
+#mulhu	t1, t1, a1	
+#mulhu	t2, t2, a0	
+#slli	t2, t2, 32
+#or	a2, a2, t2
+mv x5, a2
+#csrrw	zero, 0xf02, a2

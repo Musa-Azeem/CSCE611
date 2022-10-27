@@ -52,9 +52,9 @@ module simtop;
 	initial begin		
 		for (i=0; i<4; i=i+1) begin
 			if (i==0)
-				KEY = 4'b1111;
-			else
 				KEY = 4'b0000;
+			else
+				KEY = 4'b0001;
 			SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h1};
 			$display("Simtop: %3t", $time);
 			#10;
