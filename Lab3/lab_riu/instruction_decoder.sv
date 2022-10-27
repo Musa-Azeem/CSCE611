@@ -1,5 +1,5 @@
 
-module inst_decoder(
+module instruction_decoder(
     input       [31:0]      instr,
     output      [6:0]       funct7,
     output      [2:0]       funct3,

@@ -31,7 +31,31 @@ module top (
 	output		     [6:0]		HEX7
 );
 
+	// LAB 3
 
+	// ZERO EXTEND SW TO 32 BIT
+	logic [31:0] SW32;
+	assign SW32 = { 15'b0, SW };
+
+	// INSTANCE CPU
+	logic [31:0] display;
+    cpu mcpu(
+	 	.clk(CLOCK_50),
+	 	.rst_n(KEY[0]), 
+	 	.SW(SW32),
+	 	.display(display)
+	);
+
+	// OUTPUT HEX VALUES
+	// Split display output of CPU into each 8-segement display
+	hexdriver hex0(.val(display[3:0]), .HEX(HEX0));
+	hexdriver hex1(.val(display[7:4]), .HEX(HEX1));
+    hexdriver hex2(.val(display[11:8]), .HEX(HEX2));
+	hexdriver hex3(.val(display[15:12]), .HEX(HEX3));
+	hexdriver hex4(.val(display[19:16]), .HEX(HEX4));
+	hexdriver hex5(.val(display[23:20]), .HEX(HEX5));
+	hexdriver hex6(.val(display[27:24]), .HEX(HEX6));
+	hexdriver hex7(.val(display[31:28]), .HEX(HEX7));
 
 //=======================================================
 //  REG/WIRE declarations
@@ -92,36 +116,5 @@ module top (
 			leds <= leds >> 1;
 		end
 	end
-
-	// Lab 3
-	// Read instructions into RAM
-	logic [31:0] inst_ram [4191:0];
-    // initial $readmemh("program.rom", inst_ram);
-	assign inst_ram[0] = 32'd0;
-
-	// logic to get hex values (in binary) from cpu
-	logic [3:0] mhex0, mhex1, mhex2, mhex3, mhex4;
-	cpu mcpu(
-		.clk(CLOCK_50),
-		.rst_n(KEY[0]), 
-		.inst_ram(inst_ram),
-		.SW(SW),
-		.hex0(mhex0),
-		.hex1(mhex1),
-		.hex2(mhex2),
-		.hex3(mhex3),
-		.hex4(mhex4)
-		);
-
-	hexdriver hex0(.val(mhex0), .HEX(HEX0));
-	hexdriver hex1(.val(mhex1), .HEX(HEX1));
-	hexdriver hex2(.val(mhex2), .HEX(HEX2));
-	hexdriver hex3(.val(mhex3), .HEX(HEX3));
-	hexdriver hex4(.val(mhex4), .HEX(HEX4));
-	hexdriver hex5(.val(4'h0), .HEX(HEX5));
-	hexdriver hex6(.val(4'h0), .HEX(HEX6));
-	hexdriver hex7(.val(4'h0), .HEX(HEX7));
-
-
 
 endmodule

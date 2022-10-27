@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE2_115
-Fri Oct 21 22:43:01 2022
+Thu Oct 27 17:28:14 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -10,7 +10,24 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for Inferred Entity Instance: cpu:mcpu|alu:malu|lpm_mult:Mult1
+ 15. Parameter Settings for Inferred Entity Instance: cpu:mcpu|alu:malu|lpm_mult:Mult0
+ 16. lpm_mult Parameter Settings by Entity Instance
+ 17. Port Connectivity Checks: "cpu:mcpu|alu:malu"
+ 18. Port Connectivity Checks: "cpu:mcpu"
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
+ 22. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -36,20 +53,20 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Fri Oct 21 22:43:01 2022               ;
+; Analysis & Synthesis Status        ; Successful - Thu Oct 27 17:28:14 2022           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; DE2_115                                         ;
 ; Top-level Entity Name              ; top                                             ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; N/A until Partition Merge                       ;
-;     Total combinational functions  ; N/A until Partition Merge                       ;
-;     Dedicated logic registers      ; N/A until Partition Merge                       ;
-; Total registers                    ; N/A until Partition Merge                       ;
-; Total pins                         ; N/A until Partition Merge                       ;
-; Total virtual pins                 ; N/A until Partition Merge                       ;
-; Total memory bits                  ; N/A until Partition Merge                       ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                       ;
-; Total PLLs                         ; N/A until Partition Merge                       ;
+; Total logic elements               ; 2,247                                           ;
+;     Total combinational functions  ; 1,763                                           ;
+;     Dedicated logic registers      ; 692                                             ;
+; Total registers                    ; 692                                             ;
+; Total pins                         ; 108                                             ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 16                                              ;
+; Total PLLs                         ; 0                                               ;
 +------------------------------------+-------------------------------------------------+
 
 
@@ -144,15 +161,883 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
+; Number detected on machine ; 16          ;
 ; Maximum allowed            ; 8           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
 +----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                       ;
++-------------------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path          ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                    ; Library ;
++-------------------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------+---------+
+; top.sv                                    ; yes             ; User SystemVerilog HDL File        ; /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv                                   ;         ;
+; hexdriver.sv                              ; yes             ; User SystemVerilog HDL File        ; /acct/mmazeem/611/CSCE611/Lab3/lab_riu/hexdriver.sv                             ;         ;
+; cpu.sv                                    ; yes             ; Auto-Found SystemVerilog HDL File  ; /acct/mmazeem/611/CSCE611/Lab3/lab_riu/cpu.sv                                   ;         ;
+; /acct/mmazeem/611/CSCE611/Lab3/riscv1.rom ; yes             ; Auto-Found Unspecified File        ; /acct/mmazeem/611/CSCE611/Lab3/riscv1.rom                                       ;         ;
+; instruction_decoder.sv                    ; yes             ; Auto-Found SystemVerilog HDL File  ; /acct/mmazeem/611/CSCE611/Lab3/lab_riu/instruction_decoder.sv                   ;         ;
+; control_fields.sv                         ; yes             ; Auto-Found SystemVerilog HDL File  ; /acct/mmazeem/611/CSCE611/Lab3/lab_riu/control_fields.sv                        ;         ;
+; alu.sv                                    ; yes             ; Auto-Found SystemVerilog HDL File  ; /acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv                                   ;         ;
+; regfile.sv                                ; yes             ; Auto-Found SystemVerilog HDL File  ; /acct/mmazeem/611/CSCE611/Lab3/lab_riu/regfile.sv                               ;         ;
+; lpm_mult.tdf                              ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/lpm_mult.tdf    ;         ;
+; aglobal181.inc                            ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/aglobal181.inc  ;         ;
+; lpm_add_sub.inc                           ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/lpm_add_sub.inc ;         ;
+; multcore.inc                              ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/multcore.inc    ;         ;
+; bypassff.inc                              ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/bypassff.inc    ;         ;
+; altshift.inc                              ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/altshift.inc    ;         ;
+; db/mult_46t.tdf                           ; yes             ; Auto-Generated Megafunction        ; /acct/mmazeem/611/CSCE611/Lab3/lab_riu/db/mult_46t.tdf                          ;         ;
+; db/mult_7dt.tdf                           ; yes             ; Auto-Generated Megafunction        ; /acct/mmazeem/611/CSCE611/Lab3/lab_riu/db/mult_7dt.tdf                          ;         ;
++-------------------------------------------+-----------------+------------------------------------+---------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimated Total logic elements              ; 2,247          ;
+;                                             ;                ;
+; Total combinational functions               ; 1763           ;
+; Logic element usage by number of LUT inputs ;                ;
+;     -- 4 input functions                    ; 1101           ;
+;     -- 3 input functions                    ; 509            ;
+;     -- <=2 input functions                  ; 153            ;
+;                                             ;                ;
+; Logic elements by mode                      ;                ;
+;     -- normal mode                          ; 1442           ;
+;     -- arithmetic mode                      ; 321            ;
+;                                             ;                ;
+; Total registers                             ; 692            ;
+;     -- Dedicated logic registers            ; 692            ;
+;     -- I/O registers                        ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 108            ;
+;                                             ;                ;
+; Embedded Multiplier 9-bit elements          ; 16             ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 665            ;
+; Total fan-out                               ; 9156           ;
+; Average fan-out                             ; 3.41           ;
++---------------------------------------------+----------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                              ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+----------------+--------------+
+; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                           ; Entity Name    ; Library Name ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+----------------+--------------+
+; |top                                  ; 1763 (59)           ; 692 (51)                  ; 0           ; 16           ; 0       ; 8         ; 108  ; 0            ; |top                                                          ; top            ; work         ;
+;    |cpu:mcpu|                         ; 1648 (181)          ; 641 (129)                 ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |top|cpu:mcpu                                                 ; cpu            ; work         ;
+;       |alu:malu|                      ; 783 (615)           ; 0 (0)                     ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |top|cpu:mcpu|alu:malu                                        ; alu            ; work         ;
+;          |lpm_mult:Mult0|             ; 78 (0)              ; 0 (0)                     ; 0           ; 8            ; 0       ; 4         ; 0    ; 0            ; |top|cpu:mcpu|alu:malu|lpm_mult:Mult0                         ; lpm_mult       ; work         ;
+;             |mult_7dt:auto_generated| ; 78 (78)             ; 0 (0)                     ; 0           ; 8            ; 0       ; 4         ; 0    ; 0            ; |top|cpu:mcpu|alu:malu|lpm_mult:Mult0|mult_7dt:auto_generated ; mult_7dt       ; work         ;
+;          |lpm_mult:Mult1|             ; 90 (0)              ; 0 (0)                     ; 0           ; 8            ; 0       ; 4         ; 0    ; 0            ; |top|cpu:mcpu|alu:malu|lpm_mult:Mult1                         ; lpm_mult       ; work         ;
+;             |mult_46t:auto_generated| ; 90 (90)             ; 0 (0)                     ; 0           ; 8            ; 0       ; 4         ; 0    ; 0            ; |top|cpu:mcpu|alu:malu|lpm_mult:Mult1|mult_46t:auto_generated ; mult_46t       ; work         ;
+;       |control_fields:cf_ex|          ; 70 (70)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|cpu:mcpu|control_fields:cf_ex                            ; control_fields ; work         ;
+;       |regfile:mregfile|              ; 614 (614)           ; 512 (512)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|cpu:mcpu|regfile:mregfile                                ; regfile        ; work         ;
+;    |hexdriver:hex0|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex0                                           ; hexdriver      ; work         ;
+;    |hexdriver:hex1|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex1                                           ; hexdriver      ; work         ;
+;    |hexdriver:hex2|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex2                                           ; hexdriver      ; work         ;
+;    |hexdriver:hex3|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex3                                           ; hexdriver      ; work         ;
+;    |hexdriver:hex4|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex4                                           ; hexdriver      ; work         ;
+;    |hexdriver:hex5|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex5                                           ; hexdriver      ; work         ;
+;    |hexdriver:hex6|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex6                                           ; hexdriver      ; work         ;
+;    |hexdriver:hex7|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex7                                           ; hexdriver      ; work         ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------+----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 0           ;
+; Simple Multipliers (18-bit)           ; 8           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 16          ;
+; Signed Embedded Multipliers           ; 1           ;
+; Unsigned Embedded Multipliers         ; 5           ;
+; Mixed Sign Embedded Multipliers       ; 2           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
++--------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                         ;
++--------------------------------------------------+-----------------------------------------+
+; Register name                                    ; Reason for Removal                      ;
++--------------------------------------------------+-----------------------------------------+
+; cpu:mcpu|imm20_extended_WB[0..11]                ; Stuck at GND due to stuck port data_in  ;
+; cpu:mcpu|instruction_EX[11,19]                   ; Stuck at GND due to stuck port data_in  ;
+; cpu:mcpu|rd_WB[4]                                ; Stuck at GND due to stuck port data_in  ;
+; cpu:mcpu|instruction_EX[2,3,24..27]              ; Stuck at GND due to stuck port data_in  ;
+; cpu:mcpu|imm20_extended_WB[19,24..27]            ; Stuck at GND due to stuck port data_in  ;
+; cpu:mcpu|regsel_WB[0]                            ; Stuck at GND due to stuck port data_in  ;
+; cpu:mcpu|imm20_extended_WB[12..18,20..23,28..31] ; Lost fanout                             ;
+; cpu:mcpu|instruction_EX[17,22]                   ; Merged with cpu:mcpu|instruction_EX[16] ;
+; cpu:mcpu|instruction_EX[6,29..31]                ; Merged with cpu:mcpu|instruction_EX[28] ;
+; cpu:mcpu|instruction_EX[1,4]                     ; Merged with cpu:mcpu|instruction_EX[0]  ;
+; cpu:mcpu|instruction_EX[14]                      ; Merged with cpu:mcpu|instruction_EX[13] ;
+; cpu:mcpu|regfile:mregfile|mem~512                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~513                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~514                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~515                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~516                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~517                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~518                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~519                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~520                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~521                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~522                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~523                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~524                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~525                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~526                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~527                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~528                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~529                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~530                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~531                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~532                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~533                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~534                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~535                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~536                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~537                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~538                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~539                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~540                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~541                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~542                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~543                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~544                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~545                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~546                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~547                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~548                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~549                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~550                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~551                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~552                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~553                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~554                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~555                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~556                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~557                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~558                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~559                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~560                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~561                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~562                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~563                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~564                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~565                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~566                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~567                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~568                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~569                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~570                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~571                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~572                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~573                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~574                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~575                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~576                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~577                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~578                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~579                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~580                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~581                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~582                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~583                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~584                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~585                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~586                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~587                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~588                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~589                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~590                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~591                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~592                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~593                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~594                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~595                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~596                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~597                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~598                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~599                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~600                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~601                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~602                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~603                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~604                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~605                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~606                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~607                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~608                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~609                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~610                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~611                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~612                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~613                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~614                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~615                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~616                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~617                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~618                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~619                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~620                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~621                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~622                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~623                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~624                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~625                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~626                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~627                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~628                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~629                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~630                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~631                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~632                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~633                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~634                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~635                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~636                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~637                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~638                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~639                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~640                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~641                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~642                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~643                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~644                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~645                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~646                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~647                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~648                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~649                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~650                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~651                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~652                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~653                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~654                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~655                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~656                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~657                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~658                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~659                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~660                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~661                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~662                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~663                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~664                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~665                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~666                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~667                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~668                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~669                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~670                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~671                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~672                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~673                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~674                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~675                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~676                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~677                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~678                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~679                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~680                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~681                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~682                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~683                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~684                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~685                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~686                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~687                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~688                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~689                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~690                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~691                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~692                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~693                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~694                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~695                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~696                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~697                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~698                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~699                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~700                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~701                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~702                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~703                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~704                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~705                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~706                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~707                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~708                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~709                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~710                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~711                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~712                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~713                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~714                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~715                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~716                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~717                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~718                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~719                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~720                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~721                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~722                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~723                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~724                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~725                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~726                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~727                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~728                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~729                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~730                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~731                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~732                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~733                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~734                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~735                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~736                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~737                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~738                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~739                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~740                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~741                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~742                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~743                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~744                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~745                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~746                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~747                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~748                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~749                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~750                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~751                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~752                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~753                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~754                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~755                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~756                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~757                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~758                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~759                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~760                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~761                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~762                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~763                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~764                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~765                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~766                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~767                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~768                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~769                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~770                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~771                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~772                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~773                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~774                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~775                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~776                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~777                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~778                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~779                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~780                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~781                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~782                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~783                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~784                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~785                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~786                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~787                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~788                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~789                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~790                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~791                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~792                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~793                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~794                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~795                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~796                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~797                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~798                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~799                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~800                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~801                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~802                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~803                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~804                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~805                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~806                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~807                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~808                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~809                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~810                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~811                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~812                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~813                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~814                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~815                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~816                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~817                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~818                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~819                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~820                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~821                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~822                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~823                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~824                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~825                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~826                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~827                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~828                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~829                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~830                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~831                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~832                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~833                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~834                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~835                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~836                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~837                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~838                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~839                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~840                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~841                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~842                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~843                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~844                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~845                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~846                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~847                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~848                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~849                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~850                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~851                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~852                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~853                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~854                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~855                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~856                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~857                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~858                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~859                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~860                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~861                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~862                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~863                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~864                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~865                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~866                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~867                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~868                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~869                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~870                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~871                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~872                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~873                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~874                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~875                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~876                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~877                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~878                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~879                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~880                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~881                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~882                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~883                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~884                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~885                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~886                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~887                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~888                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~889                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~890                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~891                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~892                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~893                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~894                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~895                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~896                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~897                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~898                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~899                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~900                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~901                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~902                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~903                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~904                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~905                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~906                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~907                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~908                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~909                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~910                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~911                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~912                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~913                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~914                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~915                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~916                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~917                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~918                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~919                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~920                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~921                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~922                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~923                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~924                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~925                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~926                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~927                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~928                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~929                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~930                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~931                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~932                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~933                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~934                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~935                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~936                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~937                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~938                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~939                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~940                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~941                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~942                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~943                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~944                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~945                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~946                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~947                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~948                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~949                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~950                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~951                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~952                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~953                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~954                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~955                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~956                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~957                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~958                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~959                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~960                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~961                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~962                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~963                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~964                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~965                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~966                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~967                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~968                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~969                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~970                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~971                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~972                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~973                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~974                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~975                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~976                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~977                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~978                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~979                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~980                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~981                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~982                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~983                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~984                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~985                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~986                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~987                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~988                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~989                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~990                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~991                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~992                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~993                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~994                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~995                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~996                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~997                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~998                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~999                ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1000               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1001               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1002               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1003               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1004               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1005               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1006               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1007               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1008               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1009               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1010               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1011               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1012               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1013               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1014               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1015               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1016               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1017               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1018               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1019               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1020               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1021               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1022               ; Lost fanout                             ;
+; cpu:mcpu|regfile:mregfile|mem~1023               ; Lost fanout                             ;
+; cpu:mcpu|regwrite_WB                             ; Merged with cpu:mcpu|gpio_we_WB         ;
+; Total Number of Removed Registers = 564          ;                                         ;
++--------------------------------------------------+-----------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                  ;
++-----------------------------+---------------------------+------------------------------------------------------------------------------------+
+; Register name               ; Reason for Removal        ; Registers Removed due to This Register                                             ;
++-----------------------------+---------------------------+------------------------------------------------------------------------------------+
+; cpu:mcpu|instruction_EX[11] ; Stuck at GND              ; cpu:mcpu|rd_WB[4], cpu:mcpu|imm20_extended_WB[15], cpu:mcpu|imm20_extended_WB[14], ;
+;                             ; due to stuck port data_in ; cpu:mcpu|imm20_extended_WB[13], cpu:mcpu|imm20_extended_WB[18],                    ;
+;                             ;                           ; cpu:mcpu|imm20_extended_WB[17], cpu:mcpu|imm20_extended_WB[23],                    ;
+;                             ;                           ; cpu:mcpu|imm20_extended_WB[22], cpu:mcpu|imm20_extended_WB[21],                    ;
+;                             ;                           ; cpu:mcpu|imm20_extended_WB[20], cpu:mcpu|imm20_extended_WB[29],                    ;
+;                             ;                           ; cpu:mcpu|imm20_extended_WB[28]                                                     ;
+; cpu:mcpu|instruction_EX[19] ; Stuck at GND              ; cpu:mcpu|imm20_extended_WB[19], cpu:mcpu|imm20_extended_WB[12],                    ;
+;                             ; due to stuck port data_in ; cpu:mcpu|imm20_extended_WB[16]                                                     ;
+; cpu:mcpu|instruction_EX[24] ; Stuck at GND              ; cpu:mcpu|imm20_extended_WB[24], cpu:mcpu|imm20_extended_WB[30]                     ;
+;                             ; due to stuck port data_in ;                                                                                    ;
+; cpu:mcpu|instruction_EX[2]  ; Stuck at GND              ; cpu:mcpu|regsel_WB[0], cpu:mcpu|imm20_extended_WB[31]                              ;
+;                             ; due to stuck port data_in ;                                                                                    ;
+; cpu:mcpu|instruction_EX[25] ; Stuck at GND              ; cpu:mcpu|imm20_extended_WB[25]                                                     ;
+;                             ; due to stuck port data_in ;                                                                                    ;
+; cpu:mcpu|instruction_EX[26] ; Stuck at GND              ; cpu:mcpu|imm20_extended_WB[26]                                                     ;
+;                             ; due to stuck port data_in ;                                                                                    ;
+; cpu:mcpu|instruction_EX[27] ; Stuck at GND              ; cpu:mcpu|imm20_extended_WB[27]                                                     ;
+;                             ; due to stuck port data_in ;                                                                                    ;
++-----------------------------+---------------------------+------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 692   ;
+; Number of registers using Synchronous Clear  ; 23    ;
+; Number of registers using Synchronous Load   ; 5     ;
+; Number of registers using Asynchronous Clear ; 512   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 544   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; leds[0]                                ; 3       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |top|cpu:mcpu|display[12]                    ;
+; 20:1               ; 7 bits    ; 91 LEs        ; 70 LEs               ; 21 LEs                 ; Yes        ; |top|cpu:mcpu|R_WB[21]                       ;
+; 19:1               ; 8 bits    ; 96 LEs        ; 72 LEs               ; 24 LEs                 ; Yes        ; |top|cpu:mcpu|R_WB[9]                        ;
+; 20:1               ; 4 bits    ; 52 LEs        ; 40 LEs               ; 12 LEs                 ; Yes        ; |top|cpu:mcpu|R_WB[4]                        ;
+; 21:1               ; 4 bits    ; 56 LEs        ; 40 LEs               ; 16 LEs                 ; Yes        ; |top|cpu:mcpu|R_WB[27]                       ;
+; 21:1               ; 2 bits    ; 28 LEs        ; 20 LEs               ; 8 LEs                  ; Yes        ; |top|cpu:mcpu|R_WB[2]                        ;
+; 22:1               ; 2 bits    ; 28 LEs        ; 22 LEs               ; 6 LEs                  ; Yes        ; |top|cpu:mcpu|R_WB[28]                       ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |top|cpu:mcpu|regfile:mregfile|readdata1[26] ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |top|cpu:mcpu|control_fields:cf_ex|Mux2      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |top|cpu:mcpu|B_EX[5]                        ;
+; 4:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; No         ; |top|cpu:mcpu|B_EX[29]                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: cpu:mcpu|alu:malu|lpm_mult:Mult1   ;
++------------------------------------------------+--------------+---------------------+
+; Parameter Name                                 ; Value        ; Type                ;
++------------------------------------------------+--------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 32           ; Untyped             ;
+; LPM_WIDTHB                                     ; 32           ; Untyped             ;
+; LPM_WIDTHP                                     ; 64           ; Untyped             ;
+; LPM_WIDTHR                                     ; 64           ; Untyped             ;
+; LPM_WIDTHS                                     ; 1            ; Untyped             ;
+; LPM_REPRESENTATION                             ; SIGNED       ; Untyped             ;
+; LPM_PIPELINE                                   ; 0            ; Untyped             ;
+; LATENCY                                        ; 0            ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped             ;
+; USE_EAB                                        ; OFF          ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_46t     ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
++------------------------------------------------+--------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: cpu:mcpu|alu:malu|lpm_mult:Mult0   ;
++------------------------------------------------+--------------+---------------------+
+; Parameter Name                                 ; Value        ; Type                ;
++------------------------------------------------+--------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 32           ; Untyped             ;
+; LPM_WIDTHB                                     ; 32           ; Untyped             ;
+; LPM_WIDTHP                                     ; 64           ; Untyped             ;
+; LPM_WIDTHR                                     ; 64           ; Untyped             ;
+; LPM_WIDTHS                                     ; 1            ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped             ;
+; LPM_PIPELINE                                   ; 0            ; Untyped             ;
+; LATENCY                                        ; 0            ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped             ;
+; USE_EAB                                        ; OFF          ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_7dt     ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
++------------------------------------------------+--------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                           ;
++---------------------------------------+----------------------------------+
+; Name                                  ; Value                            ;
++---------------------------------------+----------------------------------+
+; Number of entity instances            ; 2                                ;
+; Entity Instance                       ; cpu:mcpu|alu:malu|lpm_mult:Mult1 ;
+;     -- LPM_WIDTHA                     ; 32                               ;
+;     -- LPM_WIDTHB                     ; 32                               ;
+;     -- LPM_WIDTHP                     ; 64                               ;
+;     -- LPM_REPRESENTATION             ; SIGNED                           ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                               ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                               ;
+;     -- USE_EAB                        ; OFF                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                               ;
+; Entity Instance                       ; cpu:mcpu|alu:malu|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 32                               ;
+;     -- LPM_WIDTHB                     ; 32                               ;
+;     -- LPM_WIDTHP                     ; 64                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                               ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                               ;
+;     -- USE_EAB                        ; OFF                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                               ;
++---------------------------------------+----------------------------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "cpu:mcpu|alu:malu"     ;
++------+--------+----------+------------------------+
+; Port ; Type   ; Severity ; Details                ;
++------+--------+----------+------------------------+
+; zero ; Output ; Info     ; Explicitly unconnected ;
++------+--------+----------+------------------------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "cpu:mcpu"         ;
++------------+-------+----------+--------------+
+; Port       ; Type  ; Severity ; Details      ;
++------------+-------+----------+--------------+
+; SW[31..18] ; Input ; Info     ; Stuck at GND ;
++------------+-------+----------+--------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 108                         ;
+; cycloneiii_ff         ; 692                         ;
+;     ENA               ; 32                          ;
+;     ENA CLR           ; 512                         ;
+;     SCLR              ; 23                          ;
+;     SLD               ; 5                           ;
+;     plain             ; 120                         ;
+; cycloneiii_lcell_comb ; 1773                        ;
+;     arith             ; 321                         ;
+;         2 data inputs ; 67                          ;
+;         3 data inputs ; 254                         ;
+;     normal            ; 1452                        ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 15                          ;
+;         2 data inputs ; 79                          ;
+;         3 data inputs ; 255                         ;
+;         4 data inputs ; 1101                        ;
+; cycloneiii_mac_mult   ; 8                           ;
+; cycloneiii_mac_out    ; 8                           ;
+;                       ;                             ;
+; Max LUT depth         ; 14.00                       ;
+; Average LUT depth     ; 9.28                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:05     ;
++----------------+--------------+
 
 
 +-------------------------------+
@@ -161,7 +1046,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Fri Oct 21 22:42:53 2022
+    Info: Processing started: Thu Oct 27 17:27:59 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
@@ -169,11 +1054,94 @@ Info (12021): Found 1 design units, including 1 entities, in source file top.sv
     Info (12023): Found entity 1: top File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 6
 Info (12021): Found 1 design units, including 1 entities, in source file hexdriver.sv
     Info (12023): Found entity 1: hexdriver File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/hexdriver.sv Line: 1
-Error (10703): SystemVerilog error at top.sv(107): can't resolve aggregate expression in connection to port 2 on instance "mcpu" because the instance has no module binding File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 107
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 1 warning
-    Error: Peak virtual memory: 861 megabytes
-    Error: Processing ended: Fri Oct 21 22:43:01 2022
-    Error: Elapsed time: 00:00:08
-    Error: Total CPU time (on all processors): 00:00:15
+Info (12127): Elaborating entity "top" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at top.sv(38): truncated value with size 33 to match size of target (32) File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 38
+Warning (10230): Verilog HDL assignment warning at top.sv(84): truncated value with size 26 to match size of target (24) File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 84
+Warning (10230): Verilog HDL assignment warning at top.sv(95): truncated value with size 32 to match size of target (24) File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 95
+Warning (12125): Using design file cpu.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: cpu File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/cpu.sv Line: 5
+Info (12128): Elaborating entity "cpu" for hierarchy "cpu:mcpu" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 47
+Warning (10850): Verilog HDL warning at cpu.sv(23): number of words (6) in memory file does not match the number of elements in the address range [0:4191] File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/cpu.sv Line: 23
+Warning (10030): Net "inst_ram.data_a" at cpu.sv(22) has no driver or initial value, using a default initial value '0' File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/cpu.sv Line: 22
+Warning (10030): Net "inst_ram.waddr_a" at cpu.sv(22) has no driver or initial value, using a default initial value '0' File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/cpu.sv Line: 22
+Warning (10030): Net "inst_ram.we_a" at cpu.sv(22) has no driver or initial value, using a default initial value '0' File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/cpu.sv Line: 22
+Warning (12125): Using design file instruction_decoder.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: instruction_decoder File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/instruction_decoder.sv Line: 2
+Info (12128): Elaborating entity "instruction_decoder" for hierarchy "cpu:mcpu|instruction_decoder:ex_decoder" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/cpu.sv Line: 70
+Warning (12125): Using design file control_fields.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: control_fields File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/control_fields.sv Line: 1
+Info (12128): Elaborating entity "control_fields" for hierarchy "cpu:mcpu|control_fields:cf_ex" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/cpu.sv Line: 93
+Warning (12125): Using design file alu.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: alu File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv Line: 7
+Info (12128): Elaborating entity "alu" for hierarchy "cpu:mcpu|alu:malu" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/cpu.sv Line: 128
+Warning (10036): Verilog HDL or VHDL warning at alu.sv(15): object "mullu" assigned a value but never read File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv Line: 15
+Warning (12125): Using design file regfile.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: regfile File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/regfile.sv Line: 3
+Info (12128): Elaborating entity "regfile" for hierarchy "cpu:mcpu|regfile:mregfile" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/cpu.sv Line: 195
+Info (12128): Elaborating entity "hexdriver" for hierarchy "hexdriver:hex0" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 51
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276017): RAM logic "cpu:mcpu|regfile:mregfile|mem" is uninferred due to illegal secondary signals in write logic File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/regfile.sv Line: 23
+Critical Warning (127005): Memory depth (8192) in the design file differs from memory depth (4192) in the Memory Initialization File "/acct/mmazeem/611/CSCE611/Lab3/lab_riu/db/DE2_115.ram0_cpu_1987c.hdl.mif" -- setting initial value for remaining addresses to 0
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "/acct/mmazeem/611/CSCE611/Lab3/lab_riu/db/DE2_115.ram0_cpu_1987c.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "cpu:mcpu|alu:malu|Mult1" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv Line: 22
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "cpu:mcpu|alu:malu|Mult0" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv Line: 21
+Info (12130): Elaborated megafunction instantiation "cpu:mcpu|alu:malu|lpm_mult:Mult1" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv Line: 22
+Info (12133): Instantiated megafunction "cpu:mcpu|alu:malu|lpm_mult:Mult1" with the following parameter: File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv Line: 22
+    Info (12134): Parameter "LPM_WIDTHA" = "32"
+    Info (12134): Parameter "LPM_WIDTHB" = "32"
+    Info (12134): Parameter "LPM_WIDTHP" = "64"
+    Info (12134): Parameter "LPM_WIDTHR" = "64"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_46t.tdf
+    Info (12023): Found entity 1: mult_46t File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/db/mult_46t.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "cpu:mcpu|alu:malu|lpm_mult:Mult0" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv Line: 21
+Info (12133): Instantiated megafunction "cpu:mcpu|alu:malu|lpm_mult:Mult0" with the following parameter: File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/alu.sv Line: 21
+    Info (12134): Parameter "LPM_WIDTHA" = "32"
+    Info (12134): Parameter "LPM_WIDTHB" = "32"
+    Info (12134): Parameter "LPM_WIDTHP" = "64"
+    Info (12134): Parameter "LPM_WIDTHR" = "64"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_7dt.tdf
+    Info (12023): Found entity 1: mult_7dt File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/db/mult_7dt.tdf Line: 30
+Info (13014): Ignored 456 buffer(s)
+    Info (13019): Ignored 456 SOFT buffer(s)
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDG[8]" is stuck at GND File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 14
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 527 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file /acct/mmazeem/611/CSCE611/Lab3/lab_riu/DE2_115.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 5 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK2_50" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 10
+    Warning (15610): No output dependent on input pin "CLOCK3_50" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 11
+    Warning (15610): No output dependent on input pin "KEY[1]" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 18
+    Warning (15610): No output dependent on input pin "KEY[2]" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 18
+    Warning (15610): No output dependent on input pin "KEY[3]" File: /acct/mmazeem/611/CSCE611/Lab3/lab_riu/top.sv Line: 18
+Info (21057): Implemented 2437 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 25 input pins
+    Info (21059): Implemented 83 output pins
+    Info (21061): Implemented 2313 logic cells
+    Info (21062): Implemented 16 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 24 warnings
+    Info: Peak virtual memory: 1020 megabytes
+    Info: Processing ended: Thu Oct 27 17:28:14 2022
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:31
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /acct/mmazeem/611/CSCE611/Lab3/lab_riu/DE2_115.map.smsg.
 
 
