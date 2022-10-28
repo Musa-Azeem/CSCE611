@@ -1,67 +1,61 @@
-# Convert binary input to decimal format to display on 8 displays
+li a0, 10 #used for multiplying by 10 to get the modulous
+li a1, 4194304 #Initial = 256
 
-li 	a0, 0x1999999A	# Approximation of 1/10 * 2^32
-addi 	a1, zero, 10		# Use to later get back actual value
-addi	a2, zero, 0		# clear a2 for output
+#clear registers for use
+add	a2,	zero,	zero
+add	t1, zero, zero
+add	t2, zero, zero
 
-# Read 32 bit gpio input (lower 18 bits is SW)
-li 	s0, 16	# li for testing
-#csrrw 	s0, 0xf00, zero	# read input
+csrrw	t1,	mhex2,	zero
 
-# Each iteration:
-# t0 = lo of s0 * a0 	- divide input by 10 and get the fractional part
-# s0 = hi of s0 * a0 	- divide input by 10 and get the whole part
-# t0 = hi of t0 * 10 	- multiply fractional part by 10 to get mod
-# t0 = t0 << n	     	- shift by n amount each time to align with final output
-# a2 = t0 | a2	     	- combine this decimal with the rest
+#process: get the fractional part, the actual value, and multiply by 10 to get the modulous of the temp register
+#increment the slli by 4 each time from 31:0 - which is the num of inputs
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 0
+or	a2, a2, t2
 
-mul 	t0, s0, a0	# fractional
-mulh	s0, s0, a0	# whole
-mulhu	t0, t0, a1	# mod
-slli	t0, t0, 0	# align
-or	a2, a2, t0	# combine
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 4
+or	a2, a2, t2
 
-mul 	t0, s0, a0	# fractional
-mulh	s0, s0, a0	# whole
-mulhu	t0, t0, a1	# mod
-slli	t0, t0, 4	# align
-or	a2, a2, t0	# combine
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 8
+or	a2, a2, t2
 
-mul 	t0, s0, a0	# fractional
-mulh	s0, s0, a0	# whole
-mulhu	t0, t0, a1	# mod
-slli	t0, t0, 8	# align
-or	a2, a2, t0	# combine
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 16
+or	a2, a2, t2
 
-mul 	t0, s0, a0	# fractional
-mulh	s0, s0, a0	# whole
-mulhu	t0, t0, a1	# mod
-slli	t0, t0, 12	# align
-or	a2, a2, t0	# combine
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 20
+or	a2, a2, t2
 
-mul 	t0, s0, a0	# fractional
-mulh	s0, s0, a0	# whole
-mulhu	t0, t0, a1	# mod
-slli	t0, t0, 16	# align
-or	a2, a2, t0	# combine
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 24
+or	a2, a2, t2
 
-mul 	t0, s0, a0	# fractional
-mulh	s0, s0, a0	# whole
-mulhu	t0, t0, a1	# mod
-slli	t0, t0, 20	# align
-or	a2, a2, t0	# combine
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 28
+or	a2, a2, t2
 
-mul 	t0, s0, a0	# fractional
-mulh	s0, s0, a0	# whole
-mulhu	t0, t0, a1	# mod
-slli	t0, t0, 24	# align
-or	a2, a2, t0	# combine
+mul	t2, t1, a1	
+mulhu	t1, t1, a1	
+mulhu	t2, t2, a0	
+slli	t2, t2, 32
+or	a2, a2, t2
 
-mul 	t0, s0, a0	# fractional
-mulh	s0, s0, a0	# whole
-mulhu	t0, t0, a1	# mod
-slli	t0, t0, 28	# align
-or	a2, a2, t0	# combine
-
-# Done, output final to gpio hex displays
-# csrrw 	zero, 0xf02, a2	# write output
+csrrw	zero, mhex2, a2
