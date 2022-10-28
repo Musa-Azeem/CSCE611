@@ -47,18 +47,50 @@ module simtop;
 		#5 clk = 0;
 	end
 
+	// Read expected values
+	logic [31:0] expected_values [4191:0];
+    initial $readmemh("testbench-expected.rom", expected_values);
+
 	// SIMULATE INPUT
 	integer i;
-	initial begin		
-		for (i=0; i<4; i=i+1) begin
-			if (i==0)
-				KEY = 4'b0000;
-			else
-				KEY = 4'b0001;
-			SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h1};
-			$display("Simtop: %3t", $time);
+	initial begin	
+		SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h1};
+		KEY = 4'b0;		// reset
+
+		#10;
+		KEY = 4'b1;
+
+		#10;
+		#10;
+		#10;
+		if (dut.mcpu.mregfile.mem[1] != expected_values[0]) $display("Test case 0 incorrect");
+		#10;
+		if (dut.mcpu.mregfile.mem[2] != expected_values[1]) $display("Test case 1 incorrect");
+		#10;
+		if (dut.mcpu.mregfile.mem[3] != expected_values[2]) $display("Test case 2 incorrect");
+		#10;
+		if (dut.mcpu.mregfile.mem[3] != expected_values[3]) $display("Test case 3 incorrect");
+		#10;
+		if (dut.mcpu.mregfile.mem[3] != expected_values[4]) $display("Test case 4 incorrect");
+		#10;
+		if (dut.mcpu.mregfile.mem[4] != expected_values[5]) $display("Test case 5 incorrect");
+		#10;
+		if (dut.mcpu.mregfile.mem[4] != expected_values[6]) $display("Test case 6 incorrect");
+		#10;
+		if (dut.mcpu.mregfile.mem[5] != expected_values[7]) $display("Test case 7 incorrect");
+		#10;
+		if (dut.mcpu.mregfile.mem[6] != expected_values[8]) $display("Test case 8 incorrect");
+		#10;
+		if (dut.mcpu.mregfile.mem[6] != expected_values[9]) $display("Test case 9 incorrect");
+		#10;
+
+		for (i=7; i<20; i=i+1) begin
+			if (dut.mcpu.mregfile.mem[i] != expected_values[i+3]) $display("Test case %i incorrect", (i+3));
 			#10;
 		end
+
+		if (dut.display != expected_values[24]) $display("Test case 24 incorrect");
+		if (dut.mcpu.mregfile.mem[21] != expected_values[25]) $display("Test case 25 incorrect");
 	end
 
 endmodule

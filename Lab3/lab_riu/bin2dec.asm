@@ -5,8 +5,8 @@ addi 	a1, zero, 10		# Use to later get back actual value
 addi	a2, zero, 0		# clear a2 for output
 
 # Read 32 bit gpio input (lower 18 bits is SW)
-#li 	s0, 16	# li for testing
-csrrw 	s0, 0xf00, zero	# read input
+li 	s0,0x88000000	# li for testing
+#csrrw 	s0, 0xf00, zero	# read input
 
 # Each iteration:
 # t0 = lo of s0 * a0 	- divide input by 10 and get the fractional part
@@ -64,4 +64,4 @@ slli	t0, t0, 28	# align
 or	a2, a2, t0	# combine
 
 # Done, output final to gpio hex displays
-csrrw 	zero, 0xf02, a2	# write output
+#csrrw 	zero, 0xf02, a2	# write output

@@ -21,9 +21,10 @@ module cpu (
     // READ INSTRUCTION FILE INTO RAM
 	logic [31:0] inst_ram [4191:0];
     initial $readmemh("program.rom", inst_ram);
+    // initial $readmemh("testbench-program.rom", inst_ram);
 
     // FETCH INSTRUCTION
-    logic [11:0] PC_F = 12'b0;
+    logic [11:0] PC_F;
     logic [31:0] instruction_EX;
 
     always_ff @(posedge clk) begin

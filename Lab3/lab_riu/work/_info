@@ -10,48 +10,48 @@ z2
 cModel Technology
 Z0 d/acct/mmazeem/611/CSCE611/Lab3/lab_riu
 T_opt
-!s110 1666900181
-VALd`Ula=[7eGTgS]6J=b92
+!s110 1666992426
+VL@NPF`cEUTRP1WNXJn8jN2
 Z1 04 6 4 work simtop fast 0
-=1-000ae431a4f1-635ae0d4-e7fcb-1725d
+=1-000ae431a4f1-635c492a-8cfbd-18ba0
 o-quiet -auto_acc_if_foreign -work work
 Z2 tCvgOpt 0
 n@_opt
 Z3 OL;O;2020.1;71
-R0
 T_opt1
-!s110 1666907616
-VKo93FA8IA_g80W=i0[g_k2
+!s110 1666991885
+VB2nOcnHN:f1Tb?<PO3YWN1
 R1
-=5-000ae431a4f1-635afde0-34af-1f1a9
+=15-000ae431a4f1-635c470c-d072b-17f05
 o-quiet -auto_acc_if_foreign -work work +acc
 R2
 n@_opt1
 R3
+R0
 valu
 Z4 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z5 !s110 1666907614
+Z5 !s110 1666992425
 !i10b 1
 !s100 Fz;21dl2PMZ6MFeGeLCUd1
 Z6 !s11b Dg1SIo80bB@j0V0VzS_@n1
-Ibnm8Y]M;3L7RQdXJlA3BQ0
+Idkda=b6UUa[8UodDQhYLI2
 Z7 VDg1SIo80bB@j0V0VzS_@n1
 S1
 R0
 Z8 w1646062652
 8alu.sv
 Falu.sv
-!i122 88
+!i122 110
 L0 7 48
 Z9 OL;L;2020.1;71
 r1
 !s85 0
 31
-Z10 !s108 1666907614.000000
+Z10 !s108 1666992425.000000
 Z11 !s107 top.sv|simtop.sv|regfile.sv|instruction_decoder.sv|hexdriver.sv|cpu.sv|control_fields.sv|alu.sv|
-Z12 !s90 -reportprogress|300|alu.sv|control_fields.sv|cpu.sv|hexdriver.sv|instruction_decoder.sv|regfile.sv|simtop.sv|top.sv|
+Z12 !s90 -pedanticerrors|-lint|-hazards|-source|-stats=all|alu.sv|control_fields.sv|cpu.sv|hexdriver.sv|instruction_decoder.sv|regfile.sv|simtop.sv|top.sv|
 !i113 0
-Z13 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z13 o-pedanticerrors -lint -hazards -source -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
 vcontrol_fields
 R4
@@ -59,14 +59,14 @@ R5
 !i10b 1
 !s100 `EUbiN`C]Lnzef6d2kAZn0
 R6
-IZ@7KfmiB1M^c1n?4GHJfT1
+I;Q1MU7bHP=XFfo50;m>eE0
 R7
 S1
 R0
 Z14 w1666906315
 8control_fields.sv
 Fcontrol_fields.sv
-!i122 88
+!i122 110
 L0 1 131
 R9
 r1
@@ -82,17 +82,17 @@ vcpu
 R4
 R5
 !i10b 1
-!s100 >aeoX;BjN;0?]MAV^XdBz2
+!s100 A=N0@M7oY9=dRfa<6m^6z3
 R6
-IR;f@gF]C:ab]A1aEhER1a3
+IFYdgCT;0B@[D3WnZQImbo2
 R7
 S1
 R0
-w1666907147
+w1666992423
 8cpu.sv
 Fcpu.sv
-!i122 88
-L0 5 192
+!i122 110
+L0 5 193
 R9
 r1
 !s85 0
@@ -109,14 +109,14 @@ R5
 !i10b 1
 !s100 9]g92U:1R]Fh_59Z8m4?W0
 R6
-I@mhko83I0a`^h^4iX?leA2
+IReBzKHPSSoR5JD7N9j31`0
 R7
 S1
 R0
 w1665605688
 8hexdriver.sv
 Fhexdriver.sv
-!i122 88
+!i122 110
 L0 1 22
 R9
 r1
@@ -149,9 +149,9 @@ r1
 31
 !s108 1666903069.000000
 R11
-R12
+!s90 -reportprogress|300|alu.sv|control_fields.sv|cpu.sv|hexdriver.sv|instruction_decoder.sv|regfile.sv|simtop.sv|top.sv|
 !i113 0
-R13
+o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
 vinstruction_decoder
 R4
@@ -159,14 +159,14 @@ R5
 !i10b 1
 !s100 TRedSGfz1ihSe]l]6ENoo3
 R6
-Ija0RNGoB:ccN`g5jJ5]:T2
+Ij9]PkKkXH6H0=M4nQB9;E2
 R7
 S1
 R0
 R14
 R15
 R16
-!i122 88
+!i122 110
 R17
 R9
 r1
@@ -184,14 +184,14 @@ R5
 !i10b 1
 !s100 FTTIUH1N4_CNg4Yi`?kN>3
 R6
-I[Oef:X_cJc6BeP6Yz1?f;2
+IXN8VVa4lPF2F61D6fAIkT3
 R7
 S1
 R0
 R8
 8regfile.sv
 Fregfile.sv
-!i122 88
+!i122 110
 L0 3 74
 R9
 r1
@@ -207,17 +207,17 @@ vsimtop
 R4
 R5
 !i10b 1
-!s100 dLh[@n1mGij52KQFGFjAi1
+!s100 hFZK9Zef`G9JBzQJQIJWf2
 R6
-IgZX>eNNdGROjTXCNM4LbF0
+I<?lK@zVJhCGIXULm>kB[A0
 R7
 S1
 R0
-w1666907608
+w1666991880
 8simtop.sv
 Fsimtop.sv
-!i122 88
-L0 6 59
+!i122 110
+L0 6 91
 R9
 r1
 !s85 0
@@ -234,14 +234,14 @@ R5
 !i10b 1
 !s100 T1z[egOnK04LWe<5mC75:2
 R6
-I4OBnLbHOL8l@3zmdL``^T0
+I@oT2^M^6kY6B0A=?U2>fL1
 R7
 S1
 R0
 R14
 8top.sv
 Ftop.sv
-!i122 88
+!i122 110
 L0 6 115
 R9
 r1
