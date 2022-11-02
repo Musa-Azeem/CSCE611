@@ -4,13 +4,13 @@ values (in binary) to display on each of the five HEX displays
 */
 module cpu (
     // Clock and Reset
-    input                   clk, rst_n,
+    input clk, rst_n,
 
     // Switches (lower 17 bits are input from switches)
-    input       [31:0]      SW,
+    input [31:0] SW,
 
     // Output values to display (8 4-bit fields go to each 8-segment display)
-    output logic     [31:0]       display
+    output logic [31:0] display
     );
 
     // DECLARE ALL LOGIC
@@ -153,10 +153,10 @@ module cpu (
     // EXECUTE INSTRUCTION IN ALU
     alu malu(   
         .A(readdata1_EX),           // First input to ALU is always data read from rs1
-        .B(B_EX),                // Second input to ALU chosen by alusrc signal
-        .op(aluop_EX),           // Tell ALU what operation to perform
-        .R(R_EX),                // Output of ALU
-        .zero()                  // Zero signal from ALU
+        .B(B_EX),                   // Second input to ALU chosen by alusrc signal
+        .op(aluop_EX),              // Tell ALU what operation to perform
+        .R(R_EX),                   // Output of ALU
+        .zero()                     // Zero signal from ALU
     );
 
     /*
