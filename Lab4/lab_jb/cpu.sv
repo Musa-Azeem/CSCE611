@@ -29,17 +29,20 @@ module cpu (
     logic [19:0] imm20_EX;
 
     // Branch/Jump Instruction Fields
-    logic [12:0] branch_offset_EX;
-    logic [12:0] branch_addr_EX;
-    logic [12:0] jalr_offset_EX;
-    logic [12:0] jalr_addr_EX;
+    logic [11:0] branch_addr_EX;
+    logic [11:0] jal_addr_EX;
+    logic [11:0] jalr_addr_EX;
 
-    // Control Fields
+    // Control Signals
     logic [3:0]  aluop_EX;
     logic [1:0]  regsel_EX;
     logic        alusrc_EX;
     logic        regwrite_EX;
     logic        gpio_we_EX;
+
+    // Branch/Jump Control Signals
+    logic pcsrc_EX;
+    logic stall_EX;
 
     // Data read from register
     logic [31:0] readdata1_EX;
@@ -81,12 +84,13 @@ module cpu (
     // FETCH INSTRUCTION
     always_ff @(posedge clk) begin
         if (~rst_n) begin
-            PC_F <= 12'd0;              // Reset PC to 0
+            PC_F <= 12'd0;                  // Reset PC to 0
             instruction_EX <= 32'd0;        // Reset executing instruction
         end 
         else begin
             // Update PC_F and instruction_EX for execution in next cycle
-            PC_F <= PC_F + 1'b1;
+            PC_F  <= PC_F + 1'b1;
+            PC_EX <= PC_F;
             instruction_EX <= inst_ram[PC_F];
         end
     end
@@ -101,6 +105,7 @@ module cpu (
     // Decode instruction into fields
     instruction_decoder ex_decoder(
         .instr(instruction_EX), 
+        .PC(PC_EX),
         // Output intruction fields
         .funct7(funct7_EX),
         .funct3(funct3_EX),
@@ -110,12 +115,15 @@ module cpu (
         .opcode(opcode_EX),
         .imm12(imm12_EX),
         .imm20(imm20_EX)
+        .branch_addr(branch_addr_EX),
+        .jal_addr(jal_addr_EX),
+        .jalr_addr(jalr_addr_EX)
     );
 
     
     // SET CONTROL SIGNALS
     // Set control signals based on opcode and function values (and imm12 for shamt)
-    control_fields cf_ex( 
+    control_unit cf_ex( 
         // Input required instructions fields
         .funct7(funct7_EX),
         .funct3(funct3_EX),
