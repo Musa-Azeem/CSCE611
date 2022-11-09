@@ -16,6 +16,8 @@ module cpu (
     // DECLARE ALL LOGIC
 	logic [31:0] inst_ram [4191:0];             // Instruction Ram
     logic [11:0] PC_F;                          // PC Counter for Fetch Stage
+    logic [11:0] PC_EX;                         // PC Counter for Execute stage
+    logic [11:0] PC_WB;                         // PC Counter for Writeback stage
     logic [31:0] instruction_EX;                // Instruction for Execution Stage
     
     // Instruction Fields
@@ -25,7 +27,12 @@ module cpu (
     logic [6:0]  opcode_EX;
     logic [11:0] imm12_EX;
     logic [19:0] imm20_EX;
-    // TODO J-type
+
+    // Branch/Jump Instruction Fields
+    logic [12:0] branch_offset_EX;
+    logic [12:0] branch_addr_EX;
+    logic [12:0] jalr_offset_EX;
+    logic [12:0] jalr_addr_EX;
 
     // Control Fields
     logic [3:0]  aluop_EX;
