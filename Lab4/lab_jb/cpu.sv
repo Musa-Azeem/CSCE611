@@ -39,10 +39,9 @@ module cpu (
     logic        alusrc_EX;
     logic        regwrite_EX;
     logic        gpio_we_EX;
-
-    // Branch/Jump Control Signals
-    logic pcsrc_EX;
-    logic stall_EX;
+    logic [1:0]  pcsrc_EX;
+    logic        stall_F;
+    // logic        stall_EX;
 
     // Data read from register
     logic [31:0] readdata1_EX;
@@ -89,9 +88,18 @@ module cpu (
         end 
         else begin
             // Update PC_F and instruction_EX for execution in next cycle
-            PC_F  <= PC_F + 1'b1;
+            case (pc_src)
+                1'b00:  PC_F  <= PC_F + 1'b1;
+                1'b01:  PC_F  <= branch_addr_EX;
+                1'b10:  PC_F  <= jal_addr_EX;
+                1'b11:  PC_F  <= jalr_addr_EX;
+            endcase
             PC_EX <= PC_F;
-            instruction_EX <= inst_ram[PC_F];
+
+            if (stall_F)    instruction_EX <= 32'b0;
+            else            instruction_EX <= inst_ram[PC_F];
+
+            stall_EX <= stall_F;    // Update stall_EX
         end
     end
 
@@ -129,12 +137,16 @@ module cpu (
         .funct3(funct3_EX),
         .opcode(opcode_EX),
         .imm12(imm12_EX),
+        .stall_EX(stall_EX),
+        .zero(alu_zero_EX),
         // Output control signals
         .aluop(aluop_EX),
         .alusrc(alusrc_EX),
         .regsel(regsel_EX),
         .regwrite(regwrite_EX),
-        .gpio_we(gpio_we_EX) 
+        .gpio_we(gpio_we_EX),
+        .pcsrc(pcsrc_EX),
+        .stall_F(stall_F)
     );
 
     // READ AND WRITE REGISTER FILE
@@ -171,7 +183,7 @@ module cpu (
         .B(B_EX),                   // Second input to ALU chosen by alusrc signal
         .op(aluop_EX),              // Tell ALU what operation to perform
         .R(R_EX),                   // Output of ALU
-        .zero()                     // Zero signal from ALU
+        .zero(alu_zero_EX)          // Zero signal from ALU
     );
 
     /*
@@ -205,7 +217,8 @@ module cpu (
     assign data_WB = 
         (regsel_WB == 2'b00) ? SW :                     // Write back switch values
         (regsel_WB == 2'b01) ? imm20_extended_WB :      // Write back U-type immediate
-        R_WB;                                           // Write back the ALU output
+        (regsel_WB == 2'b10) ? R_WB:                    // Write back the ALU output
+        PC_EX;                                          // Write back the current PC
 
     // WRITE TO REGISTER
     // In register file above
