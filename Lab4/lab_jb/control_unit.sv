@@ -18,7 +18,7 @@ module control_unit(
         regwrite = 1'bx;
         gpio_we  = 1'bx;
 
-        // First, IO type (csrrw) control fields
+        // IO type (csrrw) control fields
         if (opcode == 7'h73) begin
             // Don't care about aluop or alusrc - ALU not used for IO
             if (imm12 == 12'hf02) begin
@@ -35,7 +35,7 @@ module control_unit(
             end
         end
 
-        // Next, U-type (lui) control fields
+        // U-type (lui) control fields
         else if (opcode == 7'h37) begin
             // Don't care about aluop or alusrc - ALU not used for U-type
             regsel = 2'b01;             // Set to 1 to read imm20 to register
@@ -43,7 +43,7 @@ module control_unit(
             gpio_we = 0;                // Disable write to IO
         end
 
-        // Next, R-type control fields
+        // R-type control fields
         else if (opcode == 7'h33) begin
             alusrc = 0;                 // Second input to ALU is value from register
             regsel = 2'b10;             // Set to 2 to read ALU output to EX/WB pipeline register
@@ -82,7 +82,7 @@ module control_unit(
             endcase
         end
 
-        // Next I-type control fields (excluding aluop)
+        // I-type control fields
         else if (opcode == 7'h13) begin
             alusrc = 1;                 // Second input to ALU is sign extended imm12
             regsel = 2'b10;             // Set to 2 to read ALU output to EX/WB pipeline register
@@ -105,6 +105,27 @@ module control_unit(
                     endcase
                 end
             endcase
+        end
+
+        // B-type control fields
+        else if (opcode == 7'h63) begin
+            alusrc = 0;                 // Second input to ALU is value from register
+            //regsel = 2'b10;             // Set to 2 to read ALU output to EX/WB pipeline register
+            //regwrite = 1;               // Enable write to register
+            //gpio_we = 0;                // Disable write to IO   
+            case (funct3)
+                // TODO
+            endcase
+        end
+
+        // J-type (jal) control fields
+        else if (opcode == 7'h6F) begin
+            
+        end
+
+        // I-type (jalr) control fields
+        else if (opcode == 7'h67) begin
+            
         end
     end
 

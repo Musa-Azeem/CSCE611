@@ -22,7 +22,8 @@ module instruction_decoder(
     assign  opcode  = instr[6:0];       // R-type  I-type
     assign  imm12   = instr[31:20];     //         I-type
     assign  imm20   = instr[31:12];     // U-type
-    // TODO J-type fields
+
+    // Get branch and jump addresses
     logic [11:0] branch_offset;
     logic [11:0] jalr_offset;
 
