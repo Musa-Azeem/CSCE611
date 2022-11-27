@@ -96,10 +96,15 @@ module cpu (
             endcase
             PC_EX <= PC_F;
 
-            if (stall_F)    instruction_EX <= 32'b0;
-            else            instruction_EX <= inst_ram[PC_F];
-
-            stall_EX <= stall_F;    // Update stall_EX
+            // Update next executing intruction
+            if (stall_F) begin
+                // If stall_F is set, set the next instruction to noop to stall
+                instruction_EX <= 32'b0;
+            end 
+            else begin
+                // otherwise, just read the instruction from PC_F in ram
+                instruction_EX <= inst_ram[PC_F];
+            end
         end
     end
 
@@ -133,11 +138,11 @@ module cpu (
     // Set control signals based on opcode and function values (and imm12 for shamt)
     control_unit cf_ex( 
         // Input required instructions fields
+        .instr(instruction_EX),
         .funct7(funct7_EX),
         .funct3(funct3_EX),
         .opcode(opcode_EX),
         .imm12(imm12_EX),
-        .stall_EX(stall_EX),
         .zero(alu_zero_EX),
         // Output control signals
         .aluop(aluop_EX),

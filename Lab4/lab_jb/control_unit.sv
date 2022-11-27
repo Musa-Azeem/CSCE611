@@ -1,15 +1,16 @@
 module control_unit(
+    input  logic        [31:0]      instr,
     input  logic        [6:0]       funct7,
     input  logic        [2:0]       funct3,
     input  logic        [6:0]       opcode,
     input  logic        [11:0]      imm12,
-    input  logic                    stall_EX, zero
+    input  logic                    zero
     output logic        [3:0]       aluop,
     output logic        [1:0]       regsel, pc_src
     output logic                    alusrc, regwrite, gpio_we, stall_F
     );
 
-    // Find control signals
+    // Determine control signals
 
     always_comb begin
         // Initially set all to don't care
@@ -20,6 +21,15 @@ module control_unit(
         gpio_we  = 1'bx;
         pc_src   = 2'bx;
         stall_F  = 1'bx;
+
+        // NO-OP - stall
+        if (!instr) begin
+            // Don't care about aluop, regsel, or alusrc
+            regwrite = 1'b0;        // Disable write to register
+            gpio_we  = 1'b0;        // Disable write to hex display
+            pc_src   = 2'b00;       // Next PC is next instruction
+            stall_F  = 1'b0;        // Don't stall next cycle
+        end
 
         // IO type (csrrw) control fields
         if (opcode == 7'h73) begin
