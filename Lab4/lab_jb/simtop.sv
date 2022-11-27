@@ -52,25 +52,20 @@ module simtop;
     initial $readmemh("testbench-expected-pc.rom", expected_values);
 
 	// SIMULATE INPUT
+	integer i;
 	initial begin
 		SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h0};
 		KEY = 4'b0;		// reset
 
 		#10;
 		KEY = 4'b1;
-
-		#10;
-		$display(dut.mcpu.PC_F);
-		#10;
-		$display(dut.mcpu.PC_F);
-		#10;
-		$display(dut.mcpu.PC_F);
-		#10;
-		$display(dut.mcpu.PC_F);
-		#10;
-		$display(dut.mcpu.PC_F);
-		#10;
-		$display(dut.mcpu.PC_F);								
+		
+		for (int i=0; i<15; i++) begin
+			$display("PC_F: %12h", dut.mcpu.PC_F);
+			$display("pcsrc: %1b", dut.mcpu.pcsrc_EX);
+			
+			#10;
+		end
 	end
 	// initial begin	
 	// 	SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h1};
