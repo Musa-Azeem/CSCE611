@@ -96,7 +96,7 @@ module simtop;
 	// end
 
 	always_ff @(posedge clk) begin
-		$display(dut.mcpu.PC_F)
+		$display(dut.mcpu.PC_F);
 	end
 
 endmodule

@@ -4,7 +4,7 @@ module control_unit(
     input  logic        [2:0]       funct3,
     input  logic        [6:0]       opcode,
     input  logic        [11:0]      imm12,
-    input  logic                    zero
+    input  logic                    zero,
     output logic        [3:0]       aluop,
     output logic        [1:0]       regsel, pc_src
     output logic                    alusrc, regwrite, gpio_we, stall_F
