@@ -61,13 +61,14 @@ module simtop;
 		KEY = 4'b1;
 		
 		for (int i=0; i<15; i++) begin
-			$display("PC_F: %3h", dut.mcpu.PC_F);
-			$display("instr_EX %8h", dut.mcpu.instruction_EX);
-			$display("pcsrc_EX: %1b", dut.mcpu.pcsrc_EX);
+			$display("PC_F:\t%3h", dut.mcpu.PC_F);
+			$display("instr_EX:\t%8h", dut.mcpu.instruction_EX);
+			$display("pcsrc_EX:\t%1b", dut.mcpu.pcsrc_EX);
 			
-			$display("branch_addr_EX: %3h", dut.mcpu.branch_addr_EX);
-			$display("jal_addr_EX: %3h", dut.mcpu.jal_addr_EX);
-			$display("jalr_addr_EX: %3h", dut.mcpu.jalr_addr_EX);
+			$display("branch_addr_EX:\t%3h", dut.mcpu.branch_addr_EX);
+			$display("jal_addr_EX:\t%3h", dut.mcpu.jal_addr_EX);
+			$display("jalr_addr_EX:\t%3h", dut.mcpu.jalr_addr_EX);
+			$display("___________________________")
 			
 			#10;
 		end
