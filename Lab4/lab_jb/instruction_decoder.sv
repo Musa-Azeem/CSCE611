@@ -25,8 +25,8 @@ module instruction_decoder(
     assign  imm20   = instr[31:12];     // U-type
 
     // Get branch and jump addresses
-    logic [11:0] branch_offset;
-    logic [11:0] jal_offset;
+    logic [12:0] branch_offset;
+    logic [20:0] jal_offset;
     logic [11:0] jalr_offset;
 
     assign branch_offset = {instr[31], instr[7], instr[30:25], instr[11:8], 1'b0};
