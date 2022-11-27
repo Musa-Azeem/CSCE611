@@ -53,6 +53,12 @@ module simtop;
 
 	// SIMULATE INPUT
 	initial begin
+		SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h0};
+		KEY = 4'b0;		// reset
+
+		#10;
+		KEY = 4'b1;
+
 		#10;
 		$display(dut.mcpu.PC_F);
 		#10;
