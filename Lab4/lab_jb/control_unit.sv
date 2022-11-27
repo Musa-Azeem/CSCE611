@@ -6,7 +6,7 @@ module control_unit(
     input  logic        [11:0]      imm12,
     input  logic                    zero,
     output logic        [3:0]       aluop,
-    output logic        [1:0]       regsel, pc_src
+    output logic        [1:0]       regsel, pc_src,
     output logic                    alusrc, regwrite, gpio_we, stall_F
     );
 
