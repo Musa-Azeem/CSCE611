@@ -142,27 +142,32 @@ module control_unit(
                 3'b101:     aluop = 4'b1100;        // slt  (bge)
                 3'b110:     aluop = 4'b1101;        // sltu (bltu)
                 3'b111:     aluop = 4'b1101;        // sltu (bgeu)
-
-                // Set pcsrc
-                // If beq, bge, bgeu
-                if (funct3 == 3'b000 || funct3 == 3'b101 || funct3 == 3'b111) begin
-                    // Next PC is branch_addr if zero output of ALU is set
-                    if (zero)   pc_src = 2'b01;     // Take Branch
-                    else        pc_src = 2'b00;     // Don't take branch
-                end
-                // If bne, blt, or bltu 
-                else begin
-                    // Next PC is branch_addr if zero output of ALU is not set
-                    if (!zero) begin
-                        pc_src = 2'b01;     // Take Branch
-                        stall_F  = 1'b1;    // Stall next cycle           
-                    end
-                    else begin
-                        pc_src = 2'b00;     // Don't take branch
-                        stall_F  = 1'b1;    // Stall next cycle           
-                    end
-                end
             endcase
+
+            // Set pcsrc
+            // If beq, bge, bgeu
+            if (funct3 == 3'b000 || funct3 == 3'b101 || funct3 == 3'b111) begin
+                // Next PC is branch_addr if zero output of ALU is set
+                if (zero) begin
+                    pc_src = 2'b01;     // Take Branch
+                    stall_F = 1'b1;     // Stall next cycle
+                else begin
+                    pc_src = 2'b00;     // Don't take branch
+                    stall_F = 1'b0;     // Don't stall next cycle 
+                end
+            end
+            // If bne, blt, or bltu 
+            else begin
+                // Next PC is branch_addr if zero output of ALU is not set
+                if (!zero) begin
+                    pc_src = 2'b01;     // Take Branch
+                    stall_F  = 1'b1;    // Stall next cycle           
+                end
+                else begin
+                    pc_src = 2'b00;     // Don't take branch
+                    stall_F  = 1'b0;    // Dont' stall next cycle           
+                end
+            end
         end
 
         // J-type (jal) control fields
@@ -184,8 +189,6 @@ module control_unit(
             pc_src = 2'b11;             // Next PC is jalr_addr
             stall_F  = 1'b1;            // Stall next cycle           
         end
-
-        // do we need stall_EX?
     end
 
 endmodule
