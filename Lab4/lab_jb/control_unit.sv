@@ -151,6 +151,7 @@ module control_unit(
                 if (zero) begin
                     pc_src = 2'b01;     // Take Branch
                     stall_F = 1'b1;     // Stall next cycle
+                end
                 else begin
                     pc_src = 2'b00;     // Don't take branch
                     stall_F = 1'b0;     // Don't stall next cycle 
