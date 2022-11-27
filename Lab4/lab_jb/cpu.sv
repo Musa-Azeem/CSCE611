@@ -86,13 +86,12 @@ module cpu (
         else begin
             // Update PC_F and instruction_EX for execution in next cycle
             // Update PC_F for next cycle based on pc_src
-            // case (pcsrc_EX)
-            //     1'b00:  PC_F  <= PC_F + 1'b1;
-            //     1'b01:  PC_F  <= branch_addr_EX;
-            //     1'b10:  PC_F  <= jal_addr_EX;
-            //     1'b11:  PC_F  <= jalr_addr_EX;
-            // endcase
-            PC_F <= PC_F + 1'b1;
+            case (pcsrc_EX)
+                1'b00:  PC_F  <= PC_F + 1'b1;
+                1'b01:  PC_F  <= branch_addr_EX;
+                1'b10:  PC_F  <= jal_addr_EX;
+                1'b11:  PC_F  <= jalr_addr_EX;
+            endcase
             PC_EX <= PC_F;
 
             // Update next executing intruction
