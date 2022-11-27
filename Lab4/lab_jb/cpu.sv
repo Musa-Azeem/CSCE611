@@ -92,7 +92,7 @@ module cpu (
             //     1'b10:  PC_F  <= jal_addr_EX;
             //     1'b11:  PC_F  <= jalr_addr_EX;
             // endcase
-            PC_F <= PC_EX;
+            PC_F <= PC_F;
             PC_EX <= PC_F;
 
             // Update next executing intruction
