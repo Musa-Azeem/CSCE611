@@ -151,7 +151,7 @@ module cpu (
         .regsel(regsel_EX),
         .regwrite(regwrite_EX),
         .gpio_we(gpio_we_EX),
-        .pcsrc(pcsrc_EX),
+        .pc_src(pcsrc_EX),
         .stall_F(stall_F)
     );
 
