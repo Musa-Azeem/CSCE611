@@ -68,7 +68,7 @@ module simtop;
 			$display("branch_addr_EX:\t%3h", dut.mcpu.branch_addr_EX);
 			$display("jal_addr_EX:\t%3h", dut.mcpu.jal_addr_EX);
 			$display("jalr_addr_EX:\t%3h", dut.mcpu.jalr_addr_EX);
-			$display("___________________________")
+			$display("___________________________");
 			
 			#10;
 		end
