@@ -3,13 +3,16 @@
 
 # GPIO INPUT
 # cssrrw 	s0, 0xf00, zero			# get input from switches
-li s0, 1000						# For testing
+li s0, 99999						# For testing
 
 # CALCULATE SQUARE ROOT
 
 li 		s1, 2097152				# Initial step = 128 in fixed point
 li 		s2, 4194304				# Initial guess = 256 in fixed point
 slli	s0, s0, 14				# convert integer input to (32,14) fixed point
+
+# ez case if 0
+beq	s0, zero, iszero	
 
 sqrtloop:						# label to continue sqrt iteration
 
@@ -25,14 +28,15 @@ blt		s3, s0, lessthan		# if guess^2 is less than input, branch
 
 sub		s2, s2, s1				# if guess^2 is greater than input, guess -= step
 srli	s1, s1, 1				# divide step by 2
-j 		sqrtloop				# continue iteration
+jal		sqrtloop				# continue iteration
 
 lessthan:
 add		s2, s2, s1				# if guess^2 is less than input, guess += step
 srli	s1, s1, 1				# divide step by 2
-j 		sqrtloop				# continue iteration
+jal		sqrtloop				# continue iteration
 
 donesqrt:						# Done calculating square root (in s2)
+srli	s10, s2, 14
 
 # CONVERT TO (8,5) DECIMAL FOR HEX DISPLAYS
 
@@ -61,8 +65,7 @@ bne		s4, a4, loopfrac		# continue iteration
 
 # Get the 3 whole digits for hex display (bits 32:20)
 
-srli	s1, s2, 14				# Get whole part of sqrt result
-slli	s1, s1, 14				# shift back (set low 14 bits to 0)
+srli	s1, s2, 14				# Get whole part of sqrt result in (32,0) fixed point
 
 li 		a1, 0x1999999A			# Approximation of 1/10 in (32, 32) fixed point
 li		a2, 10					# Used to multiply by 10
@@ -76,8 +79,15 @@ mulhu	t0, t0, a2				# mulitply by 10 to get back the last digit whole digit of s
 sll		t0, t0, s4				# align with output
 or		s3, s3, t0				# add next whole digit to output
 addi	s4, s4, 4				# iterate counter
-bne		s4. a3, loopwhole		# conitnue iteration
+bne		s4, a3, loopwhole		# continue iteration
+
+jal 	exit							# Done with bin2dec
 
 
+# if input is 0, just output 0
+iszero:
+mv		s3, zero
+jal 	exit
+
+exit:
 # Finished, Write output to gpio
-# csrrw zero, 0xf02, s3
