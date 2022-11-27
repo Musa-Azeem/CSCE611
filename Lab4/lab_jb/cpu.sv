@@ -17,7 +17,6 @@ module cpu (
 	logic [31:0] inst_ram [4191:0];             // Instruction Ram
     logic [11:0] PC_F;                          // PC Counter for Fetch Stage
     logic [11:0] PC_EX;                         // PC Counter for Execute stage
-    logic [11:0] PC_WB;                         // PC Counter for Writeback stage
     logic [31:0] instruction_EX;                // Instruction for Execution Stage
     
     // Instruction Fields
