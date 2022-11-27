@@ -62,7 +62,7 @@ module simtop;
 		
 		for (int i=0; i<17; i++) begin
 			if (dut.mcpu.PC_F != expected_values[i]) begin
-				$display("Intruction $d failed at PC_F = %3h", i, dut.mcpu.PC_F);
+				$display("Intruction %3d failed at PC_F = %3h", i, dut.mcpu.PC_F);
 			end
 			#10;
 		end
