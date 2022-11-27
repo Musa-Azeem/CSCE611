@@ -1,2 +1,2 @@
 vlog -pedanticerrors -lint -hazards -source -stats=all *.sv
-vsim -pedanticerrors -hazards -c -sva -immedassert work.simtop -do "run 100000"
+printf "run 100000\n" | vsim -pedanticerrors -hazards -c -sva -immedassert work.simtop -do /dev/stdin

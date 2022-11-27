@@ -53,7 +53,18 @@ module simtop;
 
 	// SIMULATE INPUT
 	initial begin
-		#100;
+		#10;
+		$display(dut.mcpu.PC_F);
+		#10;
+		$display(dut.mcpu.PC_F);
+		#10;
+		$display(dut.mcpu.PC_F);
+		#10;
+		$display(dut.mcpu.PC_F);
+		#10;
+		$display(dut.mcpu.PC_F);
+		#10;
+		$display(dut.mcpu.PC_F);								
 	end
 	// initial begin	
 	// 	SW = {2'h0, 4'h0, 4'h0, 4'h0, 4'h1};
@@ -94,10 +105,6 @@ module simtop;
 	// 	if (dut.display != expected_values[24]) $display("Test case 24 incorrect");
 	// 	if (dut.mcpu.mregfile.mem[21] != expected_values[25]) $display("Test case 25 incorrect");
 	// end
-
-	always_ff @(posedge clk) begin
-		$display(dut.mcpu.PC_F);
-	end
 
 endmodule
 
