@@ -87,7 +87,7 @@ module cpu (
         else begin
             // Update PC_F and instruction_EX for execution in next cycle
             // Update PC_F for next cycle based on pc_src
-            case (pc_src_EX)
+            case (pcsrc_EX)
                 1'b00:  PC_F  <= PC_F + 1'b1;
                 1'b01:  PC_F  <= branch_addr_EX;
                 1'b10:  PC_F  <= jal_addr_EX;
@@ -116,8 +116,10 @@ module cpu (
     // DECODE INSTRUCTION
     // Decode instruction into fields
     instruction_decoder ex_decoder(
+        // Input information needed
         .instr(instruction_EX), 
         .PC(PC_EX),
+        .readdata1(readdata1_EX),
         // Output intruction fields
         .funct7(funct7_EX),
         .funct3(funct3_EX),
@@ -126,7 +128,7 @@ module cpu (
         .rd(rd_EX),
         .opcode(opcode_EX),
         .imm12(imm12_EX),
-        .imm20(imm20_EX)
+        .imm20(imm20_EX),
         .branch_addr(branch_addr_EX),
         .jal_addr(jal_addr_EX),
         .jalr_addr(jalr_addr_EX)

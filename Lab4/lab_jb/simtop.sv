@@ -52,7 +52,7 @@ module simtop;
     initial $readmemh("testbench-expected-pc.rom", expected_values);
 
 	// SIMULATE INPUT
-	inital begin
+	initial begin
 		#100;
 	end
 	// initial begin	

@@ -2,6 +2,7 @@
 module instruction_decoder(
     input       [31:0]      instr,
     input       [11:0]      PC,
+    input       [31:0]      readdata1,
     output      [6:0]       funct7,
     output      [2:0]       funct3,
     output      [4:0]       rs1, rs2, rd,
@@ -25,6 +26,7 @@ module instruction_decoder(
 
     // Get branch and jump addresses
     logic [11:0] branch_offset;
+    logic [11:0] jal_offset;
     logic [11:0] jalr_offset;
 
     assign branch_offset = {instr[31], instr[7], instr[30:25], instr[11:8], 1'b0};
@@ -34,6 +36,6 @@ module instruction_decoder(
     assign jal_addr   = PC + jal_offset[13:2];
 
     assign jalr_offset = instr[31:20];
-    assign jalr_addr   = readdata1_EX + {{2{jalr_offset[11]}},jalr_offset[11:2]};
+    assign jalr_addr   = readdata1 + {{2{jalr_offset[11]}},jalr_offset[11:2]};
 
 endmodule
