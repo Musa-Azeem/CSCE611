@@ -36,17 +36,16 @@ donesqrt:						# Done calculating square root (in s2)
 
 # CONVERT TO (8,5) DECIMAL FOR HEX DISPLAYS
 
+# Get the 5 fractional digits for hex display (bits 20:0)
+
 slli	s1, s2, 18				# Get decimal part of sqrt result
 srli	s1, s1, 18				# shift back (set hi 18 bits to 0)
 
-li 		a1, 0x1999999A			# Approximation of 1/10 in (32, 32) fixed point
-li		a2, 10					# Used to multiply by 10
 li 		a3, 0x28000				# 10 in (32,14) fixed point
 li		a4, 20					# iterate 5 times
 li 		s3, 0					# Clear s3 register for output
 li		s4, 0					# iteration counter
 
-# Get the 5 fractional digits for hex display
 loopfrac:						# iteration for fractional
 mul		t0, s1, a3				# lo bits s1*10		(4 bits whole, rest are fractional)
 mulh	t1, s1, a3				# hi bits of s1*10  (all whole bits)
@@ -55,9 +54,30 @@ srli	s1, s1, 18				# shift back to (32, 14) format
 srli	t0, t0, 28				# align whole bits of lo
 slli	t1, t1, 4				# align hi
 or		t0, t1, t0				# combine to get whole part of s1*10 - next decimal digit
-slli		s3, s3, 4				# shift output to align next digit
+slli	s3, s3, 4				# shift output to align next digit
 or		s3, s3, t0				# add next digit to output
 addi	s4, s4, 4				# iterate counter
 bne		s4, a4, loopfrac		# continue iteration
 
-# Get 3 whole digits for hex display
+# Get the 3 whole digits for hex display (bits 32:20)
+
+srli	s1, s2, 14				# Get whole part of sqrt result
+slli	s1, s1, 14				# shift back (set low 14 bits to 0)
+
+li 		a1, 0x1999999A			# Approximation of 1/10 in (32, 32) fixed point
+li		a2, 10					# Used to multiply by 10
+li		a3, 32					# iterate 3 times (20 + 3*4)
+li		s4, 20					# iteration counter / shift value
+
+loopwhole:
+mul		t0, s1, a1				# get lo bits of s1/10 (fractional)
+mulh	s1, s1, a1				# update s1 with hi bits of s1/10 (whole)
+mulhu	t0, t0, a2				# mulitply by 10 to get back the last digit whole digit of s1 (mod)
+sll		t0, t0, s4				# align with output
+or		s3, s3, t0				# add next whole digit to output
+addi	s4, s4, 4				# iterate counter
+bne		s4. a3, loopwhole		# conitnue iteration
+
+
+# Finished, Write output to gpio
+# csrrw zero, 0xf02, s3
