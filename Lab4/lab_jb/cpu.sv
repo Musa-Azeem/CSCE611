@@ -41,7 +41,6 @@ module cpu (
     logic        gpio_we_EX;
     logic [1:0]  pcsrc_EX;
     logic        stall_F;
-    // logic        stall_EX;
 
     // Data read from register
     logic [31:0] readdata1_EX;
@@ -78,7 +77,6 @@ module cpu (
 	
     // READ INSTRUCTION FILE INTO RAM
     initial $readmemh("program.rom", inst_ram);
-    // initial $readmemh("testbench-program.rom", inst_ram);
 
     // FETCH INSTRUCTION
     always_ff @(posedge clk) begin
@@ -88,7 +86,8 @@ module cpu (
         end 
         else begin
             // Update PC_F and instruction_EX for execution in next cycle
-            case (pc_src)
+            // Update PC_F for next cycle based on pc_src
+            case (pc_src_EX)
                 1'b00:  PC_F  <= PC_F + 1'b1;
                 1'b01:  PC_F  <= branch_addr_EX;
                 1'b10:  PC_F  <= jal_addr_EX;
@@ -102,7 +101,7 @@ module cpu (
                 instruction_EX <= 32'b0;
             end 
             else begin
-                // otherwise, just read the instruction from PC_F in ram
+                // otherwise, read the instruction from PC_F in ram
                 instruction_EX <= inst_ram[PC_F];
             end
         end
