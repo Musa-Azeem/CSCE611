@@ -3,7 +3,7 @@
 
 # GPIO INPUT
 # cssrrw 	s0, 0xf00, zero			# get input from switches
-li s0, 99999						# For testing
+li s0, 80000						# For testing
 
 # CALCULATE SQUARE ROOT
 
