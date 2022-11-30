@@ -2,8 +2,8 @@
 # 	the result in (8,5) fixed point base ten on gpio hex displays
 
 # GPIO INPUT
-# cssrrw 	s0, 0xf00, zero			# get input from switches
-li s0, 123894						# For testing
+csrrw 	s0, 0xf00, zero			# get input from switches
+# li s0, 123894						# For testing
 
 # CALCULATE SQUARE ROOT
 
@@ -91,3 +91,4 @@ jal 	exit
 
 exit:
 # Finished, Write output to gpio
+csrrw 	zero, 0xf02, s3
