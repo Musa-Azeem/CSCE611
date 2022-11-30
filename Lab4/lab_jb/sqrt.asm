@@ -3,7 +3,7 @@
 
 # GPIO INPUT
 # cssrrw 	s0, 0xf00, zero			# get input from switches
-li s0, 80000						# For testing
+li s0, 123894						# For testing
 
 # CALCULATE SQUARE ROOT
 
@@ -16,7 +16,7 @@ beq	s0, zero, iszero
 
 sqrtloop:						# label to continue sqrt iteration
 
-ble 	s1, zero, donesqrt 		# if step goes to zero, return sqrt estimate
+bleu 	s1, zero, donesqrt 		# if step goes to zero, return sqrt estimate
 
 mul		s3, s2, s2				# get lo bits of guess^2
 mulhu	s4, s2, s2				# get hi bits of guess^2
@@ -24,7 +24,7 @@ srli	s3, s3, 14				# shift lo bits to align
 slli	s4, s4, 18				# shift hi bits to align
 or 		s3, s3, s4				# combine lo and hi of product
 beq		s3, s0, donesqrt		# if guess^2 is equal to input, return sqrt
-blt		s3, s0, lessthan		# if guess^2 is less than input, branch
+bltu	s3, s0, lessthan		# if guess^2 is less than input, branch
 
 sub		s2, s2, s1				# if guess^2 is greater than input, guess -= step
 srli	s1, s1, 1				# divide step by 2
