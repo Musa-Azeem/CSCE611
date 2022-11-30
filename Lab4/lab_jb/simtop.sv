@@ -3,6 +3,8 @@
 /* Top-level module for CSCE611 RISC-V CPU, for running under simulation.  In
  * this case, the I/Os and clock are driven by the simulator. */
 
+// To run simulation, run the command "cp testbench.rom program.rom" first
+
 module simtop;
 
 	logic clk;
